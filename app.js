@@ -328,28 +328,29 @@ async function getJSON(url, ms = 9000) {
   const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), ms);
   try { const r = await fetch(url, { signal: ctl.signal }); if (!r.ok) throw new Error(r.status); return await r.json(); } finally { clearTimeout(t); }
 }
+const gKey = () => CFG.booksKey || '';
+const gURL = q => `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&maxResults=20&printType=books&key=${gKey()}`;
+const olCover = (id, size = 'M') => id > 0 ? `https://covers.openlibrary.org/b/id/${id}-${size}.jpg` : '';
+function fromOLdoc(d) {
+  const isbn = (d.isbn || []).find(x => x.length === 13 && /^97[89]/.test(x)) || (d.isbn || [])[0] || '';
+  return { title: d.title || '', subtitle: d.subtitle || '', authors: d.author_name || [], released: d.first_publish_year ? String(d.first_publish_year) : '',
+    isbn13: isbn.length === 13 ? isbn : isbn ? isbn10to13(isbn) : '', cover: olCover(d.cover_i), publisher: (d.publisher || [])[0] || '',
+    pages: d.number_of_pages_median || null, genres: [], summary: '', olKey: d.key || '', editions: d.edition_count || 0 };
+}
 async function lookupISBN(isbn) {
   isbn = isbnOf(isbn);
-  try { const j = await getJSON(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`); if (j.items?.length) { const g = fromGoogle(j.items[0]); if (!g.isbn13) g.isbn13 = isbn.length === 13 ? isbn : isbn10to13(isbn); return g; } } catch (e) { console.warn(e); }
-  try { const j = await getJSON(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`); const d = j['ISBN:' + isbn]; if (d) return fromOL(d, isbn); } catch (e) { console.warn(e); }
+  try { const j = await getJSON(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`); const d = j['ISBN:' + isbn]; if (d) { const o = fromOL(d, isbn); if (!d.cover) o.cover = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg?default=false`; return o; } } catch (e) { console.warn(e); }
+  if (gKey()) try { const j = await getJSON(gURL('isbn:' + isbn)); if (j.items?.length) { const g = fromGoogle(j.items[0]); if (!g.isbn13) g.isbn13 = isbn.length === 13 ? isbn : isbn10to13(isbn); return g; } } catch (e) { console.warn(e); }
   return null;
 }
+const OLF = 'key,title,subtitle,author_name,isbn,first_publish_year,cover_i,publisher,number_of_pages_median,edition_count';
 async function searchBooks(q, author) {
   let out = [];
-  const gq = author ? `intitle:${q} inauthor:${author}` : q;
-  try { const j = await getJSON(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(gq)}&maxResults=12&printType=books`); out = (j.items || []).map(fromGoogle); } catch (e) { console.warn(e); }
-  if (!out.length && author) return searchBooks(q);
-  if (!out.length) {
-    try {
-      const j = await getJSON(`https://openlibrary.org/search.json?q=${encodeURIComponent(q + (author ? ' ' + author : ''))}&limit=10&fields=title,author_name,isbn,first_publish_year,cover_i,publisher,number_of_pages_median`);
-      out = (j.docs || []).map(d => {
-        const isbn = (d.isbn || []).find(x => x.length === 13) || (d.isbn || [])[0] || '';
-        return { title: d.title, authors: d.author_name || [], released: d.first_publish_year ? String(d.first_publish_year) : '', isbn13: isbn.length === 13 ? isbn : isbn ? isbn10to13(isbn) : '',
-          cover: d.cover_i ? `https://covers.openlibrary.org/b/id/${d.cover_i}-M.jpg` : '', publisher: (d.publisher || [])[0] || '', pages: d.number_of_pages_median || null, genres: [], summary: '' };
-      });
-    } catch (e) { console.warn(e); }
-  }
-  // drop exact duplicates
+  const url = author ? `https://openlibrary.org/search.json?title=${encodeURIComponent(q)}&author=${encodeURIComponent(author)}&limit=12&fields=${OLF}`
+                     : `https://openlibrary.org/search.json?q=${encodeURIComponent(q)}&limit=12&fields=${OLF}`;
+  try { out = ((await getJSON(url, 12000)).docs || []).map(fromOLdoc); } catch (e) { console.warn(e); }
+  if (gKey()) try { out = out.concat(((await getJSON(gURL(author ? `intitle:${q} inauthor:${author}` : q))).items || []).map(fromGoogle)); } catch (e) { console.warn(e); }
+  if (!out.length && author) return searchBooks(`${q} ${author}`);
   const seen = new Set(), key = b => b.isbn13 || [b.title, b.subtitle, authorShort(b)].map(norm).join('|');
   return out.filter(b => b.title && !seen.has(key(b)) && seen.add(key(b)));
 }
@@ -563,19 +564,25 @@ function openBook(id) {
 async function coverCandidates(b) {
   const t = b.title.replace(/\s*\(.*?\)\s*/g, ' ').trim(), a = authorShort(b), out = [], seen = new Set();
   const add = (url, label) => { if (url && !seen.has(url)) { seen.add(url); out.push({ url, label }); } };
-  if (b.isbn13) add(`https://covers.openlibrary.org/b/isbn/${b.isbn13}-L.jpg?default=false`, 'This ISBN');
+  if (b.isbn13) add(`https://covers.openlibrary.org/b/isbn/${b.isbn13}-M.jpg?default=false`, 'Your ISBN');
   const main = t.includes(':') ? t.split(':').slice(1).join(':').trim() : '';
-  const qs = [`intitle:${t}${a ? ' inauthor:' + a : ''}`, ...(main ? [`intitle:${main}${a ? ' inauthor:' + a : ''}`] : []), `${t} ${a}`];
-  await Promise.all([
-    ...qs.map(q => getJSON(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&maxResults=20&printType=books`).then(j => (j.items || []).forEach(v => {
-      const i = v.volumeInfo || {}, u = (i.imageLinks?.thumbnail || '').replace(/^http:/, 'https:').replace('&edge=curl', '');
-      if (u) add(u, [i.publishedDate?.slice(0, 4), (i.categories || [])[0]].filter(Boolean).join(' · ') || i.title);
-    })).catch(() => {})),
-    getJSON(`https://openlibrary.org/search.json?title=${encodeURIComponent(main || t)}${a ? '&author=' + encodeURIComponent(a) : ''}&limit=20&fields=cover_i,first_publish_year,edition_count`).then(j => (j.docs || []).forEach(d => {
-      if (d.cover_i) add(`https://covers.openlibrary.org/b/id/${d.cover_i}-L.jpg`, d.first_publish_year ? String(d.first_publish_year) : 'Open Library');
-    })).catch(() => {})
-  ]);
-  return out.slice(0, 30);
+  const x = { title: b.title, author: a, notes: b.notes, authors: b.authors };
+  const queries = [`${main || t} ${a}`, ...(isGraphic(b) ? [`${main || t} ${a} graphic novel`] : [])];
+  let works = [];
+  for (const q of queries) { try { works = works.concat(((await getJSON(`https://openlibrary.org/search.json?q=${encodeURIComponent(q)}&limit=8&fields=${OLF}`, 12000)).docs || []).map(fromOLdoc)); } catch (e) { console.warn(e); } }
+  works = works.filter(w => goodMatch(x, w));
+  if (isGraphic(b)) works.sort((p, q) => looksGraphic(q) - looksGraphic(p));
+  const keys = [...new Set(works.map(w => w.olKey).filter(Boolean))].slice(0, 4);
+  works.forEach(w => add(w.cover, [w.released, looksGraphic(w) ? 'graphic novel' : ''].filter(Boolean).join(' · ')));
+  await Promise.all(keys.map(k => getJSON(`https://openlibrary.org${k}/editions.json?limit=60`, 12000).then(j => (j.entries || []).forEach(e => {
+    const id = (e.covers || []).find(c => c > 0);
+    if (id) add(olCover(id), [String(e.publish_date || '').match(/\d{4}/)?.[0], (e.publishers || [])[0]].filter(Boolean).join(' · '));
+  })).catch(() => {})));
+  if (gKey()) try { ((await getJSON(gURL(`intitle:${main || t}${a ? ' inauthor:' + a : ''}`))).items || []).forEach(v => {
+    const i = v.volumeInfo || {}, u = (i.imageLinks?.thumbnail || '').replace(/^http:/, 'https:').replace('&edge=curl', '');
+    if (u) add(u, [i.publishedDate?.slice(0, 4), 'Google'].filter(Boolean).join(' · '));
+  }); } catch {}
+  return out.slice(0, 40);
 }
 function shrinkToJpeg(src, max = 360) {
   return new Promise((res, rej) => { const im = new Image(); im.crossOrigin = 'anonymous'; im.onload = () => { try { res(shrink(im, max, .72)); } catch (e) { rej(e); } }; im.onerror = rej; im.src = src; });
@@ -587,7 +594,7 @@ function shrink(im, max, q) {
 }
 async function setCover(id, url, msg) {
   const b = clone(DB.books.get(id)); if (!b) return;
-  b.cover = url; await DB.save(b); toast(msg || 'Cover updated');
+  b.cover = url; delete b.noCoverFound; await DB.save(b); toast(msg || 'Cover updated');
 }
 function coverSheet(id, back) {
   const b = DB.books.get(id); if (!b) return;
@@ -601,16 +608,33 @@ function coverSheet(id, back) {
     <div class="secttl">Can’t find the right one?</div>
     <div class="covways">
       <label class="btn gold" style="cursor:pointer">${I.cam}Take a photo of the cover<input type="file" accept="image/*" capture="environment" id="cvCam" class="hidden"></label>
+      <label class="btn" style="cursor:pointer">Choose from Photos<input type="file" accept="image/*" id="cvPick" class="hidden"></label>
       <a class="btn" href="https://www.google.com/search?tbm=isch&q=${q}" target="_blank" rel="noopener">${I.search}Search Google Images</a>
       <button class="btn" id="cvPaste">Paste picture or link</button>
     </div>
-    <p class="note" style="margin-top:10px">Google Images: press and hold the right cover → <b>Copy</b> (or Copy Image Address), come back here and tap <b>Paste picture or link</b>.</p>
+    <div id="cvZone" contenteditable="true" class="pastezone" aria-label="Paste a picture here">Press and hold here, then tap <b>Paste</b></div>
+    <p class="note" style="margin-top:8px">Google Images: press and hold the right cover → <b>Copy</b>, come back, then press and hold the box above → <b>Paste</b>. A picture saved in your Photos works with <b>Choose from Photos</b>.</p>
     <form class="row2" id="cvForm" style="margin-top:8px"><input id="cvUrl" placeholder="…or paste a picture link here" style="flex:3;height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line);background:var(--bar)"><button class="btn" style="flex:0 0 auto">Use link</button></form>
     ${b.cover ? `<button class="btn ghost" id="cvRemove" style="margin-top:12px;color:var(--redink)">Remove cover</button>` : ''}`;
   const sh = openSheet(draw(), { static: true });
   const wire = () => {
     $('#cvBack', sh).onclick = done;
     $$('.covpick', sh).forEach(el => el.onclick = async () => { await setCover(id, cands[+el.dataset.i].url); done(); });
+    const fromFile = async (f, msg) => { const u = URL.createObjectURL(f); try { await setCover(id, await shrinkToJpeg(u, 360), msg); done(); } catch { toast('Couldn’t read that picture'); } finally { URL.revokeObjectURL(u); } };
+    $('#cvPick', sh).onchange = e => { const f = e.target.files?.[0]; if (f) fromFile(f, 'Cover saved'); };
+    const zone = $('#cvZone', sh);
+    zone.addEventListener('paste', e => {
+      e.preventDefault();
+      const items = [...(e.clipboardData?.items || [])];
+      const img = items.find(i => i.kind === 'file' && i.type.startsWith('image/'));
+      if (img) return fromFile(img.getAsFile(), 'Pasted cover saved');
+      const html = e.clipboardData.getData('text/html'), src = html && (html.match(/<img[^>]+src="([^"]+)"/i) || [])[1];
+      const txt = (e.clipboardData.getData('text/plain') || '').trim();
+      const link = src || (/^https?:\/\//.test(txt) ? txt : '');
+      if (link) return useLink(link.replace(/&amp;/g, '&'));
+      toast('That didn’t include a picture — try Choose from Photos');
+    });
+    zone.addEventListener('input', () => { zone.innerHTML = 'Press and hold here, then tap <b>Paste</b>'; });
     $('#cvCam', sh).onchange = async e => {
       const f = e.target.files?.[0]; if (!f) return;
       const u = URL.createObjectURL(f); try { await setCover(id, await shrinkToJpeg(u, 360), 'Your photo is the cover now'); done(); } catch { toast('Couldn’t read that photo'); } finally { URL.revokeObjectURL(u); }
@@ -624,7 +648,7 @@ function coverSheet(id, back) {
             if (item.types.includes('text/plain')) { const t = (await (await item.getType('text/plain')).text()).trim(); if (/^https?:\/\//.test(t)) { await useLink(t); return; } }
           }
         } else { const t = (await navigator.clipboard.readText()).trim(); if (/^https?:\/\//.test(t)) return useLink(t); }
-        toast('Nothing to paste — copy the picture first');
+        toast('Couldn’t read the clipboard here — press and hold the box below and tap Paste');
       } catch (e) { console.warn(e); toast('Paste the link into the box below instead'); $('#cvUrl', sh).focus(); }
     };
     const useLink = async u => {
@@ -1052,6 +1076,7 @@ async function checkImports(loud) {
     }
     pendingImports = out; render();
     await repairClaudeImports();
+    if (!DB.meta.fix3 && DB.books.size) fillMissingCovers();
     const revs = idx.revs || {}, known = DB.meta.importRevs || {};
     for (const f of Object.keys(revs)) if (done.has(f) && !(DB.meta.discarded || []).includes(f) && revs[f] > (known[f] || 1)) await applyRevision(f, revs[f]);
     if (loud) toast(out.length ? `${out.length} new list${out.length === 1 ? '' : 's'} from Claude` : 'No new lists yet');
@@ -1115,6 +1140,30 @@ async function applyRevision(f, rev) {
   await DB.saveMeta({ importRevs: { ...(DB.meta.importRevs || {}), [f]: rev } });
   if (save.length || gone.length) toast(`Updated ${j.cube || 'a list'} from Claude`);
 }
+// Find covers (and ISBNs, pages…) for books that have none. Runs once per library, a few at a time.
+let filling = false;
+async function fillMissingCovers(loud) {
+  if (filling) return; filling = true;
+  try {
+    const need = [...DB.books.values()].filter(b => !b.cover && !b.noCoverFound);
+    if (!need.length) { if (loud) toast('Every book already has a cover'); await DB.saveMeta({ fix3: true }); return; }
+    toast(`Looking for covers for ${need.length} book${need.length === 1 ? '' : 's'}…`);
+    let k = 0, found = 0;
+    const work = async () => { while (k < need.length) {
+      const b0 = need[k++], x = { title: b0.title, author: authorShort(b0), authors: b0.authors, notes: b0.notes, isbn13: b0.isbn13, format: b0.format, genres: b0.genres };
+      let i = null; try { i = await findOnline(x); } catch {}
+      const b = DB.books.get(b0.id); if (!b || b.cover) continue;
+      const n = clone(b);
+      if (i?.cover) { found++; const d = onlineDetails(i); for (const key of Object.keys(d)) if (n[key] == null || n[key] === '') n[key] = d[key]; n.cover = i.cover; }
+      else n.noCoverFound = true;
+      await DB.save(n, true);
+      if (k % 25 === 0) { render(); }
+    } };
+    await Promise.all([work(), work(), work()]);
+    render(); toast(`Found ${found} cover${found === 1 ? '' : 's'} · ${need.length - found} still need one`);
+    await DB.saveMeta({ fix3: true });
+  } finally { filling = false; }
+}
 function importBanner() {
   if (!pendingImports.length) return '';
   const n = pendingImports.reduce((k, j) => k + (j.books || []).length, 0);
@@ -1161,32 +1210,44 @@ async function markImported(j, n, cubeDone) {
 // Is an online result really the same book? (Keeps "Speak Up!" from matching "Nice Girls Don't Speak Up")
 const STOP = new Set(['of', 'and', 'the', 'a', 'an', 'to', 'in', 'or', 'for', 'on', 'book']);
 const words = s => norm(s).split(' ').filter(w => w.length > 1 && !STOP.has(w));
-function goodMatch(x, m) {
-  if (!m?.title) return false;
-  const a = norm(x.author || (x.authors || [])[0] || '').split(' ').pop();
-  if (a && m.authors?.length && !m.authors.some(n => norm(n).split(' ').includes(a))) return false;
-  const want = words(x.title), main = words(m.title), have = new Set(words(m.title + ' ' + (m.subtitle || '')));
+const NOISE = new Set(['graphic', 'novel', 'novels', 'edition', 'illustrated', 'paperback', 'hardcover']);
+const people = x => [x.author, ...(x.authors || []), ...((x.notes || '').match(/(?:adapted|illustrated) by ([^.;,]+)|with ([^.;,]+)/gi) || []).map(t => t.replace(/^(adapted|illustrated) by |^with /i, ''))]
+  .filter(Boolean).map(n => norm(n).split(' ').pop());
+function titleFits(t, m) {
+  const want = words(t).filter(w => !NOISE.has(w)), main = words(m.title).filter(w => !NOISE.has(w)), have = new Set(words(m.title + ' ' + (m.subtitle || '')));
   if (!want.length || !main.length) return false;
   const ws = new Set(want);
-  const cover = want.filter(w => have.has(w)).length / want.length;
-  const share = main.filter(w => ws.has(w)).length / main.length;
-  if (cover >= .75 && share >= .6) return true;
+  if (want.filter(w => have.has(w)).length / want.length >= .75 && main.filter(w => ws.has(w)).length / main.length >= .6) return true;
   return main.length >= 2 && main.every(w => ws.has(w));   // e.g. "Dog Days" for "Diary of a Wimpy Kid: Dog Days"
+}
+function goodMatch(x, m) {
+  if (!m?.title) return false;
+  const ps = people(x);
+  if (ps.length && m.authors?.length && !m.authors.some(n => ps.includes(norm(n).split(' ').pop()))) return false;
+  const main = x.title.includes(':') ? x.title.split(':').slice(1).join(':').trim() : '';
+  return titleFits(x.title, m) || (main && titleFits(main, m));
 }
 const isGraphic = x => /graphic/i.test(x.format || '') || (x.genres || []).some(g => /graphic/i.test(g));
 const looksGraphic = m => /graphic|comic|manga/i.test([m.title, m.subtitle, m.cats].join(' '));
 async function findOnline(x) {
   if (x.isbn13) { const one = await lookupISBN(x.isbn13); if (one) return one; }
   const gn = isGraphic(x), main = x.title.includes(':') ? x.title.split(':').slice(1).join(':').trim() : '';
-  // graphic novels share titles with the original novels, so look for the graphic edition first
-  const tries = gn ? [[`${x.title} ${x.author || ''} graphic novel`], [x.title, x.author], ...(main ? [[`${main} ${x.author || ''} graphic novel`]] : [])]
+  const tries = gn ? [[`${main || x.title} ${x.author || ''} graphic novel`], [x.title, x.author], ...(main ? [[main, x.author]] : [])]
                    : [[x.title, x.author], ...(main ? [[main, x.author]] : [])];
+  let fallback = null;
   for (const [q, a] of tries) {
     let res = []; try { res = await searchBooks(q, a); } catch {}
-    const hit = res.find(m => goodMatch(x, m) && (!gn || looksGraphic(m)));
-    if (hit) return hit;
+    const ok = res.filter(m => goodMatch(x, m));
+    if (gn) {
+      // graphic novels share titles with the original novels: take a graphic edition, else the newest one with a cover
+      const g = ok.find(m => looksGraphic(m) && m.cover); if (g) return g;
+      const newest = ok.filter(m => m.cover).sort((p, q) => (+q.released || 0) - (+p.released || 0))[0];
+      if (newest && +newest.released >= 2005 && !fallback) fallback = newest;
+    } else {
+      const hit = ok.find(m => m.cover) || ok[0]; if (hit) return hit;
+    }
   }
-  return null;   // better a plain cover than the wrong edition
+  return fallback;   // better a plain cover than the wrong edition
 }
 // details looked up online, without ever replacing the title/author Claude read off the spine
 function onlineDetails(i) {
@@ -1253,6 +1314,8 @@ function settingsSheet(focus) {
   <div class="secttl">Shelf labels</div>
   <p class="note">How the shelves are organized. Use a letter range (“L–M”), or start with Graphic, Info, Picture or Classic. New books get a suggested shelf from these.</p>
   ${m.cases.map(c => `<div class="cap" style="margin:10px 0 6px">${esc(c.name)}</div><div style="display:grid;grid-template-columns:repeat(${c.cols},minmax(0,1fr));gap:6px">${cubeIds(c).map(q => `<label class="fld"><span>${q}</span><input class="cl" data-k="${locKey(c.id, q)}" value="${esc(cubeLabel(locKey(c.id, q)))}" style="height:38px;padding:0 8px;font-size:14px"></label>`).join('')}</div>`).join('')}
+  <div class="secttl">Covers</div>
+  <button class="btn sm" id="stCovers">Look again for missing covers</button>
   <div class="secttl">Backup</div>
   <div class="row2"><button class="btn sm" id="stBackup">Download a backup</button><button class="btn sm" id="stRestore">Restore from a backup</button></div>
   <div class="row2" style="margin-top:22px"><button class="btn gold" id="stSave">Save settings</button></div>`);
@@ -1277,6 +1340,7 @@ function settingsSheet(focus) {
     const blob = new Blob([JSON.stringify({ app: 'spencer-books', t: Date.now(), meta: DB.meta, books: [...DB.books.values()] }, null, 1)], { type: 'application/json' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `spencer-books-${new Date().toISOString().slice(0, 10)}.json`; a.click();
   };
+  $('#stCovers', sh).onclick = () => { closeSheet(); DB.books.forEach(b => { delete b.noCoverFound; }); fillMissingCovers(true); };
   $('#stRestore', sh).onclick = () => $('#restoreFile').click();
 }
 $('#restoreFile').addEventListener('change', async e => {
