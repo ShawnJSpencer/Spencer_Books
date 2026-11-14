@@ -22,22 +22,16 @@ That's it for Firebase — sign-in (Email/Password) and the `shawnjspencer.githu
 Open the app → gear icon → **Sync** → sign in with the **same email and password you use for the food storage app**.
 The dot by the gear turns green and says *synced*. Your wife signs in with her food-storage login too.
 
-## 4. Turn on shelf-photo reading (Claude API key)
-Reading book spines from a photo — and filling in age ranges, series and genres — uses Claude.
-1. https://console.anthropic.com → sign in → **Settings → API keys → Create key**. Add a few dollars of credit under **Billing** if the account is new.
-2. In the app: gear → **Claude** → paste the key → **Test the key** → **Save settings**.
-   The key is stored in your private Firebase library, so the iPad and iPhone both get it.
-
-## 5. Put it on the Home Screen
+## 4. Put it on the Home Screen
 On the iPad and the iPhone: open the link in **Safari → Share → Add to Home Screen**.
 
 ---
 
 ### How to use it
 * **Scan barcode** — same scanner as the food storage app; opens on the Close-up 0.5× lens. Owned books show where they live and who's read them. Tick **Quick add** to scan a stack without stopping, and pick **New books go on** to put them straight into a cube.
-* **Photo a shelf** — pick the cube (rows A–D top to bottom, columns 1–4 left to right), take the picture straight on. Spines it isn't sure about flash amber, unreadable ones flash orange; tap one to confirm, pick another match, type the title, or scan its barcode.
+* **Adding a whole cube from a photo** — take a straight-on photo of the cube and send it to Claude in your chat with the cube's name (bookcase letter, row A–D top to bottom, column 1–4 left to right — e.g. `A-B3`). Claude reads the spines, sends back a picture with any uncertain spines highlighted to ask you about, then saves the list to `imports/` in this repo. The app shows a **New from Claude** banner: review, untick anything wrong, tap **Add**. Covers, ISBNs, page counts and summaries are looked up online as they're added. (No API key or extra cost — it uses your Claude subscription.)
 * **Shopping list** — wishlist per daughter, the next book in each series they're reading, and series they didn't like.
 * **Backup** — gear → Download a backup (books and settings, no photos).
 
 ### Files
-`index.html` (layout & styles) · `app.js` (everything else) · `scanner.js` (the SF-FS barcode reader) · `config.js` (Firebase + Claude model) · `firestore.rules` · `sw.js` (offline) · `tools/make_icons.py`
+`index.html` (layout & styles) · `app.js` (everything else) · `scanner.js` (the SF-FS barcode reader) · `config.js` (Firebase) · `firestore.rules` · `imports/` (book lists from Claude) · `sw.js` (offline) · `tools/make_icons.py`

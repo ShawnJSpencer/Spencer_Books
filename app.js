@@ -57,7 +57,7 @@ const DEFAULT_META = () => ({
     { id: 'B', name: 'Bookcase B', wall: 'Right wall', rows: 4, cols: 4 }
   ],
   photos: {},
-  aiKey: ''
+  imported: []
 });
 const STATUS = { owned: 'Owned', wishlist: 'Wishlist', lent: 'Lent out', gone: 'Given away' };
 const READ = { '': 'Not read', want: 'Wants to read', reading: 'Reading now', done: 'Finished', stopped: 'Stopped' };
@@ -152,7 +152,7 @@ async function initCloud() {
     });
   } catch (e) { console.error(e); setSync('offline'); }
 }
-let unsubs = [];
+let unsubs = [], metaChecked = false;
 async function goCloud() {
   const { collection, doc, onSnapshot, getDocs, getDoc, writeBatch, setDoc } = DB.fb, db = DB.fb.db;
   setSync('connecting…');
@@ -177,7 +177,11 @@ async function goCloud() {
   }));
   unsubs.push(onSnapshot(doc(db, DB.path()), snap => {
     if (!snap.exists()) return;
-    DB.meta = { ...DEFAULT_META(), ...snap.data() }; DB.persist(); render();
+    const before = (DB.meta.imported || []).length;
+    DB.meta = { ...DEFAULT_META(), ...snap.data() }; delete DB.meta.aiKey; DB.persist();
+    if ((DB.meta.imported || []).length !== before) pendingImports = pendingImports.filter(j => !DB.meta.imported.includes(j.file));
+    render();
+    if (!snap.metadata.fromCache && !metaChecked) { metaChecked = true; checkImports(); }
   }));
 }
 function setSync(txt, on = false) {
@@ -293,54 +297,6 @@ async function searchBooks(q, author) {
   return out.filter(b => b.title && !seen.has(norm(b.title) + '|' + norm(authorShort(b))) && seen.add(norm(b.title) + '|' + norm(authorShort(b))));
 }
 
-/* ───────── Claude (reads shelf photos, fills in age range / series / genre) ───────── */
-const AI = {
-  key: () => DB.meta.aiKey || dev.get('aiKey', ''),
-  model: () => CFG.aiModel || 'claude-sonnet-5-5',
-  async ask(content, maxTokens = 4000) {
-    const key = this.key(); if (!key) throw new Error('no-key');
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-      body: JSON.stringify({ model: this.model(), max_tokens: maxTokens, messages: [{ role: 'user', content }] })
-    });
-    if (!r.ok) { let m = r.status; try { m = (await r.json()).error?.message || m; } catch {} throw new Error(m); }
-    const j = await r.json();
-    return (j.content || []).map(c => c.text || '').join('');
-  },
-  json(text) { const a = text.indexOf('{'), b = text.lastIndexOf('}'); return JSON.parse(text.slice(a, b + 1)); }
-};
-async function enrich(list) {
-  if (!AI.key() || !list.length) return;
-  for (let i = 0; i < list.length; i += 20) {
-    const chunk = list.slice(i, i + 20);
-    const lines = chunk.map((b, k) => ({ i: k, title: b.title, author: authorShort(b), year: year(b), about: (b.summary || '').slice(0, 280) }));
-    try {
-      const t = await AI.ask([{ type: 'text', text:
-`For each book below give typical details a children's librarian would know. Reply with JSON only:
-{"books":[{"i":0,"series":"name or null","seriesNo":number or null,"genres":["2-3 short genres"],"ageMin":number,"ageMax":number,"grade":"e.g. 3–7 or null","level":"Lexile like 740L if known, else null"}]}
-Use null when unsure. Books:
-${JSON.stringify(lines)}` }], 3000);
-      const res = AI.json(t).books || [];
-      const changed = [];
-      res.forEach(x => {
-        const b = DB.books.get(chunk[x.i]?.id); if (!b) return;
-        const est = { ...(b.est || {}) };
-        if (!b.series && x.series) { b.series = x.series; if (x.seriesNo) b.seriesNo = x.seriesNo; }
-        if ((!b.genres || !b.genres.length) && x.genres?.length) { b.genres = x.genres; est.genres = true; }
-        if (b.ageMin == null && x.ageMin != null) { b.ageMin = x.ageMin; b.ageMax = x.ageMax ?? null; est.age = true; }
-        if (!b.grade && x.grade) b.grade = x.grade;
-        if (!b.level && x.level) b.level = x.level;
-        b.est = est; changed.push(b);
-      });
-      if (changed.length) await DB.saveMany(changed);
-    } catch (e) { console.warn('enrich', e); if (/no-key|401|403|auth/i.test(String(e))) return; }
-  }
-}
-
-let enrichQ = [], enrichT = 0;
-function enrichSoon(b) { if (!AI.key()) return; enrichQ.push(b); clearTimeout(enrichT); enrichT = setTimeout(() => { const q = enrichQ; enrichQ = []; enrich(q.map(x => DB.books.get(x.id)).filter(Boolean)); }, 4000); }
-
 /* ───────── UI state ───────── */
 const UI = { view: 'library', reader: 'all', shelf: 'owned', age: null, genre: '', filter: 'all', sort: dev.get('sort', 'added'), q: '', cube: null, sel: null, shopFor: 'all', caseSel: null };
 
@@ -391,9 +347,8 @@ function render() {
   if (UI.view === 'library') renderLibrary();
   else if (UI.view === 'shopping') renderShopping();
   else if (UI.view === 'shelves') renderShelves();
-  else if (UI.view === 'import') renderImport();
   renderDetail();
-  $$('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === (UI.view === 'import' ? 'shelves' : UI.view)));
+  $$('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === UI.view));
   if (sheetRefresh) sheetRefresh();
 }
 
@@ -411,7 +366,7 @@ function renderSide() {
   const genres = {}; owned.forEach(b => (b.genres || []).forEach(g => { genres[g] = (genres[g] || 0) + 1; }));
   const topG = Object.entries(genres).sort((a, b) => b[1] - a[1]).slice(0, 14);
   $('#side').innerHTML = `
-  <div class="navgroup"><span class="cap">View</span>${views.map(([id, n, c]) => `<button class="nav ${UI.view === id || (id === 'shelves' && UI.view === 'import') ? 'on' : ''}" data-act="view" data-v="${id}">${n}<span class="n">${c}</span></button>`).join('')}</div>
+  <div class="navgroup"><span class="cap">View</span>${views.map(([id, n, c]) => `<button class="nav ${UI.view === id || false ? 'on' : ''}" data-act="view" data-v="${id}">${n}<span class="n">${c}</span></button>`).join('')}</div>
   <div class="navgroup"><span class="cap">Reader</span>
     <button class="nav ${UI.reader === 'all' ? 'on' : ''}" data-act="reader" data-v="all"><span class="av" style="background:var(--brass)">★</span>Everyone<span class="n">${owned.length}</span></button>
     ${readers().map(r => `<button class="nav ${UI.reader === r.id ? 'on' : ''}" data-act="reader" data-v="${r.id}">${av(r)}${esc(r.name)}<span class="n">${all.filter(b => rd(b, r.id).status === 'done').length} read</span></button>`).join('')}</div>
@@ -441,6 +396,7 @@ function renderLibrary() {
       <button class="pill ${UI.shelf === 'wishlist' ? 'on' : ''}" data-act="shelf" data-v="${UI.shelf === 'wishlist' ? 'owned' : 'wishlist'}">Wishlist</button>
       <button class="pill" data-act="shelf-photo">${'Photo a shelf'}</button></div>
   </div>
+  ${importBanner()}
   <div class="stats">${stats.map(([v, l, c]) => `<div class="stat"><b style="color:${c}">${v}</b><span>${esc(l)}</span></div>`).join('')}</div>
   <div class="toolbar">
     <h1 id="libTitle">${esc(libTitle())}</h1>
@@ -638,7 +594,6 @@ function editSheet(id, preset) {
     <label class="fld full"><span>Notes</span><textarea name="notes" style="min-height:60px">${esc(b.notes || '')}</textarea></label>
   </div>
   <div class="row2" style="margin-top:18px">
-    <button class="btn" id="edFill">${I.star}Fill in missing details${AI.key() ? '' : ' (needs Claude key)'}</button>
     ${id ? `<button class="btn" id="edDel" style="color:var(--redink);border-color:#8a4a32">Delete book</button>` : ''}</div>`);
   $('#edCase', sh).onchange = e => { $('#edCube', sh).innerHTML = cubeOpts(e.target.value); };
   const collect = () => {
@@ -661,11 +616,6 @@ function editSheet(id, preset) {
     return o;
   };
   $('#edSave', sh).onclick = async () => { const o = collect(); if (!o) return; await DB.save(o); closeSheet(); toast('Saved'); if (!id) openBook(o.id); else if (!isWide()) openBook(o.id); };
-  $('#edFill', sh).onclick = async () => {
-    if (!AI.key()) return settingsSheet('ai');
-    const o = collect(); if (!o) return;
-    await DB.save(o, true); toast('Asking Claude…'); await enrich([o]); editSheet(o.id);
-  };
   if (id) $('#edDel', sh).onclick = async () => {
     if (!confirm(`Delete “${b.title}” from the library? This can’t be undone.`)) return;
     const copy = clone(DB.books.get(id)); await DB.remove(id); UI.sel = null; closeSheet(); toast('Deleted', () => DB.save(copy));
@@ -702,7 +652,7 @@ function searchSheet(opts = {}) {
       const wants = $$('.srFor:checked', sh).map(x => x.value);
       const b = newBook(c, { status: mode, addedBy: 'search', wants, ...(opts.loc ? { loc: { ...opts.loc, pos: nextPos(opts.loc.c, opts.loc.cube) } } : {}) });
       delete b.ageHint;
-      await DB.save(b); enrichSoon(b);
+      await DB.save(b);
       toast(mode === 'wishlist' ? `Added to the wishlist: ${b.title}` : `Added: ${b.title}`, () => DB.remove(b.id));
       if (opts.onPick) { opts.onPick(b); return; }
       li.querySelector('.badge').outerHTML = `<span class="badge b-${mode}">${STATUS[mode]}</span>`;
@@ -766,7 +716,7 @@ async function handleCode(isbn, opts) {
   if (scanState?.keep) {
     const [c, cube] = (scanState.shelveIn || '').split('-');
     const b = newBook(found, { addedBy: 'barcode', ...(c ? { loc: { c, cube, pos: nextPos(c, cube) } } : {}) });
-    await DB.save(b, true); render(); enrichSoon(b);
+    await DB.save(b, true); render();
     return showLast(b, false);
   }
   await Scanner.stop();
@@ -880,11 +830,10 @@ function renderShelves() {
     const [c, q] = sel.split('-'), s = cubeStats(c, q);
     const counts = kids().map(k => `${k.name}: ${s.bs.filter(b => rd(b, k.id).status === 'done').length} read`);
     info = `<div class="cubeinfo"><div style="min-width:180px"><span class="cap" style="color:var(--brass)">Selected</span><div style="font:700 23px var(--fd)">Case ${c} · Cube ${q}</div>
-      <span class="note">${s.bs.length} book${s.bs.length === 1 ? '' : 's'}${s.photo ? ' · photographed ' + new Date(s.photo.t).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : ' · no photo yet'}</span></div>
+      <span class="note">${s.bs.length} book${s.bs.length === 1 ? '' : 's'}${s.photo ? ' · added from a photo ' + new Date(s.photo.t).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : ' · no photo yet'}</span></div>
       <div class="chips" style="flex:1">${counts.map(t => `<span class="badge" style="background:var(--bar);border:1px solid var(--line);font-size:13px;padding:6px 12px">${esc(t)}</span>`).join('')}${s.review ? `<span class="badge b-review" style="font-size:13px;padding:6px 12px">${s.review} to review</span>` : ''}</div>
       <div class="row2" style="flex-wrap:wrap;flex:0 0 auto">
-        ${s.photo ? `<button class="btn sm gold" data-act="open-photo" data-k="${sel}">Open photo</button>` : ''}
-        <button class="btn sm ${s.photo ? '' : 'gold'}" data-act="shelf-photo" data-k="${sel}">${I.cam}${s.photo ? 'Rescan' : 'Photo this cube'}</button>
+        <button class="btn sm ${s.photo ? '' : 'gold'}" data-act="shelf-photo" data-k="${sel}">${I.cam}${s.photo ? 'Redo with a photo' : 'Add from a photo'}</button>
         <button class="btn sm" data-act="scan-into" data-k="${sel}">${I.scan}Scan into it</button>
         <button class="btn sm" data-act="show-cube" data-k="${sel}">Show books</button></div></div>`;
   }
@@ -892,6 +841,7 @@ function renderShelves() {
   <div class="toolbar"><h1>Bookcases</h1>
     <span class="note" style="display:flex;gap:14px;flex-wrap:wrap"><span><span class="sq" style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--green);vertical-align:-1px"></span> Photographed</span><span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--amber);vertical-align:-1px"></span> Needs review</span><span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;border:2px dashed #8a7358;vertical-align:-1px"></span> Not yet</span></span>
     ${nx ? `<button class="btn gold" data-act="shelf-photo" data-k="${locKey(nx[0], nx[1])}">${I.cam}Photo next cube (${nx[0]} · ${nx[1]})</button>` : ''}</div>
+  ${importBanner()}
   ${info || `<p class="note" style="text-align:center;margin:0">Tap a cube to see its books, open its photo, or photograph it.</p>`}
   <div class="cases">${cases.map(c => `<div class="case"><h3>${esc(c.name)}<small>${esc(c.wall || '')} · ${c.rows} × ${c.cols}</small></h3>
     <div class="kallax" style="grid-template-columns:repeat(${c.cols},auto)">${cubeIds(c).map(q => {
@@ -909,153 +859,110 @@ function renderShelves() {
   </div>`;
 }
 
-/* ───────── shelf photo import ───────── */
-let IMP = null;
+/* ───────── shelf photos → Claude in chat → lists delivered through the repo (imports/) ───────── */
 function shelfPhotoStart(key) {
-  if (!key) { const nx = nextCube(); key = nx ? locKey(nx[0], nx[1]) : locKey(DB.meta.cases[0].id, 'A1'); }
-  const cubes = (DB.meta.cases || []).flatMap(c => cubeIds(c).map(q => [locKey(c.id, q), `Case ${c.id} · ${q}${(DB.meta.photos || {})[locKey(c.id, q)] ? ' (done)' : ''}`]));
-  const sh = openSheet(`<div class="shbar"><span></span><button class="btn sm ghost" data-act="close">Cancel</button></div>
-    <h2>Photograph a cube</h2><p class="sub">Stand straight in front of one cube so every spine is in the picture and readable. Good light helps; no flash glare.</p>
-    ${AI.key() ? '' : `<div class="warn">${I.no}<span>Reading spines from a photo uses Claude. Add your Claude key in <button class="btn sm" data-act="settings-ai" style="margin-left:4px">Settings</button> first.<br>Until then you can still <b>scan barcodes into a cube</b>.</span></div>`}
-    <label class="fld" style="margin-bottom:16px"><span>Which cube?</span><select id="spCube">${cubes.map(([k, n]) => `<option value="${k}" ${k === key ? 'selected' : ''}>${n}</option>`).join('')}</select></label>
-    <div class="row2"><button class="btn gold" id="spTake" ${AI.key() ? '' : 'disabled'}>${I.cam}Take photo</button><button class="btn" id="spPick" ${AI.key() ? '' : 'disabled'}>Choose from Photos</button></div>
-    <button class="btn" style="width:100%;margin-top:10px" id="spScan">${I.scan}Scan barcodes into this cube instead</button>`);
-  const go = inputId => { IMP = { key: $('#spCube', sh).value }; const inp = $('#' + inputId); inp.value = ''; inp.click(); };
-  $('#spTake', sh).onclick = () => go('shelfFile');
-  $('#spPick', sh).onclick = () => go('shelfPick');
-  $('#spScan', sh).onclick = () => openScanner({ shelveIn: $('#spCube', sh).value });
+  if (!key) { const nx = nextCube(); key = nx ? locKey(nx[0], nx[1]) : ''; }
+  const todo = (DB.meta.cases || []).flatMap(c => cubeIds(c).filter(q => !(DB.meta.photos || {})[locKey(c.id, q)]).map(q => `${c.id}-${q}`));
+  const sh = openSheet(`<div class="shbar"><span></span><button class="btn sm ghost" data-act="close">Close</button></div>
+    <h2>Add a whole cube from a photo</h2>
+    <ol class="note" style="font-size:15px;color:var(--ink);padding-left:20px;line-height:1.6;margin:8px 0 14px">
+      <li>Stand straight in front of one cube and take a photo where every spine is readable (good light, no flash glare).</li>
+      <li>Send the photos to Claude in your chat and say which cube each one is${key ? ` — this one is <b style="color:var(--brass)">${esc(key)}</b>` : ''}.</li>
+      <li>Claude reads the spines, asks about any it isn’t sure of, and sends the list here. A <b>New from Claude</b> banner appears — review it and tap Add.</li></ol>
+    <p class="note">Cube names: bookcase letter, then row A–D (top to bottom) and column 1–4 (left to right). Example: <b>A-B3</b> = Bookcase A, second row, third cube.</p>
+    ${todo.length ? `<div class="cap" style="margin:14px 0 6px">Still to do (${todo.length})</div><p class="note" style="word-spacing:4px">${todo.map(esc).join(' · ')}</p>` : '<p class="note">Every cube is done!</p>'}
+    <div class="row2" style="margin-top:14px"><button class="btn gold" data-act="check-imports">Check for new lists</button>
+      <button class="btn" data-act="scan-into" data-k="${esc(key)}">${I.scan}Scan barcodes into ${key ? esc(key) : 'a cube'} instead</button></div>`);
 }
-function loadImage(file) {
-  return new Promise((res, rej) => { const u = URL.createObjectURL(file), im = new Image(); im.onload = () => { res(im); setTimeout(() => URL.revokeObjectURL(u), 1000); }; im.onerror = rej; im.src = u; });
-}
-function shrink(im, max, q) {
-  const k = Math.min(1, max / Math.max(im.naturalWidth, im.naturalHeight)), c = document.createElement('canvas');
-  c.width = Math.round(im.naturalWidth * k); c.height = Math.round(im.naturalHeight * k);
-  c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
-  return c.toDataURL('image/jpeg', q);
-}
-async function onShelfFile(e) {
-  const f = e.target.files?.[0]; if (!f || !IMP) return;
-  closeSheet();
-  const im = await loadImage(f);
-  IMP = { ...IMP, img: shrink(im, 1400, .62), aiImg: shrink(im, 1568, .85), dets: [], busy: 'Reading the spines…', sel: null, at: Date.now() };
-  UI.view = 'import'; render();
+let pendingImports = [], importsBusy = false;
+async function checkImports(loud) {
+  if (importsBusy) return; importsBusy = true;
   try {
-    const t = await AI.ask([
-      { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: IMP.aiImg.split(',')[1] } },
-      { type: 'text', text:
-`This photo shows one cube of a bookshelf. Identify every book, going left to right (include books lying flat, thin booklets, and spines you cannot read).
-Reply with JSON only, no other text:
-{"books":[{"title":"title as printed, or null if unreadable","author":"author or null","series":"series name or null","box":[x0,y0,x1,y1],"confidence":0.0-1.0,"readable":true,"note":"why unsure, if unsure"}]}
-"box" is the spine's bounding box with coordinates from 0 to 1000 relative to the image width (x) and height (y).
-"confidence" is how sure you are of the exact title. Use readable:false when no title can be made out.` }], 6000);
-    const res = AI.json(t).books || [];
-    IMP.aiImg = null;
-    IMP.dets = res.map((d, i) => ({ id: i + 1, title: d.title || '', author: d.author || '', series: d.series || '', box: d.box || [0, 0, 0, 0], conf: +d.confidence || 0, readable: d.readable !== false && !!d.title, note: d.note || '', cands: [], match: null, state: 'pending' }));
-    IMP.busy = `Matching ${IMP.dets.length} books…`; render();
-    let k = 0;
-    const worker = async () => { while (k < IMP.dets.length) { const d = IMP.dets[k++]; await matchDet(d); if (UI.view === 'import') render(); } };
-    await Promise.all([worker(), worker(), worker()]);
-    IMP.busy = null;
-    IMP.sel = (IMP.dets.find(d => d.state !== 'matched') || {}).id || null;
-    render();
-  } catch (err) {
-    console.error(err); IMP.busy = null; IMP.error = /no-key/.test(String(err)) ? 'Add your Claude key in Settings first.' : `Claude couldn’t read the photo (${err.message || err}). Check the key in Settings, or try again.`;
-    render();
-  }
+    const r = await fetch('imports/index.json?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error(r.status);
+    const idx = await r.json(), done = new Set(DB.meta.imported || []), out = [];
+    for (const f of idx.files || []) {
+      if (done.has(f)) continue;
+      try { const j = await (await fetch('imports/' + encodeURIComponent(f) + '?t=' + Date.now(), { cache: 'no-store' })).json(); j.file = f; out.push(j); } catch (e) { console.warn(e); }
+    }
+    pendingImports = out; render();
+    if (loud) toast(out.length ? `${out.length} new list${out.length === 1 ? '' : 's'} from Claude` : 'No new lists yet');
+  } catch (e) { if (loud) toast('Couldn’t check right now — try again online'); }
+  importsBusy = false;
 }
-async function matchDet(d) {
-  if (!d.readable) { d.state = 'missed'; return; }
-  d.cands = (await searchBooks(d.title, d.author)).slice(0, 5);
-  const top = d.cands[0];
-  const ok = top && (norm(top.title).includes(norm(d.title)) || norm(d.title).includes(norm(top.title)));
-  d.match = top || null;
-  d.state = d.conf >= .8 && ok ? 'matched' : 'unsure';
-  if (!top) d.state = 'unsure';
-  if (d.match) d.existing = findExisting(d.match)?.id || null;
+function importBanner() {
+  if (!pendingImports.length) return '';
+  const n = pendingImports.reduce((k, j) => k + (j.books || []).length, 0);
+  const where = pendingImports.map(j => j.cube || j.title || 'list').slice(0, 4).join(', ') + (pendingImports.length > 4 ? '…' : '');
+  return `<div class="banner new" style="margin-bottom:18px"><span class="bi" style="background:#7fb6d9;color:#22170f">${I.book}</span>
+    <div style="flex:1"><b>New from Claude</b><small>${n} book${n === 1 ? '' : 's'} identified · ${esc(where)}</small></div>
+    <button class="btn gold" data-act="review-import" data-i="0">Review & add</button></div>`;
 }
-function renderImport() {
-  if (!IMP) { UI.view = 'shelves'; return renderShelves(); }
-  const [c, q] = IMP.key.split('-');
-  const ds = IMP.dets;
-  const n = s => ds.filter(d => d.state === s).length;
-  const tag = d => d.state === 'missed' ? `${d.id} · Can’t read` : d.state === 'unsure' ? `${d.id} · Not sure` : d.state === 'skipped' ? `${d.id} · Skipped` : String(d.id);
-  const boxes = ds.map(d => {
-    const [x0, y0, x1, y1] = d.box.map(v => Math.max(0, Math.min(1000, +v || 0)) / 10);
-    return `<button class="box ${d.state === 'matched' ? 'ok' : d.state} ${IMP.sel === d.id ? 'sel' : ''}" data-act="det" data-d="${d.id}" aria-label="Book ${d.id}: ${esc(d.match?.title || d.title || 'unreadable')}" style="left:${x0}%;top:${y0}%;width:${Math.max(1.5, x1 - x0)}%;height:${Math.max(3, y1 - y0)}%"><span class="tag">${esc(tag(d))}</span></button>`;
-  }).join('');
-  const sel = ds.find(d => d.id === IMP.sel);
-  const addable = ds.filter(d => d.match && (d.state === 'matched' || d.state === 'unsure'));
-  const fixes = ds.filter(d => d.state === 'unsure' || d.state === 'missed');
-  $('#main').innerHTML = `
-  <div class="toolbar"><button class="iconbtn" data-act="view" data-v="shelves" aria-label="Back to bookcases">${I.back}</button>
-    <div style="flex:1"><span class="cap" style="color:var(--brass)">Shelf import</span><h1 style="margin:0;font:700 23px var(--fd)">Case ${c} · Cube ${q}</h1></div>
-    <button class="btn" data-act="shelf-photo" data-k="${IMP.key}">${I.cam}Retake photo</button></div>
-  <div class="imp">
-    <section class="photo" aria-label="Shelf photo"><div class="pwrap"><img src="${IMP.img}" alt="Photo of the cube">${boxes}</div>
-      <div class="note" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center"><span><span style="display:inline-block;width:12px;height:12px;border:3px solid var(--amber);border-radius:3px;vertical-align:-2px"></span> Not sure — please check</span><span><span style="display:inline-block;width:12px;height:12px;border:3px solid var(--orange);border-radius:3px;vertical-align:-2px"></span> Couldn’t read it</span><span>Tap any box to fix or swap the match</span></div></section>
-    <aside>
-      ${IMP.busy ? `<div class="busy"><div class="spin"></div><b style="color:var(--ink)">${esc(IMP.busy)}</b>This takes about half a minute.</div>` : IMP.error ? `<div class="warn">${I.no}<span>${esc(IMP.error)}</span></div>` : `
-      <div class="tri"><div><b style="color:#9fd0aa">${n('matched')}</b><span>Matched</span></div><div style="border-color:#7a6030"><b style="color:var(--amber)">${n('unsure')}</b><span>Not sure</span></div><div style="border-color:#8a4a32"><b style="color:#ff9b72">${n('missed')}</b><span>Couldn’t read</span></div></div>
-      ${sel ? fixPanel(sel) : fixes.length ? `<p class="note">Tap a flashing box to check it.</p>` : `<p class="note">Everything matched. Tap any box if something looks wrong.</p>`}
-      <span class="cap" style="padding-top:4px">Left to right</span>
-      <div class="list">${ds.map(d => `<button class="li" data-act="det" data-d="${d.id}" style="padding:8px 12px"><span class="num" style="background:${d.state === 'missed' ? 'var(--orange)' : d.state === 'unsure' ? 'var(--amber)' : d.state === 'skipped' ? '#8a7358' : 'var(--green)'}">${d.id}</span>
-        <span class="t"><b style="font-size:14px">${esc(d.match?.title || d.title || 'Unreadable spine')}</b><small>${esc(d.state === 'skipped' ? 'Skipped' : d.match ? authorShort(d.match) : d.state === 'pending' ? 'Matching…' : 'No match yet')}</small></span>
-        ${d.existing ? '<span class="badge b-wishlist">Already listed</span>' : d.match && d.state !== 'skipped' ? '<span class="badge b-owned">New</span>' : ''}</button>`).join('')}</div>
-      <button class="btn gold" style="height:52px;font-size:16px" data-act="imp-add" ${addable.length ? '' : 'disabled'}>Add ${addable.length} book${addable.length === 1 ? '' : 's'}${n('unsure') ? ` (${n('unsure')} marked to check)` : ''}</button>`}
-    </aside></div>`;
+function importSheet(i) {
+  const j = pendingImports[i]; if (!j) return closeSheet();
+  const rows = (j.books || []).map((b, k) => ({ ...b, on: true, k }));
+  const [c, cube] = (j.cube || '').split('-').length >= 2 ? [j.cube.split('-')[0], j.cube.split('-').slice(1).join('-')] : ['', ''];
+  const draw = () => {
+    const on = rows.filter(r => r.on).length, chk = rows.filter(r => r.on && r.check).length;
+    return `<div class="shbar"><span class="cap" style="color:var(--brass)">From Claude${pendingImports.length > 1 ? ` · list ${i + 1} of ${pendingImports.length}` : ''}</span><button class="btn sm ghost" data-act="close">Not now</button></div>
+    <h2>${c ? `Case ${esc(c)} · Cube ${esc(cube)}` : esc(j.title || 'Books to add')}</h2>
+    <p class="sub">${esc(j.note || 'Left to right as they sit on the shelf.')} Untick anything that shouldn’t be added.</p>
+    <div class="list">${rows.map(r => {
+      const ex = findExisting({ title: r.title, authors: r.author ? [r.author] : [], isbn13: r.isbn13 || '' });
+      return `<label class="li" style="cursor:pointer"><input type="checkbox" data-row="${r.k}" ${r.on ? 'checked' : ''} style="width:22px;height:22px;accent-color:var(--brass)">
+        <span class="num" style="background:${r.check ? 'var(--amber)' : 'var(--green)'}">${r.pos || r.k + 1}</span>
+        <span class="t"><b>${esc(r.title)}</b><small>${esc([r.author, r.series && (r.series + (r.seriesNo ? ' #' + r.seriesNo : '')), r.ageMin != null && 'ages ' + r.ageMin + '–' + (r.ageMax ?? '?')].filter(Boolean).join(' · '))}</small>
+        ${r.check ? `<small style="color:var(--amber)">Check: ${esc(r.check)}</small>` : ''}</span>
+        ${ex ? `<span class="badge b-wishlist">Already listed${c ? ' · will move here' : ''}</span>` : `<span class="badge b-owned">New</span>`}</label>`; }).join('')}</div>
+    <div class="row2" style="margin-top:16px"><button class="btn gold" id="impGo" ${on ? '' : 'disabled'}>Add ${on} book${on === 1 ? '' : 's'}${chk ? ` (${chk} marked to check)` : ''}</button>
+      <button class="btn" id="impToss" style="color:var(--redink);border-color:#8a4a32">Discard this list</button></div>
+    <p class="note" style="margin-top:10px">Covers, ISBNs, page counts and summaries are looked up online as they’re added.</p>`;
+  };
+  const sh = openSheet(draw(), { static: true });
+  const wire = () => {
+    $$('[data-row]', sh).forEach(cb => cb.onchange = () => { rows[+cb.dataset.row].on = cb.checked; const st = sh.scrollTop; sh.innerHTML = draw(); sh.scrollTop = st; wire(); });
+    $('#impGo', sh).onclick = () => applyImport(j, rows.filter(r => r.on), sh);
+    $('#impToss', sh).onclick = async () => { if (!confirm('Discard this list without adding anything?')) return; await markImported(j, 0, false); closeSheet(); toast('List discarded'); };
+  };
+  wire();
 }
-function fixPanel(d) {
-  const cls = d.state === 'missed' ? 'missed' : d.state === 'matched' ? 'matched' : '';
-  const col = d.state === 'missed' ? 'var(--orange)' : d.state === 'matched' ? 'var(--green)' : 'var(--amber)';
-  let head;
-  if (d.state === 'missed') head = `<b style="font-size:15px">No readable title</b><small class="note">${esc(d.note || 'Thin or worn spine')}</small>`;
-  else if (d.match) head = `<b style="font-size:15px">${d.state === 'unsure' ? 'Best guess: ' : ''}${esc(d.match.title)}</b><small class="note">${esc([authorShort(d.match), year(d.match), d.state === 'unsure' ? Math.round(d.conf * 100) + '% sure' : '', d.note].filter(Boolean).join(' · '))}</small>`;
-  else head = `<b style="font-size:15px">Read as “${esc(d.title)}”</b><small class="note">No match found online${d.note ? ' · ' + esc(d.note) : ''}</small>`;
-  return `<div class="fix ${cls}">
-    <div style="display:flex;gap:12px;align-items:center"><span class="num" style="background:${col}">${d.id}</span><div style="flex:1;min-width:0;display:flex;flex-direction:column">${head}</div>${d.match ? thumbHTML(d.match) : ''}</div>
-    <div class="row2" style="flex-wrap:wrap">
-      ${d.state === 'unsure' && d.match ? `<button class="btn sm gold" data-act="det-ok" data-d="${d.id}">${I.check}That’s right</button>` : ''}
-      <button class="btn sm ${d.state === 'missed' ? 'gold' : ''}" data-act="det-scan" data-d="${d.id}">${I.scan}Scan its barcode</button>
-      ${d.state !== 'skipped' ? `<button class="btn sm" data-act="det-skip" data-d="${d.id}">Skip</button>` : `<button class="btn sm" data-act="det-unskip" data-d="${d.id}">Undo skip</button>`}</div>
-    ${d.cands.length > 1 || (d.cands.length && !d.match) ? `<details ${d.state === 'unsure' ? '' : ''}><summary class="note" style="cursor:pointer">Other matches (${d.cands.length})</summary><div class="list" style="margin-top:8px">${d.cands.map((c, i) => `<button class="li" data-act="det-cand" data-d="${d.id}" data-i="${i}" style="padding:8px 10px">${thumbHTML(c)}<span class="t"><b style="font-size:14px">${esc(c.title)}</b><small>${esc([authorShort(c), year(c)].filter(Boolean).join(' · '))}</small></span></button>`).join('')}</div></details>` : ''}
-    <form class="row2" data-form="det-search" data-d="${d.id}"><label class="search" style="height:42px;flex:3">${I.search}<input name="q" placeholder="Type the title" value="${esc(d.title)}" autocomplete="off"></label><button class="btn sm" style="flex:0 0 auto;height:42px">Search</button></form>
-  </div>`;
+async function markImported(j, n, cubeDone) {
+  const patch = { imported: [...new Set([...(DB.meta.imported || []), j.file])] };
+  if (cubeDone && j.cube) patch.photos = { ...(DB.meta.photos || {}), [j.cube]: { t: Date.now(), n, via: 'claude' } };
+  pendingImports = pendingImports.filter(x => x.file !== j.file);
+  await DB.saveMeta(patch);
 }
-async function impAdd() {
-  const [c, cube] = IMP.key.split('-');
+async function applyImport(j, rows, sh) {
+  const parts = (j.cube || '').split('-'), c = parts.length >= 2 ? parts[0] : '', cube = parts.length >= 2 ? parts.slice(1).join('-') : '';
   const add = [], upd = [];
-  let pos = 0;
-  IMP.dets.forEach(d => {
-    if (!d.match || !['matched', 'unsure'].includes(d.state)) return;
-    pos++;
-    const ex = d.existing && DB.books.get(d.existing);
-    const loc = { c, cube, pos };
-    if (ex) { const b = clone(ex); b.loc = loc; if (b.status !== 'owned') b.status = 'owned'; if (d.state === 'unsure' && !b.reviewedAt) b.needsReview = true; upd.push(b); d.bookId = b.id; }
-    else { const m = { ...d.match }; delete m.ageHint; const b = newBook(m, { addedBy: 'shelf', loc, needsReview: d.state === 'unsure' }); if (!b.series && d.series) b.series = d.series; add.push(b); d.bookId = b.id; }
-  });
+  let k = 0;
+  for (const x of rows) {
+    k++;
+    sh.innerHTML = `<div class="busy"><div class="spin"></div><b style="color:var(--ink)">Adding ${k} of ${rows.length}</b>${esc(x.title)}</div>`;
+    const loc = c ? { c, cube, pos: x.pos || k } : null;
+    const ex = findExisting({ title: x.title, authors: x.author ? [x.author] : [], isbn13: x.isbn13 || '' });
+    if (ex) { const b = clone(ex); if (loc) b.loc = loc; if (j.status !== 'wishlist' && b.status !== 'owned') b.status = 'owned'; if (x.check) b.needsReview = true; upd.push(b); continue; }
+    let info = null;
+    try {
+      if (x.isbn13) info = await lookupISBN(x.isbn13);
+      if (!info) { const res = await searchBooks(x.title, x.author); info = res.find(m => norm(m.title).includes(norm(x.title)) || norm(x.title).includes(norm(m.title))) || null; }
+    } catch (e) { console.warn(e); }
+    const i = info || {}; delete i.ageHint;
+    const b = newBook({ ...i,
+      title: i.title || x.title, authors: i.authors?.length ? i.authors : (x.author ? [x.author] : []),
+      series: x.series || i.series || '', seriesNo: x.seriesNo ?? null,
+      genres: x.genres?.length ? x.genres : (i.genres || []),
+      ageMin: x.ageMin ?? null, ageMax: x.ageMax ?? null, grade: x.grade || '', level: x.level || '', format: x.format || '',
+      notes: x.notes || '', est: { age: x.ageMin != null, genres: !!x.genres?.length } },
+      { status: j.status || 'owned', addedBy: 'claude', wants: x.wants || [], needsReview: !!x.check, ...(loc ? { loc } : {}) });
+    add.push(b);
+  }
   await DB.saveMany([...add, ...upd]);
-  const photo = { t: Date.now(), img: IMP.img, dets: IMP.dets.map(d => ({ id: d.id, box: d.box, state: d.state, title: d.match?.title || d.title, bookId: d.bookId || null })) };
-  await DB.savePhoto(IMP.key, photo);
-  await DB.saveMeta({ photos: { ...(DB.meta.photos || {}), [IMP.key]: { t: photo.t, n: add.length + upd.length } } });
-  enrich(add);
-  const key = IMP.key; IMP = null; UI.view = 'shelves'; UI.caseSel = key; render();
-  const nx = nextCube();
-  openSheet(`<h2>Added ${add.length} book${add.length === 1 ? '' : 's'}${upd.length ? ` · updated ${upd.length}` : ''}</h2>
-    <p class="sub">Case ${c} · Cube ${cube} is done.${add.some(b => b.needsReview) ? ' Books you weren’t sure about are under “Needs review”.' : ''}</p>
-    <div class="row2">${nx ? `<button class="btn gold" data-act="shelf-photo" data-k="${locKey(nx[0], nx[1])}">${I.cam}Next cube: ${nx[0]} · ${nx[1]}</button>` : ''}<button class="btn" data-act="close">Done for now</button></div>`);
-}
-async function openPhoto(key) {
-  const p = await DB.getPhoto(key);
-  if (!p) return toast('That photo isn’t on this device yet — try again in a moment');
-  const [c, q] = key.split('-');
-  openSheet(`<div class="shbar"><b style="font:700 20px var(--fd)">Case ${c} · Cube ${q}</b><button class="btn sm ghost" data-act="close">Close</button></div>
-    <div style="text-align:center"><div class="pwrap"><img src="${p.img}" alt="Shelf photo" style="max-height:70vh">${(p.dets || []).filter(d => d.bookId).map(d => {
-      const [x0, y0, x1, y1] = d.box.map(v => Math.max(0, Math.min(1000, +v || 0)) / 10);
-      const b = DB.books.get(d.bookId);
-      return `<button class="box ${b?.needsReview ? 'unsure' : ''}" data-act="open" data-id="${d.bookId}" aria-label="${esc(b?.title || d.title)}" style="left:${x0}%;top:${y0}%;width:${Math.max(1.5, x1 - x0)}%;height:${Math.max(3, y1 - y0)}%"></button>`; }).join('')}</div></div>
-    <p class="note" style="text-align:center">Photographed ${new Date(p.t).toLocaleDateString()}. Tap a spine to open the book.</p>
-    <div class="row2"><button class="btn" data-act="shelf-photo" data-k="${key}">${I.cam}Rescan this cube</button><button class="btn" data-act="show-cube" data-k="${key}">Show these books</button></div>`, { wide: true });
+  await markImported(j, add.length + upd.length, true);
+  closeSheet();
+  toast(`Added ${add.length} book${add.length === 1 ? '' : 's'}${upd.length ? ` · updated ${upd.length}` : ''}`);
+  if (pendingImports.length) setTimeout(() => importSheet(0), 600);
+  else if (c) { UI.view = 'shelves'; UI.caseSel = j.cube; render(); }
 }
 
 /* ───────── settings ───────── */
@@ -1082,14 +989,9 @@ function settingsSheet(focus) {
   <div id="stCases" style="display:flex;flex-direction:column;gap:8px">${m.cases.map((c, i) => `<div class="form" data-i="${i}" style="grid-template-columns:2fr 2fr 1fr 1fr">
     <label class="fld"><span>Name</span><input class="cn" value="${esc(c.name)}"></label><label class="fld"><span>Where</span><input class="cw" value="${esc(c.wall || '')}"></label>
     <label class="fld"><span>Rows</span><input class="cr" inputmode="numeric" value="${c.rows}"></label><label class="fld"><span>Columns</span><input class="cc" inputmode="numeric" value="${c.cols}"></label></div>`).join('')}</div>
-  <div class="secttl" id="stAI">Claude (reads shelf photos, fills in details)</div>
-  <p class="note">Paste an API key from console.anthropic.com → API keys. It’s saved in your private library so both devices can use it. Each shelf photo is one small request on your Anthropic account.</p>
-  <label class="fld"><span>Claude API key</span><input id="stKey" type="password" autocomplete="off" placeholder="sk-ant-…" value="${esc(AI.key())}"></label>
-  <div class="row2" style="margin-top:8px"><button class="btn sm" id="stTest">Test the key</button><button class="btn sm" id="stFillAll">Fill in missing ages & series for all books</button></div>
   <div class="secttl">Backup</div>
   <div class="row2"><button class="btn sm" id="stBackup">Download a backup</button><button class="btn sm" id="stRestore">Restore from a backup</button></div>
   <div class="row2" style="margin-top:22px"><button class="btn gold" id="stSave">Save settings</button></div>`);
-  if (focus === 'ai') setTimeout(() => { $('#stAI', sh)?.scrollIntoView({ block: 'start' }); $('#stKey', sh)?.focus(); }, 80);
   const auth = async create => {
     const em = $('#stEmail', sh).value.trim(), pw = $('#stPass', sh).value;
     if (!em || !pw) return toast('Enter your email and password');
@@ -1101,23 +1003,13 @@ function settingsSheet(focus) {
   const gather = () => {
     const rs = $$('#stReaders > div', sh).map(row => { const r = m.readers[+row.dataset.i] || {}; return { id: r.id || uid(), name: $('.rn', row).value.trim() || 'Reader', color: $('input[type=color]', row).value, kid: $('.rk', row).checked }; });
     const cs = $$('#stCases > div', sh).map(row => { const c = m.cases[+row.dataset.i]; return { ...c, name: $('.cn', row).value.trim() || c.name, wall: $('.cw', row).value.trim(), rows: Math.max(1, Math.min(8, parseInt($('.cr', row).value) || c.rows)), cols: Math.max(1, Math.min(8, parseInt($('.cc', row).value) || c.cols)) }; });
-    return { readers: rs, cases: cs, aiKey: $('#stKey', sh).value.trim() };
+    return { readers: rs, cases: cs };
   };
   $('#stAddR', sh).onclick = async () => { const g = gather(); g.readers.push({ id: uid(), name: 'New reader', color: COLORS[g.readers.length % COLORS.length], kid: true }); await DB.saveMeta(g); settingsSheet(); };
   $$('[data-del]', sh).forEach(b => b.onclick = async () => { const g = gather(); const r = g.readers[+b.dataset.del]; if (!confirm(`Remove ${r.name}? Their reading history stays hidden in the books.`)) return; g.readers.splice(+b.dataset.del, 1); await DB.saveMeta(g); settingsSheet(); });
   $('#stSave', sh).onclick = async () => { await DB.saveMeta(gather()); closeSheet(); toast('Settings saved'); };
-  $('#stTest', sh).onclick = async () => {
-    await DB.saveMeta({ aiKey: $('#stKey', sh).value.trim() }); toast('Checking…');
-    try { await AI.ask([{ type: 'text', text: 'Reply with the single word: ready' }], 10); toast('The key works'); } catch (e) { toast('That key didn’t work: ' + (e.message || e)); }
-  };
-  $('#stFillAll', sh).onclick = async () => {
-    await DB.saveMeta({ aiKey: $('#stKey', sh).value.trim() });
-    const need = [...DB.books.values()].filter(b => b.ageMin == null || !b.series || !(b.genres || []).length);
-    if (!need.length) return toast('Every book already has its details');
-    toast(`Filling in ${need.length} book${need.length === 1 ? '' : 's'}…`); await enrich(need); toast('Done filling in details');
-  };
   $('#stBackup', sh).onclick = () => {
-    const blob = new Blob([JSON.stringify({ app: 'spencer-books', t: Date.now(), meta: { ...DB.meta, aiKey: '' }, books: [...DB.books.values()] }, null, 1)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify({ app: 'spencer-books', t: Date.now(), meta: DB.meta, books: [...DB.books.values()] }, null, 1)], { type: 'application/json' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `spencer-books-${new Date().toISOString().slice(0, 10)}.json`; a.click();
   };
   $('#stRestore', sh).onclick = () => $('#restoreFile').click();
@@ -1127,7 +1019,7 @@ $('#restoreFile').addEventListener('change', async e => {
   try {
     const j = JSON.parse(await f.text()); if (!Array.isArray(j.books)) throw 0;
     if (!confirm(`Restore ${j.books.length} books? Books with the same id are replaced; others are kept.`)) return;
-    await DB.saveMany(j.books); if (j.meta) { const { aiKey, ...rest } = j.meta; await DB.saveMeta(rest); }
+    await DB.saveMany(j.books); if (j.meta) await DB.saveMeta(j.meta);
     closeSheet(); toast(`Restored ${j.books.length} books`);
   } catch { toast('That file isn’t a Spencer Library backup'); }
   e.target.value = '';
@@ -1156,9 +1048,9 @@ const ACT = {
   'wish-add': d => searchSheet({ mode: 'wishlist', q: d.q || '', for: d.for ? [d.for] : (UI.shopFor !== 'all' ? [UI.shopFor] : []) }),
   'shop-for': d => { UI.shopFor = d.v; render(); },
   'shelf-photo': d => shelfPhotoStart(d.k),
-  'settings-ai': () => settingsSheet('ai'),
   cube: d => { UI.caseSel = UI.caseSel === d.k ? null : d.k; render(); },
-  'open-photo': d => openPhoto(d.k),
+  'check-imports': () => checkImports(true),
+  'review-import': d => importSheet(+d.i),
   'scan-into': d => openScanner({ shelveIn: d.k }),
   'show-cube': d => { closeSheet(); UI.cube = d.k; UI.shelf = 'all'; UI.view = 'library'; UI.sort = 'shelf'; render(); },
   'undo-add': async d => { const b = DB.books.get(d.id); await DB.remove(d.id); const box = $('#lastScan'); if (box) box.innerHTML = `<div class="last dup"><span>Removed ${esc(b?.title || '')}</span></div>`; if (scanState) scanState.last = null; },
@@ -1168,25 +1060,10 @@ const ACT = {
     const wants = d.s === 'wishlist' ? $$('.wf:checked').map(x => x.value) : [];
     const [c, cube] = (d.s === 'owned' ? dev.get('shelveIn', '') : '').split('-');
     const b = newBook(f, { status: d.s, addedBy: 'barcode', wants, ...(c ? { loc: { c, cube, pos: nextPos(c, cube) } } : {}) });
-    await DB.save(b); enrichSoon(b); sheetFound = null;
+    await DB.save(b); sheetFound = null;
     toast(d.s === 'wishlist' ? 'Added to the wishlist' : 'Added to the library', () => DB.remove(b.id));
     resultSheet(b.id);
   },
-  det: d => { IMP.sel = +d.d; render(); },
-  'det-ok': d => { const x = IMP.dets.find(z => z.id === +d.d); x.state = 'matched'; x.conf = 1; IMP.sel = (IMP.dets.find(z => z.state === 'unsure' || z.state === 'missed') || {}).id || null; render(); },
-  'det-skip': d => { const x = IMP.dets.find(z => z.id === +d.d); x.prev = x.state; x.state = 'skipped'; IMP.sel = (IMP.dets.find(z => z.state === 'unsure' || z.state === 'missed') || {}).id || null; render(); },
-  'det-unskip': d => { const x = IMP.dets.find(z => z.id === +d.d); x.state = x.prev || (x.match ? 'unsure' : 'missed'); render(); },
-  'det-cand': d => { const x = IMP.dets.find(z => z.id === +d.d); x.match = x.cands[+d.i]; x.state = 'matched'; x.existing = findExisting(x.match)?.id || null; render(); },
-  'det-scan': d => {
-    const x = IMP.dets.find(z => z.id === +d.d);
-    openScanner({ onISBN: async isbn => {
-      closeSheet(); toast('Looking it up…');
-      const found = await lookupISBN(isbn);
-      if (!found) return toast('Couldn’t find that ISBN — try typing the title');
-      x.match = found; x.cands = [found, ...x.cands]; x.state = 'matched'; x.existing = findExisting(found)?.id || null; render();
-    } });
-  },
-  'imp-add': () => impAdd()
 };
 document.addEventListener('click', e => {
   const t = e.target.closest('[data-act]'); if (!t || t.disabled) return;
@@ -1200,16 +1077,6 @@ document.addEventListener('change', async e => {
   else if (k === 'read') setRead(t.dataset.id, t.dataset.r, t.value);
   else if (k === 'got') { if (t.checked) ACT['got-it']({ id: t.dataset.id }); }
 });
-document.addEventListener('submit', async e => {
-  const f = e.target.closest('[data-form="det-search"]'); if (!f) return;
-  e.preventDefault();
-  const x = IMP?.dets.find(z => z.id === +f.dataset.d), q = f.q.value.trim(); if (!x || !q) return;
-  x.title = q; toast('Searching…');
-  x.cands = (await searchBooks(q)).slice(0, 6);
-  if (x.cands.length) { x.match = x.cands[0]; x.state = 'unsure'; x.conf = .5; x.readable = true; x.existing = findExisting(x.match)?.id || null; }
-  else toast('No matches — try a different spelling');
-  render();
-});
 const onSearch = v => { UI.q = v; if (UI.view !== 'library') { UI.view = 'library'; render(); } else renderGrid(); };
 $('#q').addEventListener('input', e => onSearch(e.target.value));
 $('#main').addEventListener('input', e => { if (e.target.id === 'q2') onSearch(e.target.value); });
@@ -1218,8 +1085,6 @@ $('#goShelf').onclick = () => shelfPhotoStart();
 $('#goSettings').onclick = () => settingsSheet();
 $('#sync').onclick = () => { if (DB.mode !== 'cloud') settingsSheet(); };
 $$('#tabs button').forEach(b => b.onclick = () => { const t = b.dataset.tab; if (t === 'scan') return openScanner(); UI.view = t; if (t === 'library') UI.cube = null; render(); $('#main').scrollTop = 0; });
-$('#shelfFile').addEventListener('change', onShelfFile);
-$('#shelfPick').addEventListener('change', onShelfFile);
 let wasWide = isWide();
 addEventListener('resize', () => { if (isWide() !== wasWide) { wasWide = isWide(); if (wasWide && $('#sheetWrap').classList.contains('open') && UI.sel && !scanState) closeSheet(); render(); } });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
@@ -1228,4 +1093,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet()
 DB.loadLocal();
 render();
 initCloud();
+checkImports();
+document.addEventListener('visibilitychange', () => { if (!document.hidden) checkImports(); });
 if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});

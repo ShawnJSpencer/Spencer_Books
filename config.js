@@ -12,7 +12,5 @@ window.BOOKS_CONFIG = {
     messagingSenderId: "882983126724",
     appId: "1:882983126724:web:7fbc7da74da8c885ebab91"
   },
-  library: "spencer",
-  // Claude model used to read shelf photos and fill in age range / series / genre
-  aiModel: "claude-sonnet-5-5"
+  library: "spencer"
 };
