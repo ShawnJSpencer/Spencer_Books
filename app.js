@@ -888,7 +888,7 @@ async function checkImports(loud) {
     pendingImports = out; render();
     await repairClaudeImports();
     const revs = idx.revs || {}, known = DB.meta.importRevs || {};
-    for (const f of Object.keys(revs)) if (done.has(f) && revs[f] > (known[f] || 1)) await applyRevision(f, revs[f]);
+    for (const f of Object.keys(revs)) if (done.has(f) && !(DB.meta.discarded || []).includes(f) && revs[f] > (known[f] || 1)) await applyRevision(f, revs[f]);
     if (loud) toast(out.length ? `${out.length} new list${out.length === 1 ? '' : 's'} from Claude` : 'No new lists yet');
   } catch (e) { if (loud) toast('Couldn’t check right now — try again online'); }
   importsBusy = false;
@@ -988,6 +988,7 @@ function importSheet(i) {
 }
 async function markImported(j, n, cubeDone) {
   const patch = { imported: [...new Set([...(DB.meta.imported || []), j.file])], importRevs: { ...(DB.meta.importRevs || {}), [j.file]: j.rev || 1 } };
+  if (!cubeDone) patch.discarded = [...new Set([...(DB.meta.discarded || []), j.file])];
   if (cubeDone && j.cube) patch.photos = { ...(DB.meta.photos || {}), [j.cube]: { t: Date.now(), n, via: 'claude' } };
   pendingImports = pendingImports.filter(x => x.file !== j.file);
   await DB.saveMeta(patch);
