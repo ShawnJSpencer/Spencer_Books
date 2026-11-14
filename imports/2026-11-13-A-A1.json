@@ -1,0 +1,17 @@
+{
+  "cube": "A-A1",
+  "note": "Left to right. Three items still to confirm in chat (the two flat books on the far left and the book showing its back cover) — they'll come in a follow-up list.",
+  "books": [
+    {"pos": 2, "title": "Sparks! Double Dog Dare", "author": "Ian Boothby", "series": "Sparks!", "seriesNo": 2, "ageMin": 7, "ageMax": 10, "genres": ["Graphic novel", "Humor"], "format": "Graphic novel", "notes": "Illustrated by Nina Matsumoto", "check": "has a library sticker (J GN SPA 2) — untick if it's a library book"},
+    {"pos": 3, "title": "Paws: Mindy Makes Some Space", "author": "Nathan Fairbairn", "series": "Paws", "seriesNo": 2, "ageMin": 8, "ageMax": 12, "genres": ["Graphic novel", "Friendship"], "format": "Graphic novel", "notes": "Illustrated by Michele Assarasakorn"},
+    {"pos": 4, "title": "Goldilocks: Wanted Dead or Alive", "author": "Chris Colfer", "series": "The Land of Stories graphic novels", "ageMin": 8, "ageMax": 12, "genres": ["Graphic novel", "Fantasy"], "format": "Graphic novel"},
+    {"pos": 5, "title": "Speak Up!", "author": "Rebecca Burgess", "ageMin": 8, "ageMax": 12, "genres": ["Graphic novel", "Realistic fiction"], "format": "Graphic novel"},
+    {"pos": 7, "title": "Freestyle", "author": "Gale Galligan", "ageMin": 8, "ageMax": 12, "genres": ["Graphic novel", "Realistic fiction"], "format": "Graphic novel"},
+    {"pos": 8, "title": "Batpig: When Pigs Fly", "author": "Rob Harrell", "series": "Batpig", "seriesNo": 1, "ageMin": 7, "ageMax": 10, "genres": ["Graphic novel", "Humor", "Superheroes"], "format": "Graphic novel"},
+    {"pos": 9, "title": "Diary of a Wimpy Kid: Dog Days", "author": "Jeff Kinney", "series": "Diary of a Wimpy Kid", "seriesNo": 4, "ageMin": 8, "ageMax": 12, "genres": ["Humor", "Realistic fiction"], "format": "Hardcover"},
+    {"pos": 10, "title": "Diary of a Wimpy Kid: Big Shot", "author": "Jeff Kinney", "series": "Diary of a Wimpy Kid", "seriesNo": 16, "ageMin": 8, "ageMax": 12, "genres": ["Humor", "Realistic fiction"], "format": "Hardcover"},
+    {"pos": 11, "title": "Roller Girl", "author": "Victoria Jamieson", "ageMin": 9, "ageMax": 12, "genres": ["Graphic novel", "Sports", "Friendship"], "format": "Graphic novel"},
+    {"pos": 12, "title": "Winging It", "author": "Megan Wagner Lloyd", "ageMin": 8, "ageMax": 12, "genres": ["Graphic novel", "Realistic fiction"], "format": "Graphic novel", "notes": "Illustrated by Michelle Mee Nutter"},
+    {"pos": 13, "title": "Best Friends", "author": "Shannon Hale", "series": "Friends", "seriesNo": 2, "ageMin": 8, "ageMax": 12, "genres": ["Graphic novel", "Memoir", "Friendship"], "format": "Graphic novel", "notes": "Illustrated by LeUyen Pham"}
+  ]
+}
