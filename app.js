@@ -480,7 +480,7 @@ function renderGrid() {
     const [bk, bl] = badgeOf(b);
     const meta = [year(b), ageLabel(b) && 'Ages ' + ageLabel(b)].filter(Boolean).join(' · ') || authorShort(b);
     return `<button class="card ${UI.sel === b.id && isWide() ? 'on' : ''}" data-act="open" data-id="${b.id}" aria-label="${esc(b.title)}">
-      ${coverHTML(b)}<div class="cardrow"><span class="badge b-${bk}">${bl}</span><span class="dots">${dotsHTML(b)}</span></div>
+      ${coverHTML(b)}<div class="cardrow"><span class="badge b-${bk}">${bl}</span><span class="dots">${dotsHTML(b)}</span>${b.loc?.c && b.loc?.cube ? `<span class="badge b-loc" title="${esc(locLabel(b))}">${esc(locKey(b.loc.c, b.loc.cube))}</span>` : ''}</div>
       <span class="cardtitle">${esc(b.title)}</span><span class="cardmeta">${esc(meta)}</span></button>`;
   }).join('')}</div>`;
   const t = $('#libTitle'); if (t) t.textContent = `${libTitle()}${UI.q ? ` · ${list.length} found` : ''}`;

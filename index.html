@@ -97,7 +97,13 @@ select.sel{height:42px;padding:0 10px;border-radius:12px;border:1px solid var(--
 .b-owned{background:var(--greenbg);color:var(--greenink)}.b-wishlist{background:var(--goldbg);color:var(--goldink)}
 .b-reading{background:var(--bluebg);color:var(--blueink)}.b-lent{background:#3d2e4a;color:#dcc8ec}.b-gone{background:#3a3129;color:var(--mute)}
 .b-review{background:var(--redbg);color:var(--redink)}
-.dots{margin-left:auto;display:flex;gap:3px}
+.dots{display:flex;min-width:0}
+.dots .dot2{box-shadow:0 0 0 2px #2a1c13}
+.dots .dot2+.dot2{margin-left:-6px}
+.dot2{flex-shrink:0}
+.cardrow{gap:4px}
+.cardrow .badge{padding:3px 7px}
+.b-loc{margin-left:auto;background:#22170f;color:var(--goldink);border:1px solid #7a6030;flex-shrink:0}
 .dot2{width:22px;height:22px;border-radius:50%;color:#22170f;font:700 11px var(--fb);display:flex;align-items:center;justify-content:center}
 .cardtitle{font-size:14px;font-weight:600;padding-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cardmeta{font-size:12px;color:var(--mute);padding-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -294,6 +300,9 @@ body[data-view=shelves] .body{grid-template-columns:264px minmax(0,1fr)}
   .cover .ca{font-size:8.5px}
   .card{padding:4px}
   .cardrow .badge{display:none}
+  .cardrow .badge.b-loc{display:inline-block;padding:2px 5px;font-size:10px}
+  .cardrow{gap:3px}
+  .dot2{width:18px;height:18px;font-size:9px}
   #sheetWrap{align-items:flex-end}
   #sheet,#sheet.wide{width:100%;max-height:94vh;border-radius:22px 22px 0 0;padding:16px 16px calc(28px + var(--sab))}
   .shbar{top:-16px}
