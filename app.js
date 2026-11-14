@@ -350,6 +350,7 @@ function visibleBooks() {
   else if (s === 'lent') list = list.filter(b => b.status === 'lent');
   else if (s === 'review') list = list.filter(b => b.needsReview);
   else if (s === 'gone') list = list.filter(b => b.status === 'gone');
+  else if (s === 'nocover') list = list.filter(b => !b.cover);
   else if (s === 'unshelved') list = list.filter(b => b.status === 'owned' && !b.loc?.cube);
   if (UI.cube) list = list.filter(b => b.loc && locKey(b.loc.c, b.loc.cube) === UI.cube);
   if (r !== 'all') {
@@ -376,6 +377,7 @@ function visibleBooks() {
     author: (a, b) => norm(authorShort(a).split(' ').pop()).localeCompare(norm(authorShort(b).split(' ').pop())) || norm(a.title).localeCompare(norm(b.title)),
     series: (a, b) => norm(a.series || '~' + a.title).localeCompare(norm(b.series || '~' + b.title)) || (a.seriesNo || 0) - (b.seriesNo || 0),
     released: (a, b) => (b.released || '').localeCompare(a.released || ''),
+    nocover: (a, b) => (!!a.cover - !!b.cover) || norm(a.title).localeCompare(norm(b.title)),
     shelf: (a, b) => (a.loc ? locKey(a.loc.c, a.loc.cube) : '~').localeCompare(b.loc ? locKey(b.loc.c, b.loc.cube) : '~') || (a.loc?.pos || 0) - (b.loc?.pos || 0)
   };
   return list.sort(by[UI.sort] || by.added);
@@ -401,6 +403,7 @@ function renderSide() {
     ['owned', 'Owned', '#7fb08a', owned.length], ['wishlist', 'Wishlist', '#d4a95a', all.filter(b => b.status === 'wishlist').length],
     ['reading', 'Currently reading', '#7fb6d9', all.filter(b => readers().some(x => rd(b, x.id).status === 'reading')).length],
     ['unshelved', 'Not shelved yet', '#a08c70', owned.filter(b => !b.loc?.cube).length],
+    ['nocover', 'No cover', '#8fa1b3', all.filter(b => !b.cover).length],
     ['lent', 'Lent out', '#c9a0dc', all.filter(b => b.status === 'lent').length], ['review', 'Needs review', '#ff8a5c', all.filter(b => b.needsReview).length],
     ['gone', 'Given away', '#8a7358', all.filter(b => b.status === 'gone').length], ['all', 'Everything', '#efe2c8', all.length]
   ].filter(s => s[3] || ['owned', 'wishlist', 'all'].includes(s[0]));
@@ -419,7 +422,7 @@ function renderSide() {
 function libTitle() {
   if (UI.cube) { const [c, q] = UI.cube.split('-'); return `Case ${c} · Cube ${q}${cubeLabel(UI.cube) ? ' · ' + cubeLabel(UI.cube) : ''}`; }
   const r = reader(UI.reader);
-  const sh = { owned: '', wishlist: 'Wishlist', reading: 'Reading now', lent: 'Lent out', review: 'Needs review', gone: 'Given away', all: 'Everything', unshelved: 'Not shelved yet' }[UI.shelf];
+  const sh = { owned: '', wishlist: 'Wishlist', reading: 'Reading now', lent: 'Lent out', review: 'Needs review', gone: 'Given away', all: 'Everything', unshelved: 'Not shelved yet', nocover: 'No cover' }[UI.shelf];
   if (r) return `${r.name}’s books${sh ? ' · ' + sh : ''}`;
   return sh || 'Our books';
 }
@@ -435,7 +438,7 @@ function renderLibrary() {
     <label class="search">${I.search}<input type="search" id="q2" aria-label="Search books" placeholder="Search title, author, ISBN…" value="${esc(UI.q)}" autocomplete="off"></label>
     <div class="pills"><button class="pill ${UI.reader === 'all' ? 'on' : ''}" data-act="reader" data-v="all">Everyone</button>${readers().map(r => `<button class="pill ${UI.reader === r.id ? 'on' : ''}" data-act="reader" data-v="${r.id}">${esc(r.name)}</button>`).join('')}
       <button class="pill ${UI.shelf === 'wishlist' ? 'on' : ''}" data-act="shelf" data-v="${UI.shelf === 'wishlist' ? 'owned' : 'wishlist'}">Wishlist</button>
-      <button class="pill" data-act="shelf-photo">${'Photo a shelf'}</button></div>
+      <button class="pill ${UI.shelf === 'nocover' ? 'on' : ''}" data-act="shelf" data-v="${UI.shelf === 'nocover' ? 'owned' : 'nocover'}">No cover</button></div>
   </div>
   ${importBanner()}
   <div class="stats">${stats.map(([v, l, c]) => `<div class="stat"><b style="color:${c}">${v}</b><span>${esc(l)}</span></div>`).join('')}</div>
@@ -443,7 +446,7 @@ function renderLibrary() {
     <h1 id="libTitle">${esc(libTitle())}</h1>
     ${UI.cube ? `<button class="btn sm" data-act="view" data-v="shelves">${I.back}Bookcases</button>` : ''}${UI.cube || UI.age || UI.genre ? `<button class="btn sm" data-act="clear-filters">${I.x}Clear filters</button>` : ''}
     <div class="seg" role="group" aria-label="Filter">${segs.map(([id, n]) => `<button class="${UI.filter === id ? 'on' : ''}" data-act="filter" data-v="${id}">${n}</button>`).join('')}</div>
-    <select class="sel" data-chg="sort" aria-label="Sort">${[['added', 'Recently added'], ['title', 'Title'], ['author', 'Author'], ['series', 'Series'], ['released', 'Newest'], ['shelf', 'Shelf order']].map(([v, n]) => `<option value="${v}" ${UI.sort === v ? 'selected' : ''}>Sort: ${n}</option>`).join('')}</select>
+    <select class="sel" data-chg="sort" aria-label="Sort">${[['added', 'Recently added'], ['title', 'Title'], ['author', 'Author'], ['series', 'Series'], ['released', 'Newest'], ['shelf', 'Shelf order'], ['nocover', 'No cover first']].map(([v, n]) => `<option value="${v}" ${UI.sort === v ? 'selected' : ''}>Sort: ${n}</option>`).join('')}</select>
     <button class="btn sm" data-act="add-search">${I.plus}Add</button>
   </div>
   <div id="gridArea"></div>`;
