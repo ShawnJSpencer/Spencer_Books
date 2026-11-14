@@ -1,6 +1,6 @@
 {
  "cube": "A-A2",
- "note": "Left to right: Baby-Sitters Club graphic novels 1–18 (missing 5, 9 and 16 on this shelf), then the Little Sister 1–3 box set as three books. One hidden spine still to confirm in chat.",
+ "note": "Left to right: Baby-Sitters Club graphic novels 1–18 (5, 9 and 16 aren't on this shelf), then the Little Sister 1–3 box set.",
  "books": [
   {
    "pos": 1,
@@ -243,11 +243,10 @@
    "notes": "Adapted by Ellen T. Crenshaw"
   },
   {
-   "pos": 17,
-   "title": "Baby-sitters Little Sister: Karen's Witch",
+   "pos": 16,
+   "title": "Baby-sitters Little Sister Graphic Novels 1–3 (Box Set)",
    "author": "Ann M. Martin",
    "series": "Baby-sitters Little Sister Graphic Novels",
-   "seriesNo": 1,
    "ageMin": 6,
    "ageMax": 9,
    "genres": [
@@ -255,40 +254,7 @@
     "Family"
    ],
    "format": "Box set",
-   "notes": "Adapted by Katy Farina. In the Little Sister Graphic Novels 1–3 box set.",
-   "check": "from the 1–3 box set — untick any that aren't in the box"
-  },
-  {
-   "pos": 18,
-   "title": "Baby-sitters Little Sister: Karen's Roller Skates",
-   "author": "Ann M. Martin",
-   "series": "Baby-sitters Little Sister Graphic Novels",
-   "seriesNo": 2,
-   "ageMin": 6,
-   "ageMax": 9,
-   "genres": [
-    "Graphic novel",
-    "Family"
-   ],
-   "format": "Box set",
-   "notes": "Adapted by Katy Farina. In the Little Sister Graphic Novels 1–3 box set.",
-   "check": "from the 1–3 box set — untick any that aren't in the box"
-  },
-  {
-   "pos": 19,
-   "title": "Baby-sitters Little Sister: Karen's Worst Day",
-   "author": "Ann M. Martin",
-   "series": "Baby-sitters Little Sister Graphic Novels",
-   "seriesNo": 3,
-   "ageMin": 6,
-   "ageMax": 9,
-   "genres": [
-    "Graphic novel",
-    "Family"
-   ],
-   "format": "Box set",
-   "notes": "Adapted by Katy Farina. In the Little Sister Graphic Novels 1–3 box set.",
-   "check": "from the 1–3 box set — untick any that aren't in the box"
+   "notes": "Adapted by Katy Farina. Contains Karen's Witch, Karen's Roller Skates and Karen's Worst Day."
   }
  ]
 }
