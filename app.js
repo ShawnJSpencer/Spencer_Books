@@ -886,9 +886,35 @@ async function checkImports(loud) {
       try { const j = await (await fetch('imports/' + encodeURIComponent(f) + '?t=' + Date.now(), { cache: 'no-store' })).json(); j.file = f; out.push(j); } catch (e) { console.warn(e); }
     }
     pendingImports = out; render();
+    repairClaudeImports();
     if (loud) toast(out.length ? `${out.length} new list${out.length === 1 ? '' : 's'} from Claude` : 'No new lists yet');
   } catch (e) { if (loud) toast('Couldn’t check right now — try again online'); }
   importsBusy = false;
+}
+// Books added from Claude's lists before 13 Nov fix could carry a wrong online title. Put back the
+// title/author from the list, and redo the online details with the stricter match. Runs once.
+let repairing = false;
+async function repairClaudeImports() {
+  if (repairing || DB.meta.fix1 || !(DB.meta.imported || []).length) return;
+  repairing = true;
+  try {
+    const fixed = [];
+    for (const f of DB.meta.imported) {
+      let j; try { j = await (await fetch('imports/' + encodeURIComponent(f) + '?t=' + Date.now(), { cache: 'no-store' })).json(); } catch { continue; }
+      const [c, ...rest] = (j.cube || '').split('-'), cube = rest.join('-');
+      for (const x of j.books || []) {
+        const b = [...DB.books.values()].find(z => z.addedBy === 'claude' && z.loc?.c === c && z.loc?.cube === cube && z.loc?.pos === x.pos);
+        if (!b || norm(b.title) === norm(x.title)) continue;
+        const n = clone(b);
+        ['subtitle', 'publisher', 'released', 'pages', 'summary', 'cover', 'isbn13', 'isbn10'].forEach(k => delete n[k]);
+        n.title = x.title; n.authors = x.author ? [x.author] : [];
+        try { const i = await findOnline(x); if (i) Object.assign(n, onlineDetails(i)); } catch {}
+        fixed.push(n);
+      }
+    }
+    if (fixed.length) { await DB.saveMany(fixed); toast(`Fixed ${fixed.length} book title${fixed.length === 1 ? '' : 's'}`); }
+    await DB.saveMeta({ fix1: true });
+  } finally { repairing = false; }
 }
 function importBanner() {
   if (!pendingImports.length) return '';
@@ -932,6 +958,31 @@ async function markImported(j, n, cubeDone) {
   pendingImports = pendingImports.filter(x => x.file !== j.file);
   await DB.saveMeta(patch);
 }
+// Is an online result really the same book? (Keeps "Speak Up!" from matching "Nice Girls Don't Speak Up")
+const STOP = new Set(['of', 'and', 'the', 'a', 'an', 'to', 'in', 'or', 'for', 'on', 'book']);
+const words = s => norm(s).split(' ').filter(w => w.length > 1 && !STOP.has(w));
+function goodMatch(x, m) {
+  if (!m?.title) return false;
+  const a = norm(x.author || (x.authors || [])[0] || '').split(' ').pop();
+  if (a && m.authors?.length && !m.authors.some(n => norm(n).split(' ').includes(a))) return false;
+  const want = words(x.title), main = words(m.title), have = new Set(words(m.title + ' ' + (m.subtitle || '')));
+  if (!want.length || !main.length) return false;
+  const ws = new Set(want);
+  const cover = want.filter(w => have.has(w)).length / want.length;
+  const share = main.filter(w => ws.has(w)).length / main.length;
+  if (cover >= .75 && share >= .6) return true;
+  return main.length >= 2 && main.every(w => ws.has(w));   // e.g. "Dog Days" for "Diary of a Wimpy Kid: Dog Days"
+}
+async function findOnline(x) {
+  if (x.isbn13) { const one = await lookupISBN(x.isbn13); if (one) return one; }
+  const res = await searchBooks(x.title, x.author);
+  return res.find(m => goodMatch(x, m)) || null;
+}
+// details looked up online, without ever replacing the title/author Claude read off the spine
+function onlineDetails(i) {
+  const keep = ['subtitle', 'publisher', 'released', 'pages', 'summary', 'cover', 'isbn13', 'isbn10'];
+  return Object.fromEntries(keep.filter(k => i[k] != null && i[k] !== '').map(k => [k, i[k]]));
+}
 async function applyImport(j, rows, sh) {
   const parts = (j.cube || '').split('-'), c = parts.length >= 2 ? parts[0] : '', cube = parts.length >= 2 ? parts.slice(1).join('-') : '';
   const add = [], upd = [];
@@ -944,12 +995,11 @@ async function applyImport(j, rows, sh) {
     if (ex) { const b = clone(ex); if (loc) b.loc = loc; if (j.status !== 'wishlist' && b.status !== 'owned') b.status = 'owned'; if (x.check) b.needsReview = true; upd.push(b); continue; }
     let info = null;
     try {
-      if (x.isbn13) info = await lookupISBN(x.isbn13);
-      if (!info) { const res = await searchBooks(x.title, x.author); info = res.find(m => norm(m.title).includes(norm(x.title)) || norm(x.title).includes(norm(m.title))) || null; }
+      info = await findOnline(x);
     } catch (e) { console.warn(e); }
-    const i = info || {}; delete i.ageHint;
-    const b = newBook({ ...i,
-      title: i.title || x.title, authors: i.authors?.length ? i.authors : (x.author ? [x.author] : []),
+    const i = info || {};
+    const b = newBook({ ...onlineDetails(i),
+      title: x.title, authors: x.author ? [x.author] : (i.authors || []),
       series: x.series || i.series || '', seriesNo: x.seriesNo ?? null,
       genres: x.genres?.length ? x.genres : (i.genres || []),
       ageMin: x.ageMin ?? null, ageMax: x.ageMax ?? null, grade: x.grade || '', level: x.level || '', format: x.format || '',
