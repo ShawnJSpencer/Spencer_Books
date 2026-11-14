@@ -1,0 +1,20 @@
+{
+ "cube": "A-A1",
+ "note": "The one item left from this cube.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Elevators & Trams",
+   "author": "Little Passports",
+   "series": "Little Passports Science Expeditions",
+   "ageMin": 9,
+   "ageMax": 12,
+   "genres": [
+    "Science",
+    "Nonfiction"
+   ],
+   "format": "Other",
+   "notes": "Science Expeditions kit booklet"
+  }
+ ]
+}
