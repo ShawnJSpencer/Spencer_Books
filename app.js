@@ -886,7 +886,9 @@ async function checkImports(loud) {
       try { const j = await (await fetch('imports/' + encodeURIComponent(f) + '?t=' + Date.now(), { cache: 'no-store' })).json(); j.file = f; out.push(j); } catch (e) { console.warn(e); }
     }
     pendingImports = out; render();
-    repairClaudeImports();
+    await repairClaudeImports();
+    const revs = idx.revs || {}, known = DB.meta.importRevs || {};
+    for (const f of Object.keys(revs)) if (done.has(f) && revs[f] > (known[f] || 1)) await applyRevision(f, revs[f]);
     if (loud) toast(out.length ? `${out.length} new list${out.length === 1 ? '' : 's'} from Claude` : 'No new lists yet');
   } catch (e) { if (loud) toast('Couldn’t check right now — try again online'); }
   importsBusy = false;
@@ -918,6 +920,35 @@ async function repairClaudeImports() {
     if (fixed.length || gone.length) toast(`Refreshed ${fixed.length} book${fixed.length === 1 ? '' : 's'} with the right editions`);
     await DB.saveMeta({ fix1: true, fix2: true });
   } finally { repairing = false; }
+}
+// Claude corrected a list you'd already added: update those books in place, add new ones, remove extras.
+async function applyRevision(f, rev) {
+  let j; try { j = await (await fetch('imports/' + encodeURIComponent(f) + '?t=' + Date.now(), { cache: 'no-store' })).json(); } catch { return; }
+  const [c, ...rest] = (j.cube || '').split('-'), cube = rest.join('-');
+  const inCube = () => [...DB.books.values()].filter(z => z.addedBy === 'claude' && z.loc?.c === c && z.loc?.cube === cube);
+  const gone = [], save = [];
+  for (const t of j.remove || []) inCube().filter(z => norm(z.title) === norm(t)).forEach(z => gone.push(z.id));
+  for (const x of j.books || []) {
+    const b = inCube().find(z => z.loc?.pos === x.pos && !gone.includes(z.id));
+    if (!b) {   // new in this revision
+      if (findExisting({ title: x.title, authors: x.author ? [x.author] : [], isbn13: x.isbn13 || '' })) continue;
+      save.push(await bookFromList(x, j, c ? { c, cube, pos: x.pos } : null)); continue;
+    }
+    const n = clone(b), oldTitle = n.title, oldAuthor = authorShort(n);
+    Object.assign(n, { title: x.title, authors: x.author ? [x.author] : n.authors, series: x.series || n.series || '', seriesNo: x.seriesNo ?? n.seriesNo ?? null, format: x.format || n.format || '', notes: x.notes || n.notes || '', copies: x.copies || n.copies || 1 });
+    if (x.genres?.length) n.genres = x.genres;
+    if (x.ageMin != null) { n.ageMin = x.ageMin; n.ageMax = x.ageMax ?? null; }
+    if (!x.check && b.needsReview && !b.reviewedAt) n.needsReview = false;
+    if (norm(oldTitle) !== norm(x.title) || norm(oldAuthor) !== norm(x.author || oldAuthor) || x.isbn13) {
+      ['subtitle', 'publisher', 'released', 'pages', 'summary', 'cover', 'isbn13', 'isbn10'].forEach(k => delete n[k]);
+      try { const i = await findOnline(x); if (i) Object.assign(n, onlineDetails(i)); } catch {}
+    }
+    if (JSON.stringify(n) !== JSON.stringify(b)) save.push(n);
+  }
+  for (const id of gone) await DB.remove(id);
+  if (save.length) await DB.saveMany(save);
+  await DB.saveMeta({ importRevs: { ...(DB.meta.importRevs || {}), [f]: rev } });
+  if (save.length || gone.length) toast(`Updated ${j.cube || 'a list'} from Claude`);
 }
 function importBanner() {
   if (!pendingImports.length) return '';
@@ -956,7 +987,7 @@ function importSheet(i) {
   wire();
 }
 async function markImported(j, n, cubeDone) {
-  const patch = { imported: [...new Set([...(DB.meta.imported || []), j.file])] };
+  const patch = { imported: [...new Set([...(DB.meta.imported || []), j.file])], importRevs: { ...(DB.meta.importRevs || {}), [j.file]: j.rev || 1 } };
   if (cubeDone && j.cube) patch.photos = { ...(DB.meta.photos || {}), [j.cube]: { t: Date.now(), n, via: 'claude' } };
   pendingImports = pendingImports.filter(x => x.file !== j.file);
   await DB.saveMeta(patch);
@@ -996,6 +1027,18 @@ function onlineDetails(i) {
   const keep = ['subtitle', 'publisher', 'released', 'pages', 'summary', 'cover', 'isbn13', 'isbn10'];
   return Object.fromEntries(keep.filter(k => i[k] != null && i[k] !== '').map(k => [k, i[k]]));
 }
+// one book from a list Claude sent: Claude's title/author/series stay; online lookup adds cover, ISBN, pages…
+async function bookFromList(x, j, loc) {
+  let i = {};
+  try { i = (await findOnline(x)) || {}; } catch (e) { console.warn(e); }
+  return newBook({ ...onlineDetails(i),
+    title: x.title, authors: x.author ? [x.author] : (i.authors || []),
+    series: x.series || i.series || '', seriesNo: x.seriesNo ?? null,
+    genres: x.genres?.length ? x.genres : (i.genres || []),
+    ageMin: x.ageMin ?? null, ageMax: x.ageMax ?? null, grade: x.grade || '', level: x.level || '', format: x.format || '',
+    notes: x.notes || '', copies: x.copies || 1, est: { age: x.ageMin != null, genres: !!x.genres?.length } },
+    { status: (j && j.status) || 'owned', addedBy: 'claude', wants: x.wants || [], needsReview: !!x.check, ...(loc ? { loc } : {}) });
+}
 async function applyImport(j, rows, sh) {
   const parts = (j.cube || '').split('-'), c = parts.length >= 2 ? parts[0] : '', cube = parts.length >= 2 ? parts.slice(1).join('-') : '';
   const add = [], upd = [];
@@ -1006,18 +1049,7 @@ async function applyImport(j, rows, sh) {
     const loc = c ? { c, cube, pos: x.pos || k } : null;
     const ex = findExisting({ title: x.title, authors: x.author ? [x.author] : [], isbn13: x.isbn13 || '' });
     if (ex) { const b = clone(ex); if (loc) b.loc = loc; if (j.status !== 'wishlist' && b.status !== 'owned') b.status = 'owned'; if (x.check) b.needsReview = true; upd.push(b); continue; }
-    let info = null;
-    try {
-      info = await findOnline(x);
-    } catch (e) { console.warn(e); }
-    const i = info || {};
-    const b = newBook({ ...onlineDetails(i),
-      title: x.title, authors: x.author ? [x.author] : (i.authors || []),
-      series: x.series || i.series || '', seriesNo: x.seriesNo ?? null,
-      genres: x.genres?.length ? x.genres : (i.genres || []),
-      ageMin: x.ageMin ?? null, ageMax: x.ageMax ?? null, grade: x.grade || '', level: x.level || '', format: x.format || '',
-      notes: x.notes || '', est: { age: x.ageMin != null, genres: !!x.genres?.length } },
-      { status: j.status || 'owned', addedBy: 'claude', wants: x.wants || [], needsReview: !!x.check, ...(loc ? { loc } : {}) });
+    const b = await bookFromList(x, j, loc);
     add.push(b);
   }
   await DB.saveMany([...add, ...upd]);

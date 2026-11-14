@@ -213,6 +213,16 @@
    ]
   },
   {
+   "pos": 17.5,
+   "title": "Freckle Juice",
+   "author": "Judy Blume",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Humor"
+   ]
+  },
+  {
    "pos": 18,
    "title": "Fudge-a-Mania",
    "author": "Judy Blume",
@@ -348,6 +358,18 @@
    ]
   },
   {
+   "pos": 28.5,
+   "title": "Spring According to Humphrey",
+   "author": "Betty G. Birney",
+   "series": "According to Humphrey",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
    "pos": 29,
    "title": "Blubber",
    "author": "Judy Blume",
@@ -357,5 +379,6 @@
     "Realistic fiction"
    ]
   }
- ]
+ ],
+ "rev": 2
 }

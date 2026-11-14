@@ -16,7 +16,7 @@
   {
    "pos": 2,
    "title": "Pug Pals: Yay for Vaycay!",
-   "author": "Ahn",
+   "author": "Flora Ahn",
    "series": "Pug Pals",
    "seriesNo": 2,
    "ageMin": 6,
@@ -151,5 +151,6 @@
     "Realistic fiction"
    ]
   }
- ]
+ ],
+ "rev": 2
 }

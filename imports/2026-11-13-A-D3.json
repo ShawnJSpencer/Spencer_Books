@@ -3,6 +3,161 @@
  "note": "Left to right (picture and nonfiction books).",
  "books": [
   {
+   "pos": 0.01,
+   "title": "The Magic School Bus Presents: Dinosaurs",
+   "author": "",
+   "series": "The Magic School Bus Presents",
+   "ageMin": 5,
+   "ageMax": 9,
+   "genres": [
+    "Nonfiction",
+    "Science"
+   ],
+   "notes": "A nonfiction companion to the original Magic School Bus series"
+  },
+  {
+   "pos": 0.02,
+   "title": "The Magic School Bus Presents: The Human Body",
+   "author": "",
+   "series": "The Magic School Bus Presents",
+   "ageMin": 5,
+   "ageMax": 9,
+   "genres": [
+    "Nonfiction",
+    "Science"
+   ],
+   "notes": "A nonfiction companion to the original Magic School Bus series"
+  },
+  {
+   "pos": 0.03,
+   "title": "The Magic School Bus Presents: Planet Earth",
+   "author": "",
+   "series": "The Magic School Bus Presents",
+   "ageMin": 5,
+   "ageMax": 9,
+   "genres": [
+    "Nonfiction",
+    "Science"
+   ],
+   "notes": "A nonfiction companion to the original Magic School Bus series"
+  },
+  {
+   "pos": 0.04,
+   "title": "The Magic School Bus Presents: Sea Creatures",
+   "author": "",
+   "series": "The Magic School Bus Presents",
+   "ageMin": 5,
+   "ageMax": 9,
+   "genres": [
+    "Nonfiction",
+    "Science"
+   ],
+   "notes": "A nonfiction companion to the original Magic School Bus series. We have 2 copies.",
+   "copies": 2
+  },
+  {
+   "pos": 0.05,
+   "title": "The Magic School Bus Presents: Our Solar System",
+   "author": "",
+   "series": "The Magic School Bus Presents",
+   "ageMin": 5,
+   "ageMax": 9,
+   "genres": [
+    "Nonfiction",
+    "Science"
+   ],
+   "notes": "A nonfiction companion to the original Magic School Bus series"
+  },
+  {
+   "pos": 0.06,
+   "title": "The Magic School Bus Presents: Wild Weather",
+   "author": "",
+   "series": "The Magic School Bus Presents",
+   "ageMin": 5,
+   "ageMax": 9,
+   "genres": [
+    "Nonfiction",
+    "Science"
+   ],
+   "notes": "A nonfiction companion to the original Magic School Bus series"
+  },
+  {
+   "pos": 0.07,
+   "title": "The Magic School Bus Presents: Volcanoes and Earthquakes",
+   "author": "",
+   "series": "The Magic School Bus Presents",
+   "ageMin": 5,
+   "ageMax": 9,
+   "genres": [
+    "Nonfiction",
+    "Science"
+   ],
+   "notes": "A nonfiction companion to the original Magic School Bus series"
+  },
+  {
+   "pos": 0.08,
+   "title": "The Magic School Bus Presents: Polar Animals",
+   "author": "",
+   "series": "The Magic School Bus Presents",
+   "ageMin": 5,
+   "ageMax": 9,
+   "genres": [
+    "Nonfiction",
+    "Science"
+   ],
+   "notes": "A nonfiction companion to the original Magic School Bus series"
+  },
+  {
+   "pos": 0.09,
+   "title": "The Magic School Bus Presents: Insects",
+   "author": "",
+   "series": "The Magic School Bus Presents",
+   "ageMin": 5,
+   "ageMax": 9,
+   "genres": [
+    "Nonfiction",
+    "Science"
+   ],
+   "notes": "A nonfiction companion to the original Magic School Bus series"
+  },
+  {
+   "pos": 0.1,
+   "title": "The Magic School Bus Presents: The Rain Forest",
+   "author": "",
+   "series": "The Magic School Bus Presents",
+   "ageMin": 5,
+   "ageMax": 9,
+   "genres": [
+    "Nonfiction",
+    "Science"
+   ],
+   "notes": "A nonfiction companion to the original Magic School Bus series"
+  },
+  {
+   "pos": 0.11,
+   "title": "The Magic School Bus on the Ocean Floor",
+   "author": "Joanna Cole",
+   "series": "The Magic School Bus",
+   "ageMin": 5,
+   "ageMax": 9,
+   "genres": [
+    "Science",
+    "Ocean"
+   ],
+   "notes": "Illustrated by Bruce Degen"
+  },
+  {
+   "pos": 0.5,
+   "title": "125 True Stories of Amazing Animal Friendships",
+   "author": "National Geographic Kids",
+   "ageMin": 7,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Animals"
+   ]
+  },
+  {
    "pos": 1,
    "title": "Walk This Wild World",
    "author": "Sam Brewster",
@@ -92,5 +247,6 @@
    ],
    "notes": "Illustrated by Olivier Latyk"
   }
- ]
+ ],
+ "rev": 2
 }

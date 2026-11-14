@@ -26,6 +26,18 @@
    ]
   },
   {
+   "pos": 2.5,
+   "title": "1,000 Animals",
+   "author": "Usborne",
+   "notes": "Illustrated by Nikki Dyson",
+   "ageMin": 3,
+   "ageMax": 8,
+   "genres": [
+    "Nonfiction",
+    "Animals"
+   ]
+  },
+  {
    "pos": 3,
    "title": "Outdoor School: Animal Watching",
    "author": "",
@@ -70,6 +82,19 @@
     "Nonfiction",
     "Trivia"
    ]
+  },
+  {
+   "pos": 6.5,
+   "title": "Breyer 50 Years 1950–2000 Catalog",
+   "author": "Breyer Animal Creations",
+   "ageMin": 6,
+   "ageMax": 99,
+   "genres": [
+    "Horses",
+    "Catalog"
+   ],
+   "format": "Other",
+   "notes": "Breyer model horse catalog, ©2000 Reeves International (BE2000). Includes the Breyer size chart."
   },
   {
    "pos": 7,
@@ -127,5 +152,6 @@
     "Photography"
    ]
   }
- ]
+ ],
+ "rev": 2
 }

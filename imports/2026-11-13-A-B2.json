@@ -167,6 +167,21 @@
    ]
   },
   {
+   "pos": 14.5,
+   "title": "The Critter Club: Amy and the Missing Puppy / All About Ellie / Liz Learns a Lesson",
+   "author": "Callie Barkley",
+   "isbn13": "9781481427708",
+   "series": "The Critter Club",
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Animals",
+    "Friendship"
+   ],
+   "format": "Box set",
+   "notes": "Three-book compilation (Critter Club #1–3)"
+  },
+  {
    "pos": 15,
    "title": "The Critter Club: Marion Takes a Break",
    "author": "Callie Barkley",
@@ -179,5 +194,6 @@
     "Friendship"
    ]
   }
- ]
+ ],
+ "rev": 2
 }
