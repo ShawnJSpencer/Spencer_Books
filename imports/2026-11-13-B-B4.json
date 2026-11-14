@@ -221,14 +221,14 @@
   },
   {
    "pos": 19,
-   "title": "The Puppy Place: Otis",
+   "title": "Kitty Corner: Otis",
    "author": "Ellen Miles",
-   "series": "The Puppy Place",
+   "series": "Kitty Corner",
    "ageMin": 6,
    "ageMax": 10,
    "genres": [
-    "Dogs",
-    "Animals"
+    "Animals",
+    "Cats"
    ]
   },
   {
@@ -303,5 +303,6 @@
     "Animals"
    ]
   }
- ]
+ ],
+ "rev": 2
 }

@@ -101,13 +101,13 @@
   {
    "pos": 10,
    "title": "Song of Night",
-   "author": "",
+   "author": "Riley",
    "ageMin": 3,
    "ageMax": 7,
    "genres": [
     "Picture book"
    ],
-   "check": "I couldn't read the author — fix if needed"
+   "notes": "Spine: Nakamura · Riley"
   },
   {
    "pos": 11,
@@ -256,6 +256,16 @@
    ]
   },
   {
+   "pos": 24.5,
+   "title": "Paw Patrol: The Pup with the Fire Truck",
+   "author": "Nickelodeon",
+   "ageMin": 3,
+   "ageMax": 6,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
    "pos": 25,
    "title": "Paw Patrol: Pups Save a Train",
    "author": "Nickelodeon",
@@ -264,6 +274,18 @@
    "genres": [
     "Picture book"
    ]
+  },
+  {
+   "pos": 25.5,
+   "title": "Minnie 'n Me: Where's Fifi?",
+   "author": "Disney",
+   "series": "Little Golden Book",
+   "ageMin": 2,
+   "ageMax": 6,
+   "genres": [
+    "Picture book"
+   ]
   }
- ]
+ ],
+ "rev": 2
 }

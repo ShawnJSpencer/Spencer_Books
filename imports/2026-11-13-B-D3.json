@@ -256,13 +256,12 @@
   {
    "pos": 25,
    "title": "I Love Monkey",
-   "author": "",
+   "author": "Suzanne Kaufman",
    "ageMin": 3,
    "ageMax": 7,
    "genres": [
     "Picture book"
-   ],
-   "check": "I couldn't read the author — fix if needed"
+   ]
   },
   {
    "pos": 26,
@@ -307,5 +306,6 @@
    ],
    "notes": "Illustrated by Jim Field"
   }
- ]
+ ],
+ "rev": 2
 }

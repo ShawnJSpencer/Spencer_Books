@@ -142,6 +142,28 @@
    ]
   },
   {
+   "pos": 12.8,
+   "title": "Pet Rescue Adventures: The Perfect Kitten",
+   "author": "Holly Webb",
+   "series": "Pet Rescue Adventures",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 12.9,
+   "title": "Pet Rescue Adventures: The Unwanted Puppy",
+   "author": "Holly Webb",
+   "series": "Pet Rescue Adventures",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
    "pos": 13,
    "title": "Pet Rescue Adventures: The Secret Puppy",
    "author": "Holly Webb",
@@ -178,7 +200,7 @@
   },
   {
    "pos": 16,
-   "title": "The Underdogs 2",
+   "title": "The Underdogs: We're Not the Champions",
    "author": "Tracey West",
    "series": "The Underdogs",
    "seriesNo": 2,
@@ -223,6 +245,17 @@
    "notes": "Illustrated by Tony DiTerlizzi"
   },
   {
+   "pos": 19.5,
+   "title": "The Pet War",
+   "author": "Allan Woodrow",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
    "pos": 20,
    "title": "Jawbreaker",
    "author": "Christopher Wyman",
@@ -257,5 +290,6 @@
     "Realistic fiction"
    ]
   }
- ]
+ ],
+ "rev": 2
 }
