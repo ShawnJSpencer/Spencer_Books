@@ -1,0 +1,135 @@
+{
+ "cube": "B-B3",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Emma and the Yellow Mare",
+   "author": "McPherson",
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Horses"
+   ],
+   "check": "spine is hard to read — confirm the title and author"
+  },
+  {
+   "pos": 2,
+   "title": "All My Bests",
+   "author": "Meiser",
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Friendship"
+   ],
+   "check": "spine just says Meiser — fix the author's name if needed"
+  },
+  {
+   "pos": 3,
+   "title": "Horse Country: Friends Like These",
+   "author": "Yamile Saied Méndez",
+   "series": "Horse Country",
+   "seriesNo": 2,
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Horses"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Wish: Wish Upon a Stray",
+   "author": "Yamile Saied Méndez",
+   "series": "Wish",
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Wish: Random Acts of Kittens",
+   "author": "Yamile Saied Méndez",
+   "series": "Wish",
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Ranger in Time: Escape from the Great Earthquake",
+   "author": "Kate Messner",
+   "series": "Ranger in Time",
+   "seriesNo": 6,
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Historical fiction",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Keeper of the Lost Cities",
+   "author": "Shannon Messenger",
+   "series": "Keeper of the Lost Cities",
+   "seriesNo": 1,
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Keeper of the Lost Cities: Exile",
+   "author": "Shannon Messenger",
+   "series": "Keeper of the Lost Cities",
+   "seriesNo": 2,
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Keeper of the Lost Cities: Flashback",
+   "author": "Shannon Messenger",
+   "series": "Keeper of the Lost Cities",
+   "seriesNo": 7,
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Keeper of the Lost Cities: Legacy",
+   "author": "Shannon Messenger",
+   "series": "Keeper of the Lost Cities",
+   "seriesNo": 8,
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Keeper of the Lost Cities: Stellarlune",
+   "author": "Shannon Messenger",
+   "series": "Keeper of the Lost Cities",
+   "seriesNo": 9,
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Fantasy"
+   ]
+  }
+ ]
+}

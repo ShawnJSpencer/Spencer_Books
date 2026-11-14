@@ -1,0 +1,229 @@
+{
+ "cube": "B-D1",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Wings of Fire: Winter Turning",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "seriesNo": 7,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Wings of Fire: Escaping Peril",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "seriesNo": 8,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Wings of Fire: Talons of Power",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "seriesNo": 9,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Wings of Fire: Darkness of Dragons",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "seriesNo": 10,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Wings of Fire: The Lost Continent",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "seriesNo": 11,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Wings of Fire: The Hive Queen",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "seriesNo": 12,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Wings of Fire: The Poison Jungle",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "seriesNo": 13,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Wings of Fire: The Dangerous Gift",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "seriesNo": 14,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Wings of Fire Legends: Darkstalker",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire Legends",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Sea Feather",
+   "author": "Lois Szymanski",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Horses"
+   ],
+   "check": "may have a library sticker — untick if it's a library book"
+  },
+  {
+   "pos": 11,
+   "title": "Unicorn Academy: Sophia and Rainbow",
+   "author": "Julie Sykes",
+   "series": "Unicorn Academy",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy",
+    "Unicorns"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Unicorn Academy: Scarlett and Blaze",
+   "author": "Julie Sykes",
+   "series": "Unicorn Academy",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy",
+    "Unicorns"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Unicorn Academy: Ava and Star",
+   "author": "Julie Sykes",
+   "series": "Unicorn Academy",
+   "seriesNo": 3,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy",
+    "Unicorns"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Unicorn Academy: Isabel and Cloud",
+   "author": "Julie Sykes",
+   "series": "Unicorn Academy",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy",
+    "Unicorns"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "Unicorn Academy: Layla and Dancer",
+   "author": "Julie Sykes",
+   "series": "Unicorn Academy",
+   "seriesNo": 5,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy",
+    "Unicorns"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Unicorn Academy: Olivia and Snowflake",
+   "author": "Julie Sykes",
+   "series": "Unicorn Academy",
+   "seriesNo": 6,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy",
+    "Unicorns"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "Unicorn Academy: Rosa and Crystal",
+   "author": "Julie Sykes",
+   "series": "Unicorn Academy",
+   "seriesNo": 7,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy",
+    "Unicorns"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Unicorn Academy: Ariana and Whisper",
+   "author": "Julie Sykes",
+   "series": "Unicorn Academy",
+   "seriesNo": 8,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy",
+    "Unicorns"
+   ]
+  }
+ ]
+}

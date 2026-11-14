@@ -1,0 +1,261 @@
+{
+ "cube": "B-D2",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Pets Rule!: My Kingdom of Darkness",
+   "author": "Susan Tan",
+   "series": "Pets Rule!",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Humor",
+    "Animals"
+   ],
+   "notes": "Illustrated by Wei"
+  },
+  {
+   "pos": 2,
+   "title": "Wish: Meow or Never",
+   "author": "Jazz Taylor",
+   "series": "Wish",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Wish: Starting from Scratch",
+   "author": "Jazz Taylor",
+   "series": "Wish",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "The Pool Party from the Black Lagoon",
+   "author": "Mike Thaler",
+   "series": "Black Lagoon Adventures",
+   "seriesNo": 32,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Humor"
+   ],
+   "notes": "Illustrated by Jared Lee"
+  },
+  {
+   "pos": 5,
+   "title": "Disney The Never Girls: From the Mist",
+   "author": "Kiki Thorpe",
+   "series": "The Never Girls",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Magically Maximus",
+   "author": "",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ],
+   "check": "I couldn't read the author — fix if needed"
+  },
+  {
+   "pos": 7,
+   "title": "The Do-Over",
+   "author": "Jennifer Torres",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ],
+   "check": "spine says Torres — confirm the title"
+  },
+  {
+   "pos": 8,
+   "title": "Forever Friends: Sofia's Puppy Love",
+   "author": "Kiki Thorpe",
+   "series": "Forever Friends",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Angus and Sadie",
+   "author": "Cynthia Voigt",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Gypsy and the Moonstone Stallion",
+   "author": "",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses"
+   ],
+   "check": "older book with a sticker (21517-22); I couldn't read the author"
+  },
+  {
+   "pos": 11,
+   "title": "Absolutely Alfie and the Furry Purry Secret",
+   "author": "Sally Warner",
+   "series": "Absolutely Alfie",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ],
+   "notes": "Illustrated by Shearry Malone"
+  },
+  {
+   "pos": 12,
+   "title": "Awesome Jokes That Every 8 Year Old Should Know!",
+   "author": "Mat Waugh",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Jokes"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Pet Rescue Adventures: The Secret Puppy",
+   "author": "Holly Webb",
+   "series": "Pet Rescue Adventures",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Pet Rescue Adventures: The Brave Kitten",
+   "author": "Holly Webb",
+   "series": "Pet Rescue Adventures",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "The Underdogs",
+   "author": "Tracey West",
+   "series": "The Underdogs",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Dogs",
+    "Sports"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "The Underdogs 2",
+   "author": "Tracey West",
+   "series": "The Underdogs",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Dogs",
+    "Sports"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "The Epic Guide to Dragon Masters",
+   "author": "Tracey West",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Bakers' Dozen: Make Room for Patty",
+   "author": "Suzanne Weyn",
+   "series": "Bakers' Dozen",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Family"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "The Story of Diva and Flea",
+   "author": "Mo Willems",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ],
+   "notes": "Illustrated by Tony DiTerlizzi"
+  },
+  {
+   "pos": 20,
+   "title": "Jawbreaker",
+   "author": "Christopher Wyman",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor"
+   ]
+  },
+  {
+   "pos": 21,
+   "title": "Front Desk",
+   "author": "Kelly Yang",
+   "series": "Front Desk",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ],
+   "check": "read from the back-cover blurb — confirm it's Front Desk"
+  },
+  {
+   "pos": 22,
+   "title": "Three Keys",
+   "author": "Kelly Yang",
+   "series": "Front Desk",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ]
+  }
+ ]
+}

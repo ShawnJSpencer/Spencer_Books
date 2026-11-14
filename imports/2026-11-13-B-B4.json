@@ -1,0 +1,307 @@
+{
+ "cube": "B-B4",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Cragbridge Hall: The Inventor's Secret",
+   "author": "Chad Morris",
+   "series": "Cragbridge Hall",
+   "seriesNo": 1,
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Science fiction",
+    "Adventure"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "The Puppy Place: Fluffy & Freckles (Special Edition)",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "The Puppy Place: Rusty",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "The Puppy Place: Moose",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "The Puppy Place: Scout",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "The Puppy Place: Oscar",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "The Puppy Place: Gus",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "The Puppy Place: Bingo",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "The Puppy Place: Biggie",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "The Puppy Place: Jack",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "The Puppy Place: Kodiak",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "The Puppy Place: Mocha",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "The Puppy Place: Roxy",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "The Puppy Place: Nala",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "The Puppy Place: Baxter",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "The Puppy Place: Sparky",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "The Puppy Place: Lucy",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "The Puppy Place: Bentley",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "The Puppy Place: Otis",
+   "author": "Ellen Miles",
+   "series": "The Puppy Place",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 20,
+   "title": "Whatever After: Mirror, Mirror",
+   "author": "Sarah Mlynowski",
+   "series": "Whatever After",
+   "seriesNo": 17,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Fairy tales"
+   ]
+  },
+  {
+   "pos": 21,
+   "title": "Join the Club, Maggie Diaz",
+   "author": "Nina Moreno",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 22,
+   "title": "Spirit Animals: Wild Born",
+   "author": "Brandon Mull",
+   "series": "Spirit Animals",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 23,
+   "title": "Tanglewood Animal Park: The Troublesome Tiger",
+   "author": "Tamsyn Murray",
+   "series": "Tanglewood Animal Park",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 24,
+   "title": "Tanglewood Animal Park: Baby Zebra Rescue",
+   "author": "Tamsyn Murray",
+   "series": "Tanglewood Animal Park",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 25,
+   "title": "Tanglewood Animal Park: Elephant Emergency",
+   "author": "Tamsyn Murray",
+   "series": "Tanglewood Animal Park",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Dogs",
+    "Animals"
+   ]
+  }
+ ]
+}

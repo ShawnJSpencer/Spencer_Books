@@ -1,0 +1,311 @@
+{
+ "cube": "B-D3",
+ "note": "Left to right (picture books).",
+ "books": [
+  {
+   "pos": 1,
+   "title": "If I Ran the Horse Show",
+   "author": "Bonnie Worth",
+   "series": "The Cat in the Hat's Learning Library",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Nonfiction",
+    "Horses"
+   ],
+   "notes": "Illustrated by Aristides Ruiz and Joe Mathieu"
+  },
+  {
+   "pos": 2,
+   "title": "All About Nora",
+   "author": "Nora Spencer",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Family"
+   ],
+   "notes": "Made by Nora"
+  },
+  {
+   "pos": 3,
+   "title": "Pet Sitting",
+   "author": "Wolz",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "I'll Wait, Mr. Panda",
+   "author": "Steve Antony",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "I Am Enough",
+   "author": "Grace Byers",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Keturah A. Bobo"
+  },
+  {
+   "pos": 6,
+   "title": "Little Nelly's Big Book",
+   "author": "Pippa Goodhart",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Andy Rowland"
+  },
+  {
+   "pos": 7,
+   "title": "Cinderella",
+   "author": "Sandy Creek",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book",
+    "Fairy tales"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "A Treasury for One Year Olds",
+   "author": "",
+   "ageMin": 1,
+   "ageMax": 3,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Pete the Cat and the Cool Cat Boogie",
+   "author": "James Dean",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Tickle Monster",
+   "author": "Josie Bissett",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Boogie Monster",
+   "author": "Josie Bissett",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Click, Clack, Surprise!",
+   "author": "Doreen Cronin",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Betsy Lewin"
+  },
+  {
+   "pos": 13,
+   "title": "Click, Clack, Peep!",
+   "author": "Doreen Cronin",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Betsy Lewin"
+  },
+  {
+   "pos": 14,
+   "title": "Click, Clack, Moo: Cows That Type",
+   "author": "Doreen Cronin",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Betsy Lewin"
+  },
+  {
+   "pos": 15,
+   "title": "Dr. Seuss's Sleep Book",
+   "author": "Dr. Seuss",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Oh, the Places You'll Go!",
+   "author": "Dr. Seuss",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "The Sneetches and Other Stories",
+   "author": "Dr. Seuss",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Yertle the Turtle and Other Stories",
+   "author": "Dr. Seuss",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "Curious George Goes to a Chocolate Factory",
+   "author": "H. A. Rey",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 20,
+   "title": "The Couch Potato",
+   "author": "Jory John",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Pete Oswald"
+  },
+  {
+   "pos": 21,
+   "title": "If I Built a Car",
+   "author": "Chris Van Dusen",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 22,
+   "title": "If I Built a House",
+   "author": "Chris Van Dusen",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 23,
+   "title": "If I Built a School",
+   "author": "Chris Van Dusen",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 24,
+   "title": "You Are Special",
+   "author": "Max Lucado",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 25,
+   "title": "I Love Monkey",
+   "author": "",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "check": "I couldn't read the author — fix if needed"
+  },
+  {
+   "pos": 26,
+   "title": "The Biggest Kiss",
+   "author": "Joanna Walsh",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Judi Abbot"
+  },
+  {
+   "pos": 27,
+   "title": "The Great Eggscape!",
+   "author": "Jory John",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Pete Oswald"
+  },
+  {
+   "pos": 28,
+   "title": "How to Hide a Lion",
+   "author": "Helen Stephens",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 29,
+   "title": "The Squirrels Who Squabbled",
+   "author": "Rachel Bright",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Jim Field"
+  }
+ ]
+}

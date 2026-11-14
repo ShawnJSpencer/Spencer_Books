@@ -1,0 +1,229 @@
+{
+ "cube": "B-C3",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "The Winner's Walk",
+   "author": "Nancy Ruth Patterson",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ],
+   "check": "has a library sticker (J FIC Patterson) — untick if it's a library book"
+  },
+  {
+   "pos": 2,
+   "title": "Cutiecorns: Rainy Day Rescue",
+   "author": "Shannon Penney",
+   "series": "Cutiecorns",
+   "seriesNo": 3,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Cutiecorns: Carnival Chaos",
+   "author": "Shannon Penney",
+   "series": "Cutiecorns",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Tumble",
+   "author": "Celia C. Pérez",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Willow King",
+   "author": "Chris Platt",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "The Talented Clementine",
+   "author": "Sara Pennypacker",
+   "series": "Clementine",
+   "seriesNo": 2,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Humor"
+   ],
+   "notes": "Illustrated by Marla Frazee"
+  },
+  {
+   "pos": 7,
+   "title": "Better with Butter",
+   "author": "Victoria Piontek",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Wild Rescuers: Escape to the Mesa",
+   "author": "Stacy Plays",
+   "series": "Wild Rescuers",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Adventure"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Wild Rescuers: Expedition on the Tundra",
+   "author": "Stacy Plays",
+   "series": "Wild Rescuers",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Adventure"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Wild Rescuers: Sentinels in the Deep Ocean",
+   "author": "Stacy Plays",
+   "series": "Wild Rescuers",
+   "seriesNo": 4,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Adventure"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "How to Eat Fried Worms",
+   "author": "Thomas Rockwell",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Cookie Cutters & Sled Runners",
+   "author": "Natalie Rompella",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "A Dog's Porpoise",
+   "author": "Ross",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals"
+   ],
+   "check": "spine just says Ross — fix the author's name if needed"
+  },
+  {
+   "pos": 14,
+   "title": "Find Your Porpoise",
+   "author": "Ross",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "A to Z Mysteries: The White Wolf",
+   "author": "Ron Roy",
+   "series": "A to Z Mysteries",
+   "seriesNo": 23,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Mystery"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "ASPCA Kids Paw Pals: Chance's Choice",
+   "author": "",
+   "series": "ASPCA Kids: Paw Pals",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "Harry Potter and the Sorcerer's Stone (MinaLima Edition)",
+   "author": "J. K. Rowling",
+   "series": "Harry Potter",
+   "seriesNo": 1,
+   "ageMin": 9,
+   "ageMax": 14,
+   "genres": [
+    "Fantasy"
+   ],
+   "format": "Hardcover",
+   "notes": "Illustrated by MinaLima"
+  },
+  {
+   "pos": 18,
+   "title": "Princess Ponies: The Pumpkin Ghost",
+   "author": "Chloe Ryder",
+   "series": "Princess Ponies",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Horses",
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "Princess Ponies: A Dream Come True",
+   "author": "Chloe Ryder",
+   "series": "Princess Ponies",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Horses",
+    "Fantasy"
+   ]
+  }
+ ]
+}

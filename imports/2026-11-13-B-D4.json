@@ -1,0 +1,269 @@
+{
+ "cube": "B-D4",
+ "note": "Left to right (picture books).",
+ "books": [
+  {
+   "pos": 1,
+   "title": "The Color Monster: A Pop-Up Book of Feelings",
+   "author": "Anna Llenas",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Flower Fairies Magical Secret Garden",
+   "author": "Cicely Mary Barker",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Pop-up surprise (Warne)"
+  },
+  {
+   "pos": 3,
+   "title": "Fritz and the Beautiful Horses",
+   "author": "Jan Brett",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "The Way Home for Wolf",
+   "author": "Rachel Bright",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Jim Field"
+  },
+  {
+   "pos": 5,
+   "title": "The Holy Ghost Is Like a Blanket",
+   "author": "",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book",
+    "Religion"
+   ],
+   "check": "I couldn't read the author — fix if needed"
+  },
+  {
+   "pos": 6,
+   "title": "Egbert",
+   "author": "Hall",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Fiona, It's Bedtime",
+   "author": "Richard Cowdrey",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Uni the Unicorn and the Dream Come True",
+   "author": "Amy Krouse Rosenthal",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Brigette Barrager"
+  },
+  {
+   "pos": 9,
+   "title": "The Pout-Pout Fish, Far, Far from Home",
+   "author": "Deborah Diesen",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Dan Hanna"
+  },
+  {
+   "pos": 10,
+   "title": "Song of Night",
+   "author": "",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "check": "I couldn't read the author — fix if needed"
+  },
+  {
+   "pos": 11,
+   "title": "Dogs in Space: The Amazing True Story of Belka and Strelka",
+   "author": "Vix Southgate",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Deppe"
+  },
+  {
+   "pos": 12,
+   "title": "Wally Wants to Hug",
+   "author": "Barbara Joosse",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Jan Ashdown"
+  },
+  {
+   "pos": 13,
+   "title": "How Does the Holy Ghost Make Me Feel?",
+   "author": "Carnesecca",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book",
+    "Religion"
+   ],
+   "notes": "Illustrated by Xanthos"
+  },
+  {
+   "pos": 14,
+   "title": "Dinosaur Dream",
+   "author": "Dennis Nolan",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "Dragon Post",
+   "author": "Emma Yarlett",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Giraffe Problems",
+   "author": "Jory John",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Lane Smith"
+  },
+  {
+   "pos": 17,
+   "title": "A Unicorn Named Sparkle",
+   "author": "Amy Young",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Cozy",
+   "author": "Jan Brett",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "Hattie's Twirly Whirly Tail",
+   "author": "Wendy Ravenhill",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ],
+   "notes": "Illustrated by Lizzie Walkley"
+  },
+  {
+   "pos": 20,
+   "title": "The 101 Dalmatians",
+   "author": "Walt Disney",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 21,
+   "title": "Bruce's Big Move",
+   "author": "Ryan T. Higgins",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 22,
+   "title": "Lady and the Tramp",
+   "author": "Walt Disney",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 23,
+   "title": "The Bruce Swap",
+   "author": "Ryan T. Higgins",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 24,
+   "title": "What Puppies Teach Us",
+   "author": "Glenn Dromgoole",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  },
+  {
+   "pos": 25,
+   "title": "Paw Patrol: Pups Save a Train",
+   "author": "Nickelodeon",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book"
+   ]
+  }
+ ]
+}

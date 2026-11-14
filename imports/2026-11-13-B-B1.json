@@ -1,6 +1,6 @@
 {
  "cube": "B-B1",
- "note": "Left to right.",
+ "note": "Two layers: Nancy Drew 1–20 plus the books in front.",
  "books": [
   {
    "pos": 1,
@@ -47,6 +47,214 @@
    "author": "Carolyn Keene",
    "series": "Nancy Drew",
    "seriesNo": 4,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.05,
+   "title": "Nancy Drew: The Secret of Shadow Ranch",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 5,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.06,
+   "title": "Nancy Drew: The Secret of Red Gate Farm",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 6,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.07,
+   "title": "Nancy Drew: The Clue in the Diary",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 7,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.08,
+   "title": "Nancy Drew: Nancy's Mysterious Letter",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 8,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.09,
+   "title": "Nancy Drew: The Sign of the Twisted Candles",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 9,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.1,
+   "title": "Nancy Drew: Password to Larkspur Lane",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 10,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.11,
+   "title": "Nancy Drew: The Clue of the Broken Locket",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 11,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.12,
+   "title": "Nancy Drew: The Message in the Hollow Oak",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 12,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.13,
+   "title": "Nancy Drew: The Mystery of the Ivory Charm",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 13,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.14,
+   "title": "Nancy Drew: The Whispering Statue",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 14,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.15,
+   "title": "Nancy Drew: The Haunted Bridge",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 15,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.16,
+   "title": "Nancy Drew: The Clue of the Tapping Heels",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 16,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.17,
+   "title": "Nancy Drew: The Mystery of the Brass-Bound Trunk",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 17,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.18,
+   "title": "Nancy Drew: The Mystery of the Moss-Covered Mansion",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 18,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.19,
+   "title": "Nancy Drew: The Quest of the Missing Map",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 19,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4.2,
+   "title": "Nancy Drew: The Clue in the Jewel Box",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 20,
    "ageMin": 8,
    "ageMax": 12,
    "genres": [

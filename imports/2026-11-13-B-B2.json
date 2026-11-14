@@ -1,0 +1,357 @@
+{
+ "cube": "B-B2",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Free Rein: The Steeplechase Secret",
+   "author": "Lane",
+   "series": "Free Rein",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Horses"
+   ],
+   "check": "spine just says Lane — fix the author's name if needed"
+  },
+  {
+   "pos": 2,
+   "title": "The Eighty-Dollar Champion (Young Readers Edition)",
+   "author": "Elizabeth Letts",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Horses",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "The Lion, the Witch and the Wardrobe",
+   "author": "C. S. Lewis",
+   "series": "The Chronicles of Narnia",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Near and Deer",
+   "author": "Sylvia Liu",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ],
+   "check": "title read from the spine — confirm"
+  },
+  {
+   "pos": 5,
+   "title": "Rules",
+   "author": "Cynthia Lord",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Realistic fiction"
+   ],
+   "notes": "Literature Circle Edition"
+  },
+  {
+   "pos": 6,
+   "title": "Best Friend Next Door",
+   "author": "Carolyn Mackler",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Friendship"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Dragon Girls: Azmina the Gold Glitter Dragon",
+   "author": "Maddy Mara",
+   "series": "Dragon Girls",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Dragon Girls: Willa the Silver Glitter Dragon",
+   "author": "Maddy Mara",
+   "series": "Dragon Girls",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Dragon Girls: Naomi the Rainbow Glitter Dragon",
+   "author": "Maddy Mara",
+   "series": "Dragon Girls",
+   "seriesNo": 3,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Dragon Girls: Mei the Ruby Treasure Dragon",
+   "author": "Maddy Mara",
+   "series": "Dragon Girls",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "The Baby-Sitters Club: Jessi Ramsey, Pet-Sitter",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club",
+   "seriesNo": 22,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Friendship"
+   ],
+   "notes": "Original novel (not the graphic novel)"
+  },
+  {
+   "pos": 12,
+   "title": "Diary of a Pug: Pug Blasts Off",
+   "author": "Kyla May",
+   "series": "Diary of a Pug",
+   "seriesNo": 1,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Diary of a Pug: Pug's Sleepover",
+   "author": "Kyla May",
+   "series": "Diary of a Pug",
+   "seriesNo": 6,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Diary of a Pug: Pug's New Puppy",
+   "author": "Kyla May",
+   "series": "Diary of a Pug",
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "The Pony That Nobody Wanted",
+   "author": "Lurlene McDaniel",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Horses"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "A Horse for Mandy",
+   "author": "Lurlene McDaniel",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Horses"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "Judy Moody Was in a Mood",
+   "author": "Megan McDonald",
+   "series": "Judy Moody",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Humor"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Judy Moody Saves the World!",
+   "author": "Megan McDonald",
+   "series": "Judy Moody",
+   "seriesNo": 3,
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Humor"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "The Kingdom of Wrenly: The Lost Stone",
+   "author": "Jordan Quinn",
+   "series": "The Kingdom of Wrenly",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 20,
+   "title": "The Kingdom of Wrenly: The Scarlet Dragon",
+   "author": "Jordan Quinn",
+   "series": "The Kingdom of Wrenly",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 21,
+   "title": "The Kingdom of Wrenly: Sea Monster!",
+   "author": "Jordan Quinn",
+   "series": "The Kingdom of Wrenly",
+   "seriesNo": 3,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 22,
+   "title": "The Kingdom of Wrenly: The Witch's Curse",
+   "author": "Jordan Quinn",
+   "series": "The Kingdom of Wrenly",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 23,
+   "title": "The Kingdom of Wrenly: Adventures in Flatfrost",
+   "author": "Jordan Quinn",
+   "series": "The Kingdom of Wrenly",
+   "seriesNo": 5,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 24,
+   "title": "The Kingdom of Wrenly: Beneath the Stone Forest",
+   "author": "Jordan Quinn",
+   "series": "The Kingdom of Wrenly",
+   "seriesNo": 6,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 25,
+   "title": "The Kingdom of Wrenly: Let the Games Begin!",
+   "author": "Jordan Quinn",
+   "series": "The Kingdom of Wrenly",
+   "seriesNo": 7,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 26,
+   "title": "The Kingdom of Wrenly: The Secret World of Mermaids",
+   "author": "Jordan Quinn",
+   "series": "The Kingdom of Wrenly",
+   "seriesNo": 8,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 27,
+   "title": "The October Horses",
+   "author": "Genevieve McKay",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Horses"
+   ],
+   "notes": "Book one"
+  },
+  {
+   "pos": 28,
+   "title": "Facing the Fire",
+   "author": "Genevieve McKay",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Horses"
+   ],
+   "notes": "Book two"
+  },
+  {
+   "pos": 29,
+   "title": "Keeping Chilly",
+   "author": "Genevieve McKay",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Horses"
+   ],
+   "notes": "Book three"
+  },
+  {
+   "pos": 30,
+   "title": "Wish: Hedge Over Heels",
+   "author": "McMullen-Ciotti",
+   "series": "Wish",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  }
+ ]
+}

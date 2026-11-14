@@ -1,0 +1,557 @@
+{
+ "cube": "B-C1",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Shiloh",
+   "author": "Phyllis Reynolds Naylor",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Once Upon a Horse: The Flying Horse",
+   "author": "Nir",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses"
+   ],
+   "check": "spine just says Nir — confirm the title and author"
+  },
+  {
+   "pos": 3,
+   "title": "The Borrowers",
+   "author": "Mary Norton",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Classics"
+   ],
+   "check": "has a library sticker (J F NOR) — untick if it's a library book"
+  },
+  {
+   "pos": 4,
+   "title": "Wonderland",
+   "author": "Barbara O'Connor",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Pet Vet: Cranky Paws",
+   "author": "Darrel and Sally Odgers",
+   "series": "Pet Vet",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Pet Vet: The Mare's Tale",
+   "author": "Darrel and Sally Odgers",
+   "series": "Pet Vet",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Pet Vet: Motorbike Bob",
+   "author": "Darrel and Sally Odgers",
+   "series": "Pet Vet",
+   "seriesNo": 3,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Pet Vet: The Python Problem",
+   "author": "Darrel and Sally Odgers",
+   "series": "Pet Vet",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Pet Vet: The Kitten's Tale",
+   "author": "Darrel and Sally Odgers",
+   "series": "Pet Vet",
+   "seriesNo": 5,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Pet Vet: The Pup's Tale",
+   "author": "Darrel and Sally Odgers",
+   "series": "Pet Vet",
+   "seriesNo": 6,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Magic Tree House: Christmas in Camelot",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House: Merlin Missions",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Magic Tree House: Dinosaurs Before Dark",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Magic Tree House: The Knight at Dawn",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Magic Tree House: Mummies in the Morning",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 3,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "Magic Tree House: Pirates Past Noon",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Magic Tree House: Night of the Ninjas",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 5,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "Magic Tree House: Afternoon on the Amazon",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 6,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Magic Tree House: Sunset of the Sabertooth",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 7,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "Magic Tree House: Midnight on the Moon",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 8,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 20,
+   "title": "Magic Tree House: Dolphins at Daybreak",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 9,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 21,
+   "title": "Magic Tree House: Ghost Town at Sundown",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 10,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 22,
+   "title": "Magic Tree House: Lions at Lunchtime",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 11,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 23,
+   "title": "Magic Tree House: Polar Bears Past Bedtime",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 12,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 24,
+   "title": "Magic Tree House: Vacation Under the Volcano",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 13,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 25,
+   "title": "Magic Tree House: Day of the Dragon King",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 14,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 26,
+   "title": "Magic Tree House: Viking Ships at Sunrise",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 15,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 27,
+   "title": "Magic Tree House: Hour of the Olympics",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 16,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 28,
+   "title": "Magic Tree House: Tonight on the Titanic",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 17,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 29,
+   "title": "Magic Tree House: Buffalo Before Breakfast",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 18,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 30,
+   "title": "Magic Tree House: Tigers at Twilight",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 19,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 31,
+   "title": "Magic Tree House: Dingoes at Dinnertime",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 20,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 32,
+   "title": "Magic Tree House: Civil War on Sunday",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 21,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 33,
+   "title": "Magic Tree House: Revolutionary War on Wednesday",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 22,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 34,
+   "title": "Magic Tree House: Twister on Tuesday",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 23,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 35,
+   "title": "Magic Tree House: Earthquake in the Early Morning",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 24,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 36,
+   "title": "Magic Tree House: Stage Fright on a Summer Night",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 25,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 37,
+   "title": "Magic Tree House: Good Morning, Gorillas",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 26,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 38,
+   "title": "Magic Tree House: Thanksgiving on Thursday",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 27,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 39,
+   "title": "Magic Tree House: High Tide in Hawaii",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 28,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 40,
+   "title": "Magic Tree House: A Big Day for Baseball",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 29,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 41,
+   "title": "My Friend Flicka",
+   "author": "Mary O'Hara",
+   "ageMin": 10,
+   "ageMax": 14,
+   "genres": [
+    "Horses",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 42,
+   "title": "Magic Tree House: Blizzard of the Blue Moon",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 36,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 43,
+   "title": "Magic Tree House: Stallion by Starlight",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House",
+   "seriesNo": 49,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Adventure",
+    "Animals"
+   ],
+   "check": "has a library barcode label — untick if it's a library book"
+  }
+ ]
+}

@@ -1,0 +1,267 @@
+{
+ "cube": "B-C4",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "The Wednesday Wars",
+   "author": "Gary D. Schmidt",
+   "ageMin": 10,
+   "ageMax": 14,
+   "genres": [
+    "Historical fiction"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Waddle I Do without You?",
+   "author": "Michelle Schusterman",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "My Otter Half",
+   "author": "Michelle Schusterman",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Some Bunny to Love",
+   "author": "Michelle Schusterman",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Mermaids to the Rescue: Cascadia Saves the Day",
+   "author": "Lisa Ann Scott",
+   "series": "Mermaids to the Rescue",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "The Real Book About Horses",
+   "author": "Jay Sherman",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "The White Stallion",
+   "author": "Elizabeth Shub",
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Horses",
+    "Historical fiction"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "JoJo & BowBow: The Posh Puppy Pageant",
+   "author": "JoJo Siwa",
+   "series": "JoJo & BowBow",
+   "seriesNo": 3,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Diary of an Ice Princess: Snow Place Like Home",
+   "author": "Christina Soontornvat",
+   "series": "Diary of an Ice Princess",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Diary of an Ice Princess: Frost Friends Forever",
+   "author": "Christina Soontornvat",
+   "series": "Diary of an Ice Princess",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Diary of an Ice Princess: On Thin Ice",
+   "author": "Christina Soontornvat",
+   "series": "Diary of an Ice Princess",
+   "seriesNo": 3,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Diary of an Ice Princess: The Big Freeze",
+   "author": "Christina Soontornvat",
+   "series": "Diary of an Ice Princess",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "The Last Mapmaker",
+   "author": "Christina Soontornvat",
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Fantasy",
+    "Adventure"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Who Was Annie Oakley?",
+   "author": "Stephanie Spinner",
+   "series": "Who Was?",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Biography",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "Star Wars Forces of Destiny: Daring Adventures: Volume 1",
+   "author": "Lucasfilm",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Science fiction"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Help! I'm Trapped in Obedience School",
+   "author": "Todd Strasser",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "Help! I'm Trapped in Obedience School Again",
+   "author": "Todd Strasser",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Wings of Fire: The Winglets Quartet",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ],
+   "notes": "The first four Winglets stories"
+  },
+  {
+   "pos": 19,
+   "title": "Wings of Fire: The Dragonet Prophecy",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 20,
+   "title": "Wings of Fire: The Hidden Kingdom",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 21,
+   "title": "Wings of Fire: The Dark Secret",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "seriesNo": 4,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 22,
+   "title": "Wings of Fire: The Brightest Night",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "seriesNo": 5,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 23,
+   "title": "Wings of Fire: Moon Rising",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire",
+   "seriesNo": 6,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  }
+ ]
+}

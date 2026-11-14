@@ -1,0 +1,227 @@
+{
+ "cube": "B-C2",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Far-Fetched",
+   "author": "Lisa Papademetriou",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Junie B. Jones and a Little Monkey Business",
+   "author": "Barbara Park",
+   "series": "Junie B. Jones",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Humor",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Junie B. Jones Smells Something Fishy",
+   "author": "Barbara Park",
+   "series": "Junie B. Jones",
+   "seriesNo": 12,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Humor",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Junie B. Jones Has a Peep in Her Pocket",
+   "author": "Barbara Park",
+   "series": "Junie B. Jones",
+   "seriesNo": 15,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Humor",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Junie B. Jones Is (Almost) a Flower Girl",
+   "author": "Barbara Park",
+   "series": "Junie B. Jones",
+   "seriesNo": 13,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Humor",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Junie B., First Grader: Cheater Pants",
+   "author": "Barbara Park",
+   "series": "Junie B. Jones",
+   "seriesNo": 21,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Humor",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Junie B. Jones Is a Party Animal",
+   "author": "Barbara Park",
+   "series": "Junie B. Jones",
+   "seriesNo": 10,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Humor",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "A Horse Named Sky",
+   "author": "Rosanne Parry",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses",
+    "Historical fiction"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Mandy in the Middle",
+   "author": "Johansson",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Historical fiction"
+   ],
+   "check": "has a library sticker (F JOH) — untick if it's a library book"
+  },
+  {
+   "pos": 10,
+   "title": "Dog Diaries: Ruffing It",
+   "author": "James Patterson",
+   "series": "Dog Diaries",
+   "seriesNo": 5,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Dog Diaries: Happy Howlidays!",
+   "author": "James Patterson",
+   "series": "Dog Diaries",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Dog Diaries",
+   "author": "James Patterson",
+   "series": "Dog Diaries",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Dog Diaries: Curse of the Mystery Mutt",
+   "author": "James Patterson",
+   "series": "Dog Diaries",
+   "seriesNo": 4,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Katt Loves Dogg",
+   "author": "James Patterson",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "Treasure Hunters",
+   "author": "James Patterson",
+   "series": "Treasure Hunters",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Adventure"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Treasure Hunters: Danger Down the Nile",
+   "author": "James Patterson",
+   "series": "Treasure Hunters",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Adventure"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "Treasure Hunters: Secret of the Forbidden City",
+   "author": "James Patterson",
+   "series": "Treasure Hunters",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Adventure"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Treasure Hunters: Peril at the Top of the World",
+   "author": "James Patterson",
+   "series": "Treasure Hunters",
+   "seriesNo": 4,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Adventure"
+   ]
+  }
+ ]
+}
