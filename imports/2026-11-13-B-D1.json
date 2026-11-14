@@ -118,8 +118,7 @@
    "ageMax": 10,
    "genres": [
     "Horses"
-   ],
-   "check": "may have a library sticker — untick if it's a library book"
+   ]
   },
   {
    "pos": 11,
@@ -225,5 +224,6 @@
     "Unicorns"
    ]
   }
- ]
+ ],
+ "rev": 2
 }

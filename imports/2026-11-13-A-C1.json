@@ -24,8 +24,7 @@
    "genres": [
     "Animals",
     "Nonfiction"
-   ],
-   "check": "has a library sticker — untick if it's a library book; author may differ"
+   ]
   },
   {
    "pos": 3,
@@ -325,5 +324,6 @@
     "Nonfiction"
    ]
   }
- ]
+ ],
+ "rev": 2
 }

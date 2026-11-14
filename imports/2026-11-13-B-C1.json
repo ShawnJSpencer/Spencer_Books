@@ -33,8 +33,7 @@
    "genres": [
     "Fantasy",
     "Classics"
-   ],
-   "check": "has a library sticker (J F NOR) — untick if it's a library book"
+   ]
   },
   {
    "pos": 4,
@@ -550,8 +549,8 @@
    "genres": [
     "Adventure",
     "Animals"
-   ],
-   "check": "has a library barcode label — untick if it's a library book"
+   ]
   }
- ]
+ ],
+ "rev": 2
 }

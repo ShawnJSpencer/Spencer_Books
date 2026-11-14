@@ -10,8 +10,7 @@
    "ageMax": 12,
    "genres": [
     "Realistic fiction"
-   ],
-   "check": "has a library sticker (J FIC Patterson) — untick if it's a library book"
+   ]
   },
   {
    "pos": 2,
@@ -225,5 +224,6 @@
     "Fantasy"
    ]
   }
- ]
+ ],
+ "rev": 2
 }

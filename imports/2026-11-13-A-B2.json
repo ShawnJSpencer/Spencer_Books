@@ -119,8 +119,7 @@
    "ageMax": 10,
    "genres": [
     "Animals"
-   ],
-   "check": "has a library sticker (F BAG) — untick if it's a library book"
+   ]
   },
   {
    "pos": 11,
@@ -195,5 +194,5 @@
    ]
   }
  ],
- "rev": 2
+ "rev": 3
 }

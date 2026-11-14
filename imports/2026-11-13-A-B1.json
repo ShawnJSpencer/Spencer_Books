@@ -10,8 +10,7 @@
    "ageMax": 14,
    "genres": [
     "Realistic fiction"
-   ],
-   "check": "has a library sticker (Z TEEN ACA) — untick if it's a library book"
+   ]
   },
   {
    "pos": 2,
@@ -152,5 +151,5 @@
    ]
   }
  ],
- "rev": 2
+ "rev": 3
 }

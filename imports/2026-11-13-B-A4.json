@@ -146,8 +146,7 @@
    "genres": [
     "Fantasy",
     "Animals"
-   ],
-   "check": "title partly hidden by a library sticker (J F HUN) — confirm which Warriors book, and untick if it's a library book"
+   ]
   },
   {
    "pos": 14,
@@ -157,8 +156,7 @@
    "ageMax": 9,
    "genres": [
     "Dogs"
-   ],
-   "check": "has a library sticker (J F IMP) — untick if it's a library book"
+   ]
   },
   {
    "pos": 15,
@@ -182,5 +180,6 @@
     "Adventure"
    ]
   }
- ]
+ ],
+ "rev": 2
 }

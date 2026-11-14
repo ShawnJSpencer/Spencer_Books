@@ -272,8 +272,7 @@
    "ageMax": 12,
    "genres": [
     "Fantasy"
-   ],
-   "check": "has a library sticker (J F KAG) — untick if it's a library book"
+   ]
   },
   {
    "pos": 6,
@@ -420,5 +419,6 @@
     "Realistic fiction"
    ]
   }
- ]
+ ],
+ "rev": 2
 }
