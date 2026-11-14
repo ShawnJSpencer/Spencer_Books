@@ -100,15 +100,31 @@ const DB = {
       if (s?.books) { s.books.forEach(b => this.books.set(b.id, b)); this.meta = { ...DEFAULT_META(), ...s.meta }; }
     } catch {}
   },
-  persist() { try { localStorage.setItem('sb-data', JSON.stringify({ meta: this.meta, books: [...this.books.values()] })); } catch { toast('This device’s storage is full — turn on Sync in Settings'); } },
+  // Quick-start copy: the small copy (localStorage, ~5 MB limit on iPhone) leaves out your own cover photos;
+  // the full copy, photos included, goes to IndexedDB (much roomier) so they still show offline.
+  persist() {
+    const all = [...this.books.values()];
+    clearTimeout(this._idbT);
+    this._idbT = setTimeout(() => idb.set('covers', Object.fromEntries(all.filter(b => b.cover?.startsWith('data:')).map(b => [b.id, b.cover]))).catch(() => {}), 400);
+    const slim = all.map(b => b.cover?.startsWith('data:') ? { ...b, cover: '', coverLocal: true } : b);
+    try { localStorage.setItem('sb-data', JSON.stringify({ meta: this.meta, books: slim })); } catch { toast('This device’s storage is full — turn on Sync in Settings'); }
+  },
+  async restoreCovers() {
+    const c = await idb.get('covers').catch(() => null); if (!c) return;
+    let n = 0; for (const b of this.books.values()) if (b.coverLocal && c[b.id]) { b.cover = c[b.id]; delete b.coverLocal; n++; }
+    if (n) render();
+  },
   path(sub) { return `libraries/${CFG.library || 'spencer'}` + (sub ? '/' + sub : ''); },
   async save(b, quiet) {
+    if (b.coverLocal && !b.cover) { const c = (await idb.get('covers').catch(() => null))?.[b.id]; if (c) b.cover = c; }
+    delete b.coverLocal;
     b.updatedAt = Date.now(); b.updatedBy = this.user?.email || 'this device';
     this.books.set(b.id, b); this.persist(); if (!quiet) render();
     if (this.mode === 'cloud') { const { doc, setDoc } = this.fb; await setDoc(doc(this.fb.db, this.path('books'), b.id), b).catch(syncErr); }
   },
   async saveMany(list) {
     const now = Date.now();
+    if (list.some(b => b.coverLocal)) { const c = (await idb.get('covers').catch(() => null)) || {}; list.forEach(b => { if (b.coverLocal && !b.cover && c[b.id]) b.cover = c[b.id]; delete b.coverLocal; }); }
     list.forEach(b => { b.updatedAt = now; b.updatedBy = this.user?.email || 'this device'; this.books.set(b.id, b); });
     this.persist(); render();
     if (this.mode === 'cloud') {
@@ -561,8 +577,8 @@ async function coverCandidates(b) {
   ]);
   return out.slice(0, 30);
 }
-function shrinkToJpeg(src, max = 480) {
-  return new Promise((res, rej) => { const im = new Image(); im.crossOrigin = 'anonymous'; im.onload = () => { try { res(shrink(im, max, .8)); } catch (e) { rej(e); } }; im.onerror = rej; im.src = src; });
+function shrinkToJpeg(src, max = 360) {
+  return new Promise((res, rej) => { const im = new Image(); im.crossOrigin = 'anonymous'; im.onload = () => { try { res(shrink(im, max, .72)); } catch (e) { rej(e); } }; im.onerror = rej; im.src = src; });
 }
 function shrink(im, max, q) {
   const k = Math.min(1, max / Math.max(im.naturalWidth, im.naturalHeight)), c = document.createElement('canvas');
@@ -597,14 +613,14 @@ function coverSheet(id, back) {
     $$('.covpick', sh).forEach(el => el.onclick = async () => { await setCover(id, cands[+el.dataset.i].url); done(); });
     $('#cvCam', sh).onchange = async e => {
       const f = e.target.files?.[0]; if (!f) return;
-      const u = URL.createObjectURL(f); try { await setCover(id, await shrinkToJpeg(u, 520), 'Your photo is the cover now'); done(); } catch { toast('Couldn’t read that photo'); } finally { URL.revokeObjectURL(u); }
+      const u = URL.createObjectURL(f); try { await setCover(id, await shrinkToJpeg(u, 360), 'Your photo is the cover now'); done(); } catch { toast('Couldn’t read that photo'); } finally { URL.revokeObjectURL(u); }
     };
     $('#cvPaste', sh).onclick = async () => {
       try {
         if (navigator.clipboard?.read) {
           for (const item of await navigator.clipboard.read()) {
             const type = item.types.find(t => t.startsWith('image/'));
-            if (type) { const blob = await item.getType(type), u = URL.createObjectURL(blob); try { await setCover(id, await shrinkToJpeg(u, 520), 'Pasted cover saved'); } finally { URL.revokeObjectURL(u); } return done(); }
+            if (type) { const blob = await item.getType(type), u = URL.createObjectURL(blob); try { await setCover(id, await shrinkToJpeg(u, 360), 'Pasted cover saved'); } finally { URL.revokeObjectURL(u); } return done(); }
             if (item.types.includes('text/plain')) { const t = (await (await item.getType('text/plain')).text()).trim(); if (/^https?:\/\//.test(t)) { await useLink(t); return; } }
           }
         } else { const t = (await navigator.clipboard.readText()).trim(); if (/^https?:\/\//.test(t)) return useLink(t); }
@@ -613,7 +629,7 @@ function coverSheet(id, back) {
     };
     const useLink = async u => {
       // keep a small copy if the site allows it, otherwise just the link
-      let v = u; try { v = await shrinkToJpeg(u, 520); } catch {}
+      let v = u; try { v = await shrinkToJpeg(u, 360); } catch {}
       await setCover(id, v); done();
     };
     $('#cvForm', sh).onsubmit = e => { e.preventDefault(); const u = $('#cvUrl', sh).value.trim(); if (/^https?:\/\//.test(u)) useLink(u); else toast('That doesn’t look like a link'); };
@@ -1350,6 +1366,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet()
 /* ───────── start ───────── */
 DB.loadLocal();
 render();
+DB.restoreCovers();
 initCloud();
 checkImports();
 document.addEventListener('visibilitychange', () => { if (!document.hidden) checkImports(); });
