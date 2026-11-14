@@ -1,0 +1,329 @@
+{
+ "cube": "A-C1",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Flunked",
+   "author": "Jen Calonita",
+   "series": "Fairy Tale Reform School",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Fairy tales"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "National Geographic Kids Chapters: Dog Finds Lost Dolphins!",
+   "author": "Elizabeth Carney",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ],
+   "check": "has a library sticker — untick if it's a library book; author may differ"
+  },
+  {
+   "pos": 3,
+   "title": "Stella: Ranch Patrol",
+   "author": "W. Bruce Cameron",
+   "series": "Dogs with a Purpose",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Zeus: Water Rescue",
+   "author": "W. Bruce Cameron",
+   "series": "Dogs with a Purpose",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Ellie's Story",
+   "author": "W. Bruce Cameron",
+   "series": "A Dog's Purpose Puppy Tales",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Lacey's Story",
+   "author": "W. Bruce Cameron",
+   "series": "A Dog's Purpose Puppy Tales",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Cooper's Story",
+   "author": "W. Bruce Cameron",
+   "series": "A Dog's Purpose Puppy Tales",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Lily to the Rescue: The Misfit Donkey",
+   "author": "W. Bruce Cameron",
+   "series": "Lily to the Rescue",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Molly's Story",
+   "author": "W. Bruce Cameron",
+   "series": "A Dog's Purpose Puppy Tales",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Lily to the Rescue",
+   "author": "W. Bruce Cameron",
+   "series": "Lily to the Rescue",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Lily to the Rescue: Two Little Piggies",
+   "author": "W. Bruce Cameron",
+   "series": "Lily to the Rescue",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Ripley: Fire Station Five",
+   "author": "W. Bruce Cameron",
+   "series": "Dogs with a Purpose",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Lily to the Rescue: The Not-So-Stinky Skunk",
+   "author": "W. Bruce Cameron",
+   "series": "Lily to the Rescue",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Lily to the Rescue: Lost Little Leopard",
+   "author": "W. Bruce Cameron",
+   "series": "Lily to the Rescue",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "Lily to the Rescue: Foxes in a Fix",
+   "author": "W. Bruce Cameron",
+   "series": "Lily to the Rescue",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Lily to the Rescue: Dog Dog Goose",
+   "author": "W. Bruce Cameron",
+   "series": "Lily to the Rescue",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "Star Friends: Mirror Magic",
+   "author": "Linda Chapman",
+   "series": "Star Friends",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Star Friends: Wish Trap",
+   "author": "Linda Chapman",
+   "series": "Star Friends",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "Star Friends: Secret Spell",
+   "author": "Linda Chapman",
+   "series": "Star Friends",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 20,
+   "title": "Star Friends: Dark Tricks",
+   "author": "Linda Chapman",
+   "series": "Star Friends",
+   "seriesNo": 4,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 21,
+   "title": "Star Friends: Night Shadows",
+   "author": "Linda Chapman",
+   "series": "Star Friends",
+   "seriesNo": 5,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 22,
+   "title": "Star Friends: Poison Potion",
+   "author": "Linda Chapman",
+   "series": "Star Friends",
+   "seriesNo": 6,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 23,
+   "title": "Star Friends: Moonlight Mischief",
+   "author": "Linda Chapman",
+   "series": "Star Friends",
+   "seriesNo": 7,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 24,
+   "title": "Star Friends: Hidden Charm",
+   "author": "Linda Chapman",
+   "series": "Star Friends",
+   "seriesNo": 8,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 25,
+   "title": "Narwhal: Unicorn of the Sea",
+   "author": "Ben Clanton",
+   "series": "Narwhal and Jelly",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Graphic novel",
+    "Humor"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 26,
+   "title": "Super Narwhal and Jelly Jolt",
+   "author": "Ben Clanton",
+   "series": "Narwhal and Jelly",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Graphic novel",
+    "Humor"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 27,
+   "title": "The Cutest Kittens Ever!",
+   "author": "Anna Claybourne",
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ]
+  }
+ ]
+}

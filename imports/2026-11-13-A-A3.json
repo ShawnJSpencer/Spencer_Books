@@ -1,0 +1,226 @@
+{
+ "cube": "A-A3",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Dragon Kingdom of Wrenly: The First Anthology",
+   "author": "Jordan Quinn",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Graphic novel",
+    "Fantasy"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 2,
+   "title": "Lo & Behold",
+   "author": "Wendy Mass",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "With Gabi Mendez"
+  },
+  {
+   "pos": 3,
+   "title": "Crush",
+   "author": "Kayla Miller",
+   "series": "Olive",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel"
+   ],
+   "format": "Graphic novel",
+   "check": "spine hard to read — I think it's Kayla Miller's Crush; untick if not"
+  },
+  {
+   "pos": 4,
+   "title": "Remarkably Ruby",
+   "author": "Terri Libenson",
+   "series": "Emmie & Friends",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 5,
+   "title": "Magic Tree House: The Knight at Dawn",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House Graphic Novels",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Graphic novel",
+    "Adventure"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Jenny Laird"
+  },
+  {
+   "pos": 6,
+   "title": "Magic Tree House: Pirates Past Noon",
+   "author": "Mary Pope Osborne",
+   "series": "Magic Tree House Graphic Novels",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Graphic novel",
+    "Adventure"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Jenny Laird"
+  },
+  {
+   "pos": 7,
+   "title": "Dog Man: Brawl of the Wild",
+   "author": "Dav Pilkey",
+   "series": "Dog Man",
+   "seriesNo": 6,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel",
+    "Humor"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 8,
+   "title": "Dog Man: Grime and Punishment",
+   "author": "Dav Pilkey",
+   "series": "Dog Man",
+   "seriesNo": 9,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel",
+    "Humor"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 9,
+   "title": "Dog Man: A Tale of Two Kitties",
+   "author": "Dav Pilkey",
+   "series": "Dog Man",
+   "seriesNo": 3,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel",
+    "Humor"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 10,
+   "title": "Dog Man: Twenty Thousand Fleas Under the Sea",
+   "author": "Dav Pilkey",
+   "series": "Dog Man",
+   "seriesNo": 11,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel",
+    "Humor"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 11,
+   "title": "Dog Man: For Whom the Ball Rolls",
+   "author": "Dav Pilkey",
+   "series": "Dog Man",
+   "seriesNo": 7,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel",
+    "Humor"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 12,
+   "title": "Dog Man and Cat Kid",
+   "author": "Dav Pilkey",
+   "series": "Dog Man",
+   "seriesNo": 4,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel",
+    "Humor"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 13,
+   "title": "Dog Man Unleashed",
+   "author": "Dav Pilkey",
+   "series": "Dog Man",
+   "seriesNo": 2,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel",
+    "Humor"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 14,
+   "title": "Dog Man: Mothering Heights",
+   "author": "Dav Pilkey",
+   "series": "Dog Man",
+   "seriesNo": 10,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel",
+    "Humor"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 15,
+   "title": "Dog Man: Fetch-22",
+   "author": "Dav Pilkey",
+   "series": "Dog Man",
+   "seriesNo": 8,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel",
+    "Humor"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 16,
+   "title": "Cat Kid Comic Club",
+   "author": "Dav Pilkey",
+   "series": "Cat Kid Comic Club",
+   "seriesNo": 1,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel",
+    "Humor"
+   ],
+   "format": "Graphic novel"
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "cube": "B-B1",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Nancy Drew: The Secret of the Old Clock",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Nancy Drew: The Hidden Staircase",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Nancy Drew: The Bungalow Mystery",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Nancy Drew: The Mystery at Lilac Inn",
+   "author": "Carolyn Keene",
+   "series": "Nancy Drew",
+   "seriesNo": 4,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Storm Dragons: Lightningborn",
+   "author": "Julie Kagawa",
+   "series": "Storm Dragons",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ],
+   "check": "has a library sticker (J F KAG) — untick if it's a library book"
+  },
+  {
+   "pos": 6,
+   "title": "The Tail of Emily Windsnap",
+   "author": "Liz Kessler",
+   "series": "Emily Windsnap",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Mermaids"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Emily Windsnap and the Monster from the Deep",
+   "author": "Liz Kessler",
+   "series": "Emily Windsnap",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Mermaids"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Emily Windsnap and the Castle in the Mist",
+   "author": "Liz Kessler",
+   "series": "Emily Windsnap",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Mermaids"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Emily Windsnap and the Siren's Secret",
+   "author": "Liz Kessler",
+   "series": "Emily Windsnap",
+   "seriesNo": 4,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Mermaids"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Emily Windsnap and the Land of the Midnight Sun",
+   "author": "Liz Kessler",
+   "series": "Emily Windsnap",
+   "seriesNo": 5,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Mermaids"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Emily Windsnap and the Ship of Lost Souls",
+   "author": "Liz Kessler",
+   "series": "Emily Windsnap",
+   "seriesNo": 6,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Mermaids"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Radio Fifth Grade",
+   "author": "Gordon Korman",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Swindle",
+   "author": "Gordon Korman",
+   "series": "Swindle",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Adventure",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Zoobreak",
+   "author": "Gordon Korman",
+   "series": "Swindle",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Adventure",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "Ace: The Very Important Pig",
+   "author": "Dick King-Smith",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Faker",
+   "author": "Gordon Korman",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "Restart",
+   "author": "Gordon Korman",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ]
+  }
+ ]
+}

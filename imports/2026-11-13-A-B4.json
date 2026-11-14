@@ -1,0 +1,225 @@
+{
+ "cube": "A-B4",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Lucy's Winter Rescue",
+   "author": "Anne Booth",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Lucy's Search for Little Star",
+   "author": "Anne Booth",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Lucy's Magic Snow Globe",
+   "author": "Anne Booth",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals",
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "The War That Saved My Life",
+   "author": "Kimberly Brubaker Bradley",
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Historical fiction"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Fat Chance",
+   "author": "Betty Briggs",
+   "series": "Pony Tales",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Horses"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Image of Deception",
+   "author": "Betty Briggs",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Horses"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "The Wild Robot",
+   "author": "Peter Brown",
+   "series": "The Wild Robot",
+   "seriesNo": 1,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Science fiction",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Bad Kitty vs. Uncle Murray",
+   "author": "Nick Bruel",
+   "series": "Bad Kitty",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Humor",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Bad Kitty: Supercat",
+   "author": "Nick Bruel",
+   "series": "Bad Kitty",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Humor",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Bad Kitty Gets a Bath",
+   "author": "Nick Bruel",
+   "series": "Bad Kitty",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Humor",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Bad Kitty: School Daze",
+   "author": "Nick Bruel",
+   "series": "Bad Kitty",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Humor",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Bad Kitty Meets the Baby",
+   "author": "Nick Bruel",
+   "series": "Bad Kitty",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Humor",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Bad Kitty for President",
+   "author": "Nick Bruel",
+   "series": "Bad Kitty",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Humor",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Bad Kitty: Drawn to Trouble",
+   "author": "Nick Bruel",
+   "series": "Bad Kitty",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Humor",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "Happy Birthday, Bad Kitty",
+   "author": "Nick Bruel",
+   "series": "Bad Kitty",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Humor",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "The Saddle Club: Horse Crazy",
+   "author": "Bonnie Bryant",
+   "series": "The Saddle Club",
+   "seriesNo": 1,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Horses"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "The Princess Swap: Cinderella and the Beast / Beauty and the Glass Slipper",
+   "author": "Kim Bussing",
+   "series": "The Princess Swap",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Fantasy",
+    "Fairy tales"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "The Princess Swap: Rapunzel and the Sea Witch / The Little Mermaid and the Tower",
+   "author": "Kim Bussing",
+   "series": "The Princess Swap",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Fantasy",
+    "Fairy tales"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "The Princess Swap: Snow White and the Dragon / Sleeping Beauty and the Seven Dwarfs",
+   "author": "Kim Bussing",
+   "series": "The Princess Swap",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Fantasy",
+    "Fairy tales"
+   ]
+  }
+ ]
+}

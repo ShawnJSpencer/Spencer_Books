@@ -1,0 +1,85 @@
+{
+ "cube": "A-D4",
+ "note": "Left to right (storybook collections).",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Disney Pixar Storybook Collection",
+   "author": "Disney",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book",
+    "Collection"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Amelia Bedelia Storybook Favorites",
+   "author": "Peggy Parish",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book",
+    "Collection"
+   ],
+   "notes": "With Lynn Sweat"
+  },
+  {
+   "pos": 3,
+   "title": "Fancy Nancy Storybook Favorites",
+   "author": "Jane O'Connor",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book",
+    "Collection"
+   ],
+   "notes": "Illustrated by Robin Preiss Glasser"
+  },
+  {
+   "pos": 4,
+   "title": "Pete the Cat Storybook Favorites",
+   "author": "James Dean",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book",
+    "Collection"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "The Adventures of Rainbow Fish",
+   "author": "Marcus Pfister",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book",
+    "Collection"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Eric Carle Classics",
+   "author": "Eric Carle",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book",
+    "Collection"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "The Roald Dahl Treasury",
+   "author": "Roald Dahl",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Picture book",
+    "Collection"
+   ]
+  }
+ ]
+}

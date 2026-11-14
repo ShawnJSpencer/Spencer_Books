@@ -1,0 +1,148 @@
+{
+ "cube": "A-A4",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Captain Underpants and the Terrifying Return of Tippy Tinkletrousers",
+   "author": "Dav Pilkey",
+   "series": "Captain Underpants",
+   "seriesNo": 9,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Humor"
+   ],
+   "format": ""
+  },
+  {
+   "pos": 2,
+   "title": "Peanuts: The Gang's All Here!",
+   "author": "Charles M. Schulz",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Comics",
+    "Humor"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 3,
+   "title": "Nat for Nothing",
+   "author": "Maria Scrivan",
+   "series": "Nat Enough",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 4,
+   "title": "Unicorn on a Roll",
+   "author": "Dana Simpson",
+   "series": "Phoebe and Her Unicorn",
+   "seriesNo": 2,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Graphic novel",
+    "Humor",
+    "Fantasy"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 5,
+   "title": "The Unicorn Whisperer",
+   "author": "Dana Simpson",
+   "series": "Phoebe and Her Unicorn",
+   "seriesNo": 10,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Graphic novel",
+    "Humor",
+    "Fantasy"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 6,
+   "title": "Wings of Fire: The Lost Heir",
+   "author": "Tui T. Sutherland",
+   "series": "Wings of Fire Graphic Novels",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Fantasy"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 7,
+   "title": "Parachute Kids",
+   "author": "Betty C. Tang",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 8,
+   "title": "Guts",
+   "author": "Raina Telgemeier",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Memoir"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 9,
+   "title": "Smile",
+   "author": "Raina Telgemeier",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Memoir"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 10,
+   "title": "Smaller Sister",
+   "author": "Maggie Edkins Willis",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Family"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 11,
+   "title": "The Tryout",
+   "author": "Christina Soontornvat",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Memoir"
+   ],
+   "format": "Graphic novel",
+   "notes": "Illustrated by Joanna Cacao"
+  }
+ ]
+}

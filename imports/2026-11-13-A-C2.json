@@ -1,0 +1,381 @@
+{
+ "cube": "A-C2",
+ "note": "Two layers: the three Chris Colfer books in front, the rest behind them.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "A Tale of Sorcery...",
+   "author": "Chris Colfer",
+   "series": "A Tale of Magic",
+   "seriesNo": 3,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "A Tale of Magic...",
+   "author": "Chris Colfer",
+   "series": "A Tale of Magic",
+   "seriesNo": 1,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "A Tale of Witchcraft...",
+   "author": "Chris Colfer",
+   "series": "A Tale of Magic",
+   "seriesNo": 2,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Ramona and Her Mother",
+   "author": "Beverly Cleary",
+   "series": "Ramona",
+   "seriesNo": 5,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Muggie Maggie",
+   "author": "Beverly Cleary",
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Henry and the Clubhouse",
+   "author": "Beverly Cleary",
+   "series": "Henry Huggins",
+   "seriesNo": 5,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Ralph S. Mouse",
+   "author": "Beverly Cleary",
+   "series": "Ralph S. Mouse",
+   "seriesNo": 3,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Ramona Forever",
+   "author": "Beverly Cleary",
+   "series": "Ramona",
+   "seriesNo": 7,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Ramona the Pest",
+   "author": "Beverly Cleary",
+   "series": "Ramona",
+   "seriesNo": 2,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Ramona and Her Father",
+   "author": "Beverly Cleary",
+   "series": "Ramona",
+   "seriesNo": 4,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Ramona's World",
+   "author": "Beverly Cleary",
+   "series": "Ramona",
+   "seriesNo": 8,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Ribsy",
+   "author": "Beverly Cleary",
+   "series": "Henry Huggins",
+   "seriesNo": 6,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Henry Huggins",
+   "author": "Beverly Cleary",
+   "series": "Henry Huggins",
+   "seriesNo": 1,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Henry and Ribsy",
+   "author": "Beverly Cleary",
+   "series": "Henry Huggins",
+   "seriesNo": 3,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "Henry and Beezus",
+   "author": "Beverly Cleary",
+   "series": "Henry Huggins",
+   "seriesNo": 2,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Henry and the Paper Route",
+   "author": "Beverly Cleary",
+   "series": "Henry Huggins",
+   "seriesNo": 4,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "Beezus and Ramona",
+   "author": "Beverly Cleary",
+   "series": "Ramona",
+   "seriesNo": 1,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Ramona the Brave",
+   "author": "Beverly Cleary",
+   "series": "Ramona",
+   "seriesNo": 3,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "Ramona Quimby, Age 8",
+   "author": "Beverly Cleary",
+   "series": "Ramona",
+   "seriesNo": 6,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 20,
+   "title": "The Mouse and the Motorcycle",
+   "author": "Beverly Cleary",
+   "series": "Ralph S. Mouse",
+   "seriesNo": 1,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 21,
+   "title": "The Report Card",
+   "author": "Andrew Clements",
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 22,
+   "title": "Zoe's Rescue Zoo: The Sleepy Snowy Owl",
+   "author": "Amelia Cobb",
+   "series": "Zoe's Rescue Zoo",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 23,
+   "title": "Saving Winslow",
+   "author": "Sharon Creech",
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Animals",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 24,
+   "title": "Sisters Ever After: Thornwood",
+   "author": "Leah Cypess",
+   "series": "Sisters Ever After",
+   "seriesNo": 1,
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Fantasy",
+    "Fairy tales"
+   ]
+  },
+  {
+   "pos": 25,
+   "title": "Sisters Ever After: Glass Slippers",
+   "author": "Leah Cypess",
+   "series": "Sisters Ever After",
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Fantasy",
+    "Fairy tales"
+   ]
+  },
+  {
+   "pos": 26,
+   "title": "Sisters Ever After: The Last Rose",
+   "author": "Leah Cypess",
+   "series": "Sisters Ever After",
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Fantasy",
+    "Fairy tales"
+   ]
+  },
+  {
+   "pos": 27,
+   "title": "Sisters Ever After: The Piper's Promise",
+   "author": "Leah Cypess",
+   "series": "Sisters Ever After",
+   "ageMin": 7,
+   "ageMax": 11,
+   "genres": [
+    "Fantasy",
+    "Fairy tales"
+   ]
+  },
+  {
+   "pos": 28,
+   "title": "Moonlight Riders: Fire Horse",
+   "author": "Linda Chapman",
+   "series": "Moonlight Riders",
+   "seriesNo": 1,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Horses",
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 29,
+   "title": "Moonlight Riders: Petal Pony",
+   "author": "Linda Chapman",
+   "series": "Moonlight Riders",
+   "seriesNo": 3,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Horses",
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 30,
+   "title": "Zoey and Sassafras: Caterpillars and Ice",
+   "author": "Asia Citro",
+   "series": "Zoey and Sassafras",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Science",
+    "Fantasy"
+   ]
+  }
+ ]
+}

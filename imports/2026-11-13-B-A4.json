@@ -1,0 +1,186 @@
+{
+ "cube": "B-A4",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "The Forgotten Horse",
+   "author": "Elaine Heney",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Out of the Dust",
+   "author": "Karen Hesse",
+   "ageMin": 10,
+   "ageMax": 14,
+   "genres": [
+    "Historical fiction",
+    "Novel in verse"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Good Dog: 4 Books in 1!",
+   "author": "Cam Higgins",
+   "series": "Good Dog",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Dogs"
+   ],
+   "format": "Box set",
+   "notes": "Illustrated by Ariel Landy"
+  },
+  {
+   "pos": 4,
+   "title": "The House of a Million Pets",
+   "author": "Ann Hodgman",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Memoir"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Wish: The Love Pug",
+   "author": "Howard",
+   "series": "Wish",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Bunnicula",
+   "author": "Deborah and James Howe",
+   "series": "Bunnicula",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Howliday Inn",
+   "author": "James Howe",
+   "series": "Bunnicula",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Just Gus",
+   "author": "McCall Hoyle",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Millie",
+   "author": "McCall Hoyle",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Stella",
+   "author": "McCall Hoyle",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Buster",
+   "author": "Caleb Zane Huett",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Fish in a Tree",
+   "author": "Lynda Mullaly Hunt",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Warriors: The New Prophecy: Dawn",
+   "author": "Erin Hunter",
+   "series": "Warriors: The New Prophecy",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ],
+   "check": "title partly hidden by a library sticker (J F HUN) — confirm which Warriors book, and untick if it's a library book"
+  },
+  {
+   "pos": 14,
+   "title": "Desperate for a Dog",
+   "author": "Rose Impey",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Dogs"
+   ],
+   "check": "has a library sticker (J F IMP) — untick if it's a library book"
+  },
+  {
+   "pos": 15,
+   "title": "My Homework Ate My Homework",
+   "author": "Patrick Jennings",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Sled Dog School",
+   "author": "Terry Lynn Johnson",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs",
+    "Adventure"
+   ]
+  }
+ ]
+}

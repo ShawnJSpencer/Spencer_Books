@@ -1,0 +1,183 @@
+{
+ "cube": "A-B2",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "The One and Only Ivan",
+   "author": "Katherine Applegate",
+   "series": "The One and Only",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "The One and Only Bob",
+   "author": "Katherine Applegate",
+   "series": "The One and Only",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "The One and Only Ruby",
+   "author": "Katherine Applegate",
+   "series": "The One and Only",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "The One and Only Family",
+   "author": "Katherine Applegate",
+   "series": "The One and Only",
+   "seriesNo": 4,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Dream",
+   "author": "O'Connor",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ],
+   "check": "spine says O'Connor / FSG — tell me the author's first name if this isn't right"
+  },
+  {
+   "pos": 6,
+   "title": "The Dodo: Sally's Story",
+   "author": "Bonnie Bader",
+   "series": "The Dodo",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "The Dodo: Starfish's Story",
+   "author": "Bonnie Bader",
+   "series": "The Dodo",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "The Dodo: Rosie's Story",
+   "author": "Bonnie Bader",
+   "series": "The Dodo",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Animal Ark Pets: Gerbil Genius",
+   "author": "Ben M. Baglio",
+   "series": "Animal Ark Pets",
+   "seriesNo": 9,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Animal Ark: Bunnies in the Bathroom",
+   "author": "Ben M. Baglio",
+   "series": "Animal Ark",
+   "seriesNo": 15,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals"
+   ],
+   "check": "has a library sticker (F BAG) — untick if it's a library book"
+  },
+  {
+   "pos": 11,
+   "title": "Animal Ark: Puppy in a Puddle",
+   "author": "Ben M. Baglio",
+   "series": "Animal Ark",
+   "seriesNo": 28,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Animal Ark: Labrador on the Lawn",
+   "author": "Ben M. Baglio",
+   "series": "Animal Ark",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Thirst",
+   "author": "Varsha Bajaj",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Something Like Home",
+   "author": "Andrea Beatriz Arango",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Novel in verse",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "The Critter Club: Marion Takes a Break",
+   "author": "Callie Barkley",
+   "series": "The Critter Club",
+   "seriesNo": 4,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Animals",
+    "Friendship"
+   ]
+  }
+ ]
+}

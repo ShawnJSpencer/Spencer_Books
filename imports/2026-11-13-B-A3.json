@@ -1,0 +1,247 @@
+{
+ "cube": "B-A3",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Pet Rescue Club: A New Home for Truman",
+   "author": "Catherine Hapka",
+   "series": "ASPCA Kids: Pet Rescue Club",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Pet Rescue Club: No Time for Hallie",
+   "author": "Catherine Hapka",
+   "series": "ASPCA Kids: Pet Rescue Club",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Pet Rescue Club: The Lonely Pony",
+   "author": "Catherine Hapka",
+   "series": "ASPCA Kids: Pet Rescue Club",
+   "seriesNo": 3,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ],
+   "check": "I can see 'The Lonely Pony' on a spine but not its number — untick if it isn't there"
+  },
+  {
+   "pos": 4,
+   "title": "Pet Rescue Club: Too Big to Run",
+   "author": "Catherine Hapka",
+   "series": "ASPCA Kids: Pet Rescue Club",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Free Rein: Truth or Mare",
+   "author": "Catherine Hapka",
+   "series": "Free Rein",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Animal Rescue Friends",
+   "author": "Gina Loveless",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Animals"
+   ],
+   "format": "Graphic novel",
+   "notes": "With Meika Hashimoto; illustrated by Genevieve Kote"
+  },
+  {
+   "pos": 7,
+   "title": "Wildoak",
+   "author": "C. C. Harrington",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Historical fiction"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "The Rescue Princesses: The Wishing Pearl",
+   "author": "Paula Harrison",
+   "series": "The Rescue Princesses",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals",
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "The Rescue Princesses: The Shimmering Stone",
+   "author": "Paula Harrison",
+   "series": "The Rescue Princesses",
+   "seriesNo": 8,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals",
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Me & Jack",
+   "author": "Danette Haworth",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Dogs",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "King of the Wind",
+   "author": "Marguerite Henry",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses",
+    "Classics"
+   ],
+   "notes": "Illustrated by Wesley Dennis"
+  },
+  {
+   "pos": 12,
+   "title": "Marguerite Henry's Ponies of Chincoteague: The Road Home",
+   "author": "Catherine Hapka",
+   "series": "Ponies of Chincoteague",
+   "seriesNo": 8,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Misty of Chincoteague",
+   "author": "Marguerite Henry",
+   "series": "Misty",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Misty's Twilight",
+   "author": "Marguerite Henry",
+   "series": "Misty",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "Stormy, Misty's Foal",
+   "author": "Marguerite Henry",
+   "series": "Misty",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "King of the Wind",
+   "author": "Marguerite Henry",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses",
+    "Classics"
+   ],
+   "check": "looks like a second copy of King of the Wind — untick if not"
+  },
+  {
+   "pos": 17,
+   "title": "Sea Star",
+   "author": "Marguerite Henry",
+   "series": "Misty",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Justin Morgan Had a Horse",
+   "author": "Marguerite Henry",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "Mustang, Wild Spirit of the West",
+   "author": "Marguerite Henry",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 20,
+   "title": "Brighty of the Grand Canyon",
+   "author": "Marguerite Henry",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Classics"
+   ]
+  }
+ ]
+}

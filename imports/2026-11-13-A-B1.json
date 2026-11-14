@@ -1,0 +1,155 @@
+{
+ "cube": "A-B1",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "In Honor of Broken Things",
+   "author": "Paul Acampora",
+   "ageMin": 10,
+   "ageMax": 14,
+   "genres": [
+    "Realistic fiction"
+   ],
+   "check": "has a library sticker (Z TEEN ACA) — untick if it's a library book"
+  },
+  {
+   "pos": 2,
+   "title": "Pug Pals: Yay for Vaycay!",
+   "author": "Ahn",
+   "series": "Pug Pals",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Leave the World Behind",
+   "author": "Rumaan Alam",
+   "ageMin": 18,
+   "ageMax": 99,
+   "genres": [
+    "Adult fiction"
+   ],
+   "notes": "Adult novel"
+  },
+  {
+   "pos": 4,
+   "title": "The Dodo: Nubby's Story",
+   "author": "Aubre Andrus",
+   "series": "The Dodo",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "The Dodo: Comeback Kids",
+   "author": "Aubre Andrus",
+   "series": "The Dodo",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "The Dodo: Pumpkin's Story",
+   "author": "Aubre Andrus",
+   "series": "The Dodo",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Endling: The Last",
+   "author": "Katherine Applegate",
+   "series": "Endling",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Endling: The First",
+   "author": "Katherine Applegate",
+   "series": "Endling",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Endling: The Only",
+   "author": "Katherine Applegate",
+   "series": "Endling",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Wishtree",
+   "author": "Katherine Applegate",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Odder",
+   "author": "Katherine Applegate",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Novel in verse"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Willodeen",
+   "author": "Katherine Applegate",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Crenshaw",
+   "author": "Katherine Applegate",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ]
+  }
+ ]
+}

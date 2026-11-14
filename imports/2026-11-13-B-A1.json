@@ -1,0 +1,186 @@
+{
+ "cube": "B-A1",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Heartwood Hotel: A True Home",
+   "author": "Kallie George",
+   "series": "Heartwood Hotel",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Heartwood Hotel: The Greatest Gift",
+   "author": "Kallie George",
+   "series": "Heartwood Hotel",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Heartwood Hotel: Better Together",
+   "author": "Kallie George",
+   "series": "Heartwood Hotel",
+   "seriesNo": 3,
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Heartwood Hotel: Home Again",
+   "author": "Kallie George",
+   "series": "Heartwood Hotel",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Wings of Olympus",
+   "author": "Kallie George",
+   "series": "Wings of Olympus",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Horses",
+    "Mythology"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Wings of Olympus: The Colt of the Clouds",
+   "author": "Kallie George",
+   "series": "Wings of Olympus",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Horses",
+    "Mythology"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Crimebiters!: Dog Day Afterschool",
+   "author": "Tommy Greenwald",
+   "series": "Crimebiters!",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Evil Spy School",
+   "author": "Stuart Gibbs",
+   "series": "Spy School",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Adventure",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Spy School",
+   "author": "Stuart Gibbs",
+   "series": "Spy School",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Adventure",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Spy Camp",
+   "author": "Stuart Gibbs",
+   "series": "Spy School",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Adventure",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "My Weird School Daze: Mr. Sunny Is Funny!",
+   "author": "Dan Gutman",
+   "series": "My Weird School Daze",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Humor"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Wish: Picture Perfect",
+   "author": "Jenny Goebel",
+   "series": "Wish",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Wish: Alpaca My Bags",
+   "author": "Jenny Goebel",
+   "series": "Wish",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Choose Your Own Adventure: The Rescue of the Unicorn",
+   "author": "",
+   "series": "Choose Your Own Adventure",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Interactive"
+   ]
+  }
+ ]
+}

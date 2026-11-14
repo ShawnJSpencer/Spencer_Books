@@ -1,0 +1,356 @@
+{
+ "cube": "A-C3",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Mary's Song",
+   "author": "Susan Count",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Horses"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "The Twits Next Door",
+   "author": "Greg James",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Humor"
+   ],
+   "notes": "With Chris Smith; a Roald Dahl story"
+  },
+  {
+   "pos": 3,
+   "title": "Night Zookeeper: The Giraffes of Whispering Wood",
+   "author": "Joshua Davidson",
+   "series": "Night Zookeeper",
+   "seriesNo": 1,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Night Zookeeper: The Lioness of Fire Desert",
+   "author": "Joshua Davidson",
+   "series": "Night Zookeeper",
+   "seriesNo": 2,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Night Zookeeper: The Penguins of Igloo City",
+   "author": "Joshua Davidson",
+   "series": "Night Zookeeper",
+   "seriesNo": 3,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Night Zookeeper: The Elephant of Tusk Temple",
+   "author": "Joshua Davidson",
+   "series": "Night Zookeeper",
+   "seriesNo": 4,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Night Zookeeper: The Bear of Flying Mountain",
+   "author": "Joshua Davidson",
+   "series": "Night Zookeeper",
+   "seriesNo": 5,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Fairy Unicorns: Magic Forest",
+   "author": "Zanna Davidson",
+   "series": "Fairy Unicorns",
+   "seriesNo": 1,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Fairy Unicorns: Cloud Castle",
+   "author": "Zanna Davidson",
+   "series": "Fairy Unicorns",
+   "seriesNo": 2,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Fairy Unicorns: Wind Charm",
+   "author": "Zanna Davidson",
+   "series": "Fairy Unicorns",
+   "seriesNo": 3,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Fairy Unicorns: Enchanted River",
+   "author": "Zanna Davidson",
+   "series": "Fairy Unicorns",
+   "seriesNo": 4,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Fairy Unicorns: Frost Fair",
+   "author": "Zanna Davidson",
+   "series": "Fairy Unicorns",
+   "seriesNo": 5,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Fairy Unicorns: Star Spell",
+   "author": "Zanna Davidson",
+   "series": "Fairy Unicorns",
+   "seriesNo": 6,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Fairy Unicorns: Kingdom Under the Sea",
+   "author": "Zanna Davidson",
+   "series": "Fairy Unicorns",
+   "seriesNo": 7,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "Fairy Unicorns: Treasure Quest",
+   "author": "Zanna Davidson",
+   "series": "Fairy Unicorns",
+   "seriesNo": 8,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Fairy Unicorns: Islands in the Sky",
+   "author": "Zanna Davidson",
+   "series": "Fairy Unicorns",
+   "seriesNo": 9,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "Fairy Ponies: Midnight Escape",
+   "author": "Zanna Davidson",
+   "series": "Fairy Ponies",
+   "seriesNo": 1,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Fairy Ponies: Magic Necklace",
+   "author": "Zanna Davidson",
+   "series": "Fairy Ponies",
+   "seriesNo": 2,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "Fairy Ponies: Enchanted Mirror",
+   "author": "Zanna Davidson",
+   "series": "Fairy Ponies",
+   "seriesNo": 3,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 20,
+   "title": "Fairy Ponies: Pony Princess",
+   "author": "Zanna Davidson",
+   "series": "Fairy Ponies",
+   "seriesNo": 4,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 21,
+   "title": "Fairy Ponies: Rainbow Races",
+   "author": "Zanna Davidson",
+   "series": "Fairy Ponies",
+   "seriesNo": 5,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 22,
+   "title": "Fairy Ponies: Unicorn Prince",
+   "author": "Zanna Davidson",
+   "series": "Fairy Ponies",
+   "seriesNo": 6,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 23,
+   "title": "The Lemonade War",
+   "author": "Jacqueline Davies",
+   "series": "The Lemonade War",
+   "seriesNo": 1,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 24,
+   "title": "The Lemonade Crime",
+   "author": "Jacqueline Davies",
+   "series": "The Lemonade War",
+   "seriesNo": 2,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Realistic fiction",
+    "Mystery"
+   ]
+  },
+  {
+   "pos": 25,
+   "title": "The Tale of Despereaux",
+   "author": "Kate DiCamillo",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Fantasy",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 26,
+   "title": "Best Horse Stories",
+   "author": "",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Horses",
+    "Anthology"
+   ]
+  },
+  {
+   "pos": 27,
+   "title": "The Lion King: Wild Schemes and Catastrophes",
+   "author": "Disney",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Graphic novel"
+   ],
+   "format": "Graphic novel"
+  },
+  {
+   "pos": 28,
+   "title": "Tink, North of Never Land",
+   "author": "Kiki Thorpe",
+   "series": "Disney Fairies",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  }
+ ]
+}

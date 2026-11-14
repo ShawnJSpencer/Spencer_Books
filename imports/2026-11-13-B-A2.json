@@ -1,0 +1,188 @@
+{
+ "cube": "B-A2",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "The Vanderbeekers of 141st Street",
+   "author": "Karina Yan Glaser",
+   "series": "The Vanderbeekers",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Family",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "The Vanderbeekers and the Hidden Garden",
+   "author": "Karina Yan Glaser",
+   "series": "The Vanderbeekers",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Family",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "The Vanderbeekers Lost and Found",
+   "author": "Karina Yan Glaser",
+   "series": "The Vanderbeekers",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Family",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "The Vanderbeekers to the Rescue",
+   "author": "Karina Yan Glaser",
+   "series": "The Vanderbeekers",
+   "seriesNo": 4,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Family",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "The Vanderbeekers on the Road",
+   "author": "Karina Yan Glaser",
+   "series": "The Vanderbeekers",
+   "seriesNo": 5,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Family",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "The Vanderbeekers Ever After",
+   "author": "Karina Yan Glaser",
+   "series": "The Vanderbeekers",
+   "seriesNo": 6,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Family",
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "The Princess in Black",
+   "author": "Shannon Hale",
+   "series": "The Princess in Black",
+   "seriesNo": 1,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Humor"
+   ],
+   "notes": "With Dean Hale; illustrated by LeUyen Pham"
+  },
+  {
+   "pos": 8,
+   "title": "The Princess in Black and the Perfect Princess Party",
+   "author": "Shannon Hale",
+   "series": "The Princess in Black",
+   "seriesNo": 2,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "The Princess in Black and the Hungry Bunny Horde",
+   "author": "Shannon Hale",
+   "series": "The Princess in Black",
+   "seriesNo": 3,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "The Princess in Black Takes a Vacation",
+   "author": "Shannon Hale",
+   "series": "The Princess in Black",
+   "seriesNo": 4,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "The Princess in Black and the Mysterious Playdate",
+   "author": "Shannon Hale",
+   "series": "The Princess in Black",
+   "seriesNo": 5,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "The Princess in Black and the Science Fair Scare",
+   "author": "Shannon Hale",
+   "series": "The Princess in Black",
+   "seriesNo": 6,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Princess Academy",
+   "author": "Shannon Hale",
+   "series": "Princess Academy",
+   "seriesNo": 1,
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Ever After High: The Storybook of Legends",
+   "author": "Shannon Hale",
+   "series": "Ever After High",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Fantasy",
+    "Fairy tales"
+   ]
+  }
+ ]
+}

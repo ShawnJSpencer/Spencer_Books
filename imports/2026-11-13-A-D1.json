@@ -1,0 +1,131 @@
+{
+ "cube": "A-D1",
+ "note": "Left to right (nonfiction).",
+ "books": [
+  {
+   "pos": 1,
+   "title": "The Fascinating Animal Book for Kids",
+   "author": "Clarke",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "LEGO Animal Atlas",
+   "author": "DK",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Animals",
+    "Geography"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Outdoor School: Animal Watching",
+   "author": "",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Animals",
+    "Outdoors"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Biggest Book of Sea Creatures",
+   "author": "Kidsbooks",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Animals",
+    "Ocean"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Biggest Book of Animals",
+   "author": "Kidsbooks",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Scholastic Book of World Records 2025",
+   "author": "Scholastic",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Trivia"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "Can You Feel the Force?",
+   "author": "Richard Hammond",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Science"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "Chickens",
+   "author": "Weaver",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Crime Scene Detective",
+   "author": "DK",
+   "ageMin": 9,
+   "ageMax": 13,
+   "genres": [
+    "Nonfiction",
+    "Science"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "National Geographic Kids Readers: Cutest Animals Collection",
+   "author": "National Geographic Kids",
+   "ageMin": 4,
+   "ageMax": 7,
+   "genres": [
+    "Nonfiction",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Equus",
+   "author": "Robert Vavra",
+   "ageMin": 10,
+   "ageMax": 99,
+   "genres": [
+    "Nonfiction",
+    "Horses",
+    "Photography"
+   ]
+  }
+ ]
+}

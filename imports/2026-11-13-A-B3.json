@@ -1,0 +1,361 @@
+{
+ "cube": "A-B3",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Sandy Lane Stables: A Horse for the Summer",
+   "author": "Michelle Bates",
+   "series": "Sandy Lane Stables",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Horses"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Love Puppies: Best Friends Furever",
+   "author": "Janay Brown-Wood",
+   "series": "Love Puppies",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Magic Ponies: A New Friend",
+   "author": "Sue Bentley",
+   "series": "Magic Ponies",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Horses",
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Magic Ponies: A Special Wish",
+   "author": "Sue Bentley",
+   "series": "Magic Ponies",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Horses",
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Magic Puppy: Spellbound at School",
+   "author": "Sue Bentley",
+   "series": "Magic Puppy",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals",
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Book Scavenger",
+   "author": "Jennifer Chambliss Bertman",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Mystery"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "The Penderwicks",
+   "author": "Jeanne Birdsall",
+   "series": "The Penderwicks",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Family"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "The World According to Humphrey",
+   "author": "Betty G. Birney",
+   "series": "According to Humphrey",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Friendship According to Humphrey",
+   "author": "Betty G. Birney",
+   "series": "According to Humphrey",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Trouble According to Humphrey",
+   "author": "Betty G. Birney",
+   "series": "According to Humphrey",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Surprises According to Humphrey",
+   "author": "Betty G. Birney",
+   "series": "According to Humphrey",
+   "seriesNo": 4,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Summer According to Humphrey",
+   "author": "Betty G. Birney",
+   "series": "According to Humphrey",
+   "seriesNo": 6,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Winter According to Humphrey",
+   "author": "Betty G. Birney",
+   "series": "According to Humphrey",
+   "seriesNo": 9,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "School Days According to Humphrey",
+   "author": "Betty G. Birney",
+   "series": "According to Humphrey",
+   "seriesNo": 7,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "Mysteries According to Humphrey",
+   "author": "Betty G. Birney",
+   "series": "According to Humphrey",
+   "seriesNo": 8,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Adventure According to Humphrey",
+   "author": "Betty G. Birney",
+   "series": "According to Humphrey",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "Pegasus Princesses: Mist's Maze",
+   "author": "Emily Bliss",
+   "series": "Pegasus Princesses",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Fudge-a-Mania",
+   "author": "Judy Blume",
+   "series": "Fudge",
+   "seriesNo": 4,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "Double Fudge",
+   "author": "Judy Blume",
+   "series": "Fudge",
+   "seriesNo": 5,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 20,
+   "title": "Soupy Saturdays with the Pain and the Great One",
+   "author": "Judy Blume",
+   "series": "The Pain and the Great One",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 21,
+   "title": "Cool Zone with the Pain and the Great One",
+   "author": "Judy Blume",
+   "series": "The Pain and the Great One",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 22,
+   "title": "Going, Going, Gone! with the Pain and the Great One",
+   "author": "Judy Blume",
+   "series": "The Pain and the Great One",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 23,
+   "title": "Otherwise Known as Sheila the Great",
+   "author": "Judy Blume",
+   "series": "Fudge",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 24,
+   "title": "Superfudge",
+   "author": "Judy Blume",
+   "series": "Fudge",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 25,
+   "title": "Tales of a Fourth Grade Nothing",
+   "author": "Judy Blume",
+   "series": "Fudge",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Humor",
+    "Family"
+   ]
+  },
+  {
+   "pos": 26,
+   "title": "Deenie",
+   "author": "Judy Blume",
+   "ageMin": 11,
+   "ageMax": 14,
+   "genres": [
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 27,
+   "title": "Imagination According to Humphrey",
+   "author": "Betty G. Birney",
+   "series": "According to Humphrey",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 28,
+   "title": "Secrets According to Humphrey",
+   "author": "Betty G. Birney",
+   "series": "According to Humphrey",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Animals",
+    "Humor"
+   ]
+  },
+  {
+   "pos": 29,
+   "title": "Blubber",
+   "author": "Judy Blume",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ]
+  }
+ ]
+}

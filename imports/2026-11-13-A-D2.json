@@ -1,0 +1,184 @@
+{
+ "cube": "A-D2",
+ "note": "Left to right (nonfiction and handbooks).",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Cherry Hill's Horse Care for Kids",
+   "author": "Cherry Hill",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Horses"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Love Unleashed",
+   "author": "Rebecca Ascher-Walsh",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Horses & Ponies",
+   "author": "Usborne",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Horses"
+   ],
+   "check": "spine partly hidden — confirm the title"
+  },
+  {
+   "pos": 4,
+   "title": "Maker Lab: Outdoors",
+   "author": "DK",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Science",
+    "Crafts"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Moonlight Ocean",
+   "author": "Golding",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Picture book",
+    "Ocean"
+   ],
+   "notes": "Lodge on the spine too"
+  },
+  {
+   "pos": 6,
+   "title": "Pet Photo Album: My Cat",
+   "author": "David Alderton",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "The Dodo: 50 Odd Couples",
+   "author": "The Dodo",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "125 Pet Rescues",
+   "author": "National Geographic Kids",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "Pokémon Super Extra Deluxe Essential Handbook",
+   "author": "Scholastic",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Games"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "Klutz: Pom-Pom Kitties",
+   "author": "Klutz",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Crafts"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "Pounce! A How to Speak Cat Training Guide",
+   "author": "Gary Weitzman",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Animals"
+   ],
+   "notes": "National Geographic Kids"
+  },
+  {
+   "pos": 12,
+   "title": "Puppy Love",
+   "author": "Nancy Dickmann",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "The Book of Mormon for Young Readers",
+   "author": "Kelli Coughanour",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Religion",
+    "Scriptures"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Secrets of Animal Camouflage",
+   "author": "Carron Brown",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Nonfiction",
+    "Animals"
+   ],
+   "notes": "Illustrated by Wesley Robins"
+  },
+  {
+   "pos": 15,
+   "title": "Picture Find Fun with Lisa Frank",
+   "author": "Lisa Frank",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Activity book"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Children's Thesaurus",
+   "author": "DK",
+   "ageMin": 6,
+   "ageMax": 12,
+   "genres": [
+    "Reference"
+   ]
+  }
+ ]
+}

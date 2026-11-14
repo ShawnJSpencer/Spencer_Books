@@ -1,0 +1,313 @@
+{
+ "cube": "A-C4",
+ "note": "Left to right.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Jenny Dale's Puppy Tales: Snowy the Surprise Puppy",
+   "author": "Jenny Dale",
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Dogs"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Out of My Mind",
+   "author": "Sharon M. Draper",
+   "series": "Out of My Mind",
+   "seriesNo": 1,
+   "ageMin": 10,
+   "ageMax": 14,
+   "genres": [
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "Out of My Heart",
+   "author": "Sharon M. Draper",
+   "series": "Out of My Mind",
+   "seriesNo": 2,
+   "ageMin": 10,
+   "ageMax": 14,
+   "genres": [
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "Out of My Dreams",
+   "author": "Sharon M. Draper",
+   "series": "Out of My Mind",
+   "seriesNo": 3,
+   "ageMin": 10,
+   "ageMax": 14,
+   "genres": [
+    "Realistic fiction"
+   ]
+  },
+  {
+   "pos": 5,
+   "title": "Wild Summer",
+   "author": "James DuBern",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Adventure"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "True Tales of Rescue: Welcome, Wombat",
+   "author": "Kama Einhorn",
+   "series": "True Tales of Rescue",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "True Tales of Rescue: Tiger Time",
+   "author": "Kama Einhorn",
+   "series": "True Tales of Rescue",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "True Tales of Rescue: Anteater Adventure",
+   "author": "Kama Einhorn",
+   "series": "True Tales of Rescue",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 9,
+   "title": "True Tales of Rescue: Raccoon Rescue",
+   "author": "Kama Einhorn",
+   "series": "True Tales of Rescue",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 10,
+   "title": "True Tales of Rescue: Go, Goats!",
+   "author": "Kama Einhorn",
+   "series": "True Tales of Rescue",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 11,
+   "title": "True Tales of Rescue: Sweet Senior Pups",
+   "author": "Kama Einhorn",
+   "series": "True Tales of Rescue",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals",
+    "Nonfiction"
+   ]
+  },
+  {
+   "pos": 12,
+   "title": "Unicorn Diaries: Bo and the Merbaby",
+   "author": "Rebecca Elliott",
+   "series": "Unicorn Diaries",
+   "seriesNo": 5,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Fantasy"
+   ]
+  },
+  {
+   "pos": 13,
+   "title": "Owl Diaries: Eva Sees a Ghost",
+   "author": "Rebecca Elliott",
+   "series": "Owl Diaries",
+   "seriesNo": 2,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 14,
+   "title": "Owl Diaries: Eva and the Lost Pony",
+   "author": "Rebecca Elliott",
+   "series": "Owl Diaries",
+   "seriesNo": 8,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 15,
+   "title": "Owl Diaries: Eva's Big Sleepover",
+   "author": "Rebecca Elliott",
+   "series": "Owl Diaries",
+   "seriesNo": 9,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 16,
+   "title": "Owl Diaries: Eva and Baby Mo",
+   "author": "Rebecca Elliott",
+   "series": "Owl Diaries",
+   "seriesNo": 10,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 17,
+   "title": "Owl Diaries: Eva at the Beach",
+   "author": "Rebecca Elliott",
+   "series": "Owl Diaries",
+   "seriesNo": 14,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 18,
+   "title": "Owl Diaries: Eva in the Band",
+   "author": "Rebecca Elliott",
+   "series": "Owl Diaries",
+   "seriesNo": 17,
+   "ageMin": 5,
+   "ageMax": 8,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 19,
+   "title": "Man o' War",
+   "author": "Walter Farley",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Horses",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 20,
+   "title": "The Black Stallion's Blood Bay Colt",
+   "author": "Walter Farley",
+   "series": "The Black Stallion",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Horses",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 21,
+   "title": "The Black Stallion's Sulky Colt",
+   "author": "Walter Farley",
+   "series": "The Black Stallion",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Horses",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 22,
+   "title": "The Black Stallion's Filly",
+   "author": "Walter Farley",
+   "series": "The Black Stallion",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Horses",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 23,
+   "title": "The Black Stallion and the Girl",
+   "author": "Walter Farley",
+   "series": "The Black Stallion",
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Horses",
+    "Classics"
+   ]
+  },
+  {
+   "pos": 24,
+   "title": "Must Love Pets: Friends Fur-ever",
+   "author": "Saadia Faruqi",
+   "series": "Must Love Pets",
+   "seriesNo": 1,
+   "ageMin": 7,
+   "ageMax": 10,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 25,
+   "title": "Pet Hotel: On with the Show!",
+   "author": "Kate Finch",
+   "series": "Pet Hotel",
+   "seriesNo": 4,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Animals"
+   ]
+  },
+  {
+   "pos": 26,
+   "title": "Starfish",
+   "author": "Lisa Fipps",
+   "ageMin": 10,
+   "ageMax": 14,
+   "genres": [
+    "Novel in verse",
+    "Realistic fiction"
+   ],
+   "check": "has a library sticker (J F FIP) — untick if it's a library book"
+  }
+ ]
+}

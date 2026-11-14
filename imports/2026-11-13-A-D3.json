@@ -1,0 +1,96 @@
+{
+ "cube": "A-D3",
+ "note": "Left to right (picture and nonfiction books).",
+ "books": [
+  {
+   "pos": 1,
+   "title": "Walk This Wild World",
+   "author": "Sam Brewster",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Lift-the-flap",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 2,
+   "title": "Walk This World",
+   "author": "Lotta Nieminen",
+   "ageMin": 3,
+   "ageMax": 7,
+   "genres": [
+    "Lift-the-flap",
+    "Geography"
+   ]
+  },
+  {
+   "pos": 3,
+   "title": "What's My Cat Thinking?",
+   "author": "Dr. Jo Lewis",
+   "ageMin": 5,
+   "ageMax": 10,
+   "genres": [
+    "Nonfiction",
+    "Animals"
+   ]
+  },
+  {
+   "pos": 4,
+   "title": "The Ultimate Book of Cities",
+   "author": "Anne-Sophie Baumann",
+   "ageMin": 5,
+   "ageMax": 10,
+   "genres": [
+    "Nonfiction",
+    "Geography"
+   ],
+   "notes": "Illustrated by Didier Balicevic"
+  },
+  {
+   "pos": 5,
+   "title": "A Brief History of Unicorns",
+   "author": "Selwyn E. Phipps",
+   "ageMin": 5,
+   "ageMax": 10,
+   "genres": [
+    "Fantasy",
+    "Unicorns"
+   ]
+  },
+  {
+   "pos": 6,
+   "title": "Unicorns, Myths and Monsters",
+   "author": "Selwyn E. Phipps",
+   "ageMin": 5,
+   "ageMax": 10,
+   "genres": [
+    "Fantasy",
+    "Unicorns"
+   ]
+  },
+  {
+   "pos": 7,
+   "title": "The Magical Unicorn Society Official Handbook",
+   "author": "Selwyn E. Phipps",
+   "ageMin": 5,
+   "ageMax": 10,
+   "genres": [
+    "Fantasy",
+    "Unicorns"
+   ]
+  },
+  {
+   "pos": 8,
+   "title": "The Ultimate Book of Space",
+   "author": "Anne-Sophie Baumann",
+   "ageMin": 5,
+   "ageMax": 10,
+   "genres": [
+    "Nonfiction",
+    "Space"
+   ],
+   "notes": "Illustrated by Olivier Latyk"
+  }
+ ]
+}
