@@ -177,6 +177,17 @@ select.sel{height:42px;padding:0 10px;border-radius:12px;border:1px solid var(--
 .series span.own{background:var(--green);border-color:var(--green);color:#22170f}
 .series span.cur{box-shadow:0 0 0 2px var(--ink)}
 
+/* cover picker */
+.coverbtn{padding:0;border:0;background:none;display:block;width:100%}
+.covgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:12px}
+.covpick{padding:6px;border-radius:10px;border:1px solid var(--line);background:var(--bar);display:flex;flex-direction:column;gap:4px;align-items:center}
+.covpick img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:3px 6px 6px 3px;background:#4a3524}
+.covpick small{font-size:11px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.covways{display:flex;flex-wrap:wrap;gap:8px}
+.covways .btn{flex:1 1 200px;text-decoration:none;color:var(--ink)}
+.covways .btn.gold{color:#22170f}
+@media (max-width:759px){.covgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}}
+
 /* scanner */
 #reader{position:relative;width:100%;border-radius:20px;overflow:hidden;background:#000;min-height:240px}
 #reader video{width:100%;display:block;aspect-ratio:4/3;object-fit:cover}

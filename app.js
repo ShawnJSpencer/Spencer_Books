@@ -495,7 +495,7 @@ function detailHTML(b) {
   const wishFor = (b.wants || []).map(reader).filter(Boolean);
   const rec = recFor(b);
   return `
-  <div class="dhead">${coverHTML(b)}<div style="min-width:0;display:flex;flex-direction:column;gap:2px">
+  <div class="dhead"><div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;width:112px"><button class="coverbtn" data-act="cover" data-id="${b.id}" aria-label="Change cover">${coverHTML(b)}</button><button class="btn sm" style="height:32px;font-size:12px;padding:0 8px" data-act="cover" data-id="${b.id}">${I.cam}Change cover</button></div><div style="min-width:0;display:flex;flex-direction:column;gap:2px">
     ${seriesLine(b) ? `<span class="dser">${esc(seriesLine(b))}</span>` : ''}
     <h2 class="dtitle">${esc(b.title)}</h2>${b.subtitle ? `<span class="dauth" style="font-size:13px">${esc(b.subtitle)}</span>` : ''}
     <span class="dauth">${esc(authorLine(b))}${b.illustrator ? ` · ill. ${esc(b.illustrator)}` : ''}</span>
@@ -538,6 +538,86 @@ function openBook(id) {
     const b = DB.books.get(id); if (!b) return closeSheet();
     return `<div class="shbar"><button class="btn sm" data-act="close">${I.back}Back</button><span></span></div>${detailHTML(b)}`;
   });
+}
+
+/* ───────── cover picker ───────── */
+async function coverCandidates(b) {
+  const t = b.title.replace(/\s*\(.*?\)\s*/g, ' ').trim(), a = authorShort(b), out = [], seen = new Set();
+  const add = (url, label) => { if (url && !seen.has(url)) { seen.add(url); out.push({ url, label }); } };
+  if (b.isbn13) add(`https://covers.openlibrary.org/b/isbn/${b.isbn13}-L.jpg?default=false`, 'This ISBN');
+  const main = t.includes(':') ? t.split(':').slice(1).join(':').trim() : '';
+  const qs = [`intitle:${t}${a ? ' inauthor:' + a : ''}`, ...(main ? [`intitle:${main}${a ? ' inauthor:' + a : ''}`] : []), `${t} ${a}`];
+  await Promise.all([
+    ...qs.map(q => getJSON(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&maxResults=20&printType=books`).then(j => (j.items || []).forEach(v => {
+      const i = v.volumeInfo || {}, u = (i.imageLinks?.thumbnail || '').replace(/^http:/, 'https:').replace('&edge=curl', '');
+      if (u) add(u, [i.publishedDate?.slice(0, 4), (i.categories || [])[0]].filter(Boolean).join(' · ') || i.title);
+    })).catch(() => {})),
+    getJSON(`https://openlibrary.org/search.json?title=${encodeURIComponent(main || t)}${a ? '&author=' + encodeURIComponent(a) : ''}&limit=20&fields=cover_i,first_publish_year,edition_count`).then(j => (j.docs || []).forEach(d => {
+      if (d.cover_i) add(`https://covers.openlibrary.org/b/id/${d.cover_i}-L.jpg`, d.first_publish_year ? String(d.first_publish_year) : 'Open Library');
+    })).catch(() => {})
+  ]);
+  return out.slice(0, 30);
+}
+function shrinkToJpeg(src, max = 480) {
+  return new Promise((res, rej) => { const im = new Image(); im.crossOrigin = 'anonymous'; im.onload = () => { try { res(shrink(im, max, .8)); } catch (e) { rej(e); } }; im.onerror = rej; im.src = src; });
+}
+function shrink(im, max, q) {
+  const k = Math.min(1, max / Math.max(im.naturalWidth, im.naturalHeight)), c = document.createElement('canvas');
+  c.width = Math.round(im.naturalWidth * k); c.height = Math.round(im.naturalHeight * k);
+  c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); return c.toDataURL('image/jpeg', q);
+}
+async function setCover(id, url, msg) {
+  const b = clone(DB.books.get(id)); if (!b) return;
+  b.cover = url; await DB.save(b); toast(msg || 'Cover updated');
+}
+function coverSheet(id, back) {
+  const b = DB.books.get(id); if (!b) return;
+  let cands = null;
+  const done = () => { if (back) back(); else if (isWide()) closeSheet(); else openBook(id); };
+  const q = encodeURIComponent(`${b.title} ${authorShort(b)} book cover`);
+  const draw = () => `<div class="shbar"><button class="btn sm" id="cvBack">${I.back}Back</button><button class="btn sm ghost" data-act="close">Close</button></div>
+    <h2>Cover for ${esc(b.title)}</h2>
+    <p class="sub">Tap the one that matches your copy.</p>
+    ${cands === null ? '<div class="busy"><div class="spin"></div>Finding covers…</div>' : cands.length ? `<div class="covgrid">${cands.map((c, i) => `<button class="covpick" data-i="${i}"><img src="${esc(c.url)}" alt="" loading="lazy" onerror="this.closest('.covpick').remove()"><small>${esc(c.label || '')}</small></button>`).join('')}</div>` : '<p class="note">No covers found online.</p>'}
+    <div class="secttl">Can’t find the right one?</div>
+    <div class="covways">
+      <label class="btn gold" style="cursor:pointer">${I.cam}Take a photo of the cover<input type="file" accept="image/*" capture="environment" id="cvCam" class="hidden"></label>
+      <a class="btn" href="https://www.google.com/search?tbm=isch&q=${q}" target="_blank" rel="noopener">${I.search}Search Google Images</a>
+      <button class="btn" id="cvPaste">Paste picture or link</button>
+    </div>
+    <p class="note" style="margin-top:10px">Google Images: press and hold the right cover → <b>Copy</b> (or Copy Image Address), come back here and tap <b>Paste picture or link</b>.</p>
+    <form class="row2" id="cvForm" style="margin-top:8px"><input id="cvUrl" placeholder="…or paste a picture link here" style="flex:3;height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line);background:var(--bar)"><button class="btn" style="flex:0 0 auto">Use link</button></form>
+    ${b.cover ? `<button class="btn ghost" id="cvRemove" style="margin-top:12px;color:var(--redink)">Remove cover</button>` : ''}`;
+  const sh = openSheet(draw(), { static: true });
+  const wire = () => {
+    $('#cvBack', sh).onclick = done;
+    $$('.covpick', sh).forEach(el => el.onclick = async () => { await setCover(id, cands[+el.dataset.i].url); done(); });
+    $('#cvCam', sh).onchange = async e => {
+      const f = e.target.files?.[0]; if (!f) return;
+      const u = URL.createObjectURL(f); try { await setCover(id, await shrinkToJpeg(u, 520), 'Your photo is the cover now'); done(); } catch { toast('Couldn’t read that photo'); } finally { URL.revokeObjectURL(u); }
+    };
+    $('#cvPaste', sh).onclick = async () => {
+      try {
+        if (navigator.clipboard?.read) {
+          for (const item of await navigator.clipboard.read()) {
+            const type = item.types.find(t => t.startsWith('image/'));
+            if (type) { const blob = await item.getType(type), u = URL.createObjectURL(blob); try { await setCover(id, await shrinkToJpeg(u, 520), 'Pasted cover saved'); } finally { URL.revokeObjectURL(u); } return done(); }
+            if (item.types.includes('text/plain')) { const t = (await (await item.getType('text/plain')).text()).trim(); if (/^https?:\/\//.test(t)) { await useLink(t); return; } }
+          }
+        } else { const t = (await navigator.clipboard.readText()).trim(); if (/^https?:\/\//.test(t)) return useLink(t); }
+        toast('Nothing to paste — copy the picture first');
+      } catch (e) { console.warn(e); toast('Paste the link into the box below instead'); $('#cvUrl', sh).focus(); }
+    };
+    const useLink = async u => {
+      // keep a small copy if the site allows it, otherwise just the link
+      let v = u; try { v = await shrinkToJpeg(u, 520); } catch {}
+      await setCover(id, v); done();
+    };
+    $('#cvForm', sh).onsubmit = e => { e.preventDefault(); const u = $('#cvUrl', sh).value.trim(); if (/^https?:\/\//.test(u)) useLink(u); else toast('That doesn’t look like a link'); };
+    if ($('#cvRemove', sh)) $('#cvRemove', sh).onclick = async () => { await setCover(id, '', 'Cover removed'); done(); };
+  };
+  wire();
+  coverCandidates(b).then(c => { cands = c; if ($('#cvBack', sh)) { const st = sh.scrollTop; sh.innerHTML = draw(); sh.scrollTop = st; wire(); } });
 }
 
 /* ───────── sheet & toast ───────── */
@@ -632,7 +712,7 @@ function editSheet(id, preset) {
     <label class="fld"><span>Family pick for (optional)</span><input name="pickFor" value="${esc(b.pickFor || '')}"></label>
     <div class="fld full"><span>Wanted by (shopping list)</span><div class="pills">${readers().map(r => `<label class="check"><input type="checkbox" name="wants" value="${r.id}" ${(b.wants || []).includes(r.id) ? 'checked' : ''}>${esc(r.name)}</label>`).join('')}
       <label class="check" style="margin-left:12px"><input type="checkbox" name="pick" ${b.pick ? 'checked' : ''}>Family pick (recommended)</label></div></div>
-    <label class="fld full"><span>Cover picture link</span><input name="cover" value="${esc(b.cover || '')}"></label>
+    <div class="fld full"><span>Cover picture</span><div class="row2"><input name="cover" value="${esc(b.cover && !b.cover.startsWith('data:') ? b.cover : '')}" placeholder="${b.cover?.startsWith('data:') ? 'Using your own photo' : 'Picture link'}" style="flex:3"><button type="button" class="btn" id="edCover" style="flex:0 0 auto">${I.search}Find a cover</button></div></div>
     <label class="fld full"><span>Summary</span><textarea name="summary">${esc(b.summary || '')}</textarea></label>
     <label class="fld full"><span>Notes</span><textarea name="notes" style="min-height:60px">${esc(b.notes || '')}</textarea></label>
   </div>
@@ -655,7 +735,7 @@ function editSheet(id, preset) {
       series: v('series'), seriesNo: num('seriesNo'), released: v('released'), genres: v('genres').split(',').map(s => s.trim()).filter(Boolean),
       ageMin: num('ageMin'), ageMax: num('ageMax'), grade: v('grade'), level: v('level'), format: v('format'), pages: num('pages'), publisher: v('publisher'),
       status: v('status'), copies: num('copies') || 1, condition: v('condition'), acquired: v('acquired'), lentTo: v('lentTo'), pickFor: v('pickFor'),
-      cover: v('cover'), summary: v('summary'), notes: v('notes'), pick: f.querySelector('[name=pick]').checked,
+      cover: v('cover') || (b.cover?.startsWith('data:') ? b.cover : ''), summary: v('summary'), notes: v('notes'), pick: f.querySelector('[name=pick]').checked,
       wants: [...f.querySelectorAll('[name=wants]:checked')].map(x => x.value) };
     const isb = isbnOf(v('isbn13')); o.isbn13 = isb.length === 10 ? isbn10to13(isb) : isb; if (isb.length === 10) o.isbn10 = isb;
     const c = v('locC');
@@ -667,6 +747,7 @@ function editSheet(id, preset) {
     return o;
   };
   $('#edSave', sh).onclick = async () => { const o = collect(); if (!o) return; await DB.save(o); closeSheet(); toast('Saved'); if (!id) openBook(o.id); else if (!isWide()) openBook(o.id); };
+  $('#edCover', sh).onclick = async () => { const o = collect(); if (!o) return; await DB.save(o, true); coverSheet(o.id, () => editSheet(o.id)); };
   if (id) $('#edDel', sh).onclick = async () => {
     if (!confirm(`Delete “${b.title}” from the library? This can’t be undone.`)) return;
     const copy = clone(DB.books.get(id)); await DB.remove(id); UI.sel = null; closeSheet(); toast('Deleted', () => DB.save(copy));
@@ -1217,6 +1298,7 @@ const ACT = {
   'check-imports': () => checkImports(true),
   'review-import': d => importSheet(+d.i),
   'scan-into': d => openScanner({ shelveIn: d.k }),
+  cover: d => coverSheet(d.id),
   'back-search': () => { const ls = lastSearch; resultFrom = { kind: 'scan' }; if (ls) searchSheet({ ...ls.opts, q: ls.q, results: ls.results }); else searchSheet(); },
   shelve: async d => { const b = clone(DB.books.get(d.id)); const [c, cube] = d.k.split('-'); b.loc = { c, cube, pos: nextPos(c, cube) }; await DB.save(b); toast(`Shelved in ${d.k}`); },
   'show-cube': d => { closeSheet(); UI.cube = d.k; UI.shelf = 'all'; UI.reader = 'all'; UI.filter = 'all'; UI.age = null; UI.genre = ''; UI.q = ''; UI.view = 'library'; UI.sort = 'shelf'; render(); $('#main').scrollTop = 0; },
