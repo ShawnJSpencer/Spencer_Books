@@ -675,8 +675,9 @@ function editSheet(id, preset) {
 function nextPos(c, cube) { return [...DB.books.values()].filter(b => b.loc?.c === c && b.loc?.cube === cube).reduce((m, b) => Math.max(m, b.loc.pos || 0), 0) + 1; }
 
 /* ───────── search & add ───────── */
+let lastSearch = null;
 function searchSheet(opts = {}) {
-  let results = [], busy = false, q = opts.q || '';
+  let results = opts.results || [], busy = false, q = opts.q || '';
   const mode = opts.mode || 'owned';   // owned | wishlist
   const draw = () => `<div class="shbar"><button class="btn sm ghost" data-act="close">Close</button><button class="btn sm" id="srType">Type it in myself</button></div>
     <h2>${mode === 'wishlist' ? 'Add to the wishlist' : 'Find a book'}</h2>
@@ -699,6 +700,7 @@ function searchSheet(opts = {}) {
     $('#srType', sh).onclick = () => editSheet(null, { title: q, status: mode });
     $$('#srRes .li', sh).forEach(li => li.onclick = async () => {
       const c = results[+li.dataset.i], ex = findExisting(c);
+      if (mode !== 'wishlist') { lastSearch = { q, results, opts }; return resultSheet(ex ? ex.id : null, ex ? null : c, { kind: 'search' }); }
       if (ex) { if (mode === 'wishlist' && ex.status === 'wishlist') { const w = new Set(ex.wants || []); $$('.srFor:checked', sh).forEach(x => w.add(x.value)); await DB.save({ ...clone(ex), wants: [...w] }); toast('Updated the wishlist'); } closeSheet(); return openBook(ex.id); }
       const wants = $$('.srFor:checked', sh).map(x => x.value);
       const b = newBook(c, { status: mode, addedBy: 'search', wants, ...(opts.loc ? { loc: { ...opts.loc, pos: nextPos(opts.loc.c, opts.loc.cube) } } : {}) });
@@ -711,7 +713,7 @@ function searchSheet(opts = {}) {
     setTimeout(() => $('#srQ', sh)?.focus(), 50);
   };
   wire();
-  if (q) $('#srForm', sh).requestSubmit();
+  if (q && !opts.results) $('#srForm', sh).requestSubmit();
 }
 
 /* ───────── barcode scanner ───────── */
@@ -793,7 +795,17 @@ function seriesStrip(b) {
     <div class="series">${Array.from({ length: Math.min(max, 20) }, (_, i) => i + 1).map(n => `<span class="${own.has(n) ? 'own' : ''} ${n === b.seriesNo ? 'cur' : ''}">${n}</span>`).join('')}</div>
     ${nextFor.map(x => `<div style="font-size:13px;margin-top:8px">${esc(x.k.name)} is up to <b style="color:var(--goldink)">Book ${x.n}</b>${x.have ? ' — we have it' : ' — we don’t have it yet'}</div>`).join('')}</div>`;
 }
-function resultSheet(id, found) {
+// Shelf picker shown right on the scan / search result
+function shelfPicker(b, id) {
+  const sg = suggestCube(b), cur = b.loc?.c && b.loc?.cube ? locKey(b.loc.c, b.loc.cube) : '';
+  const selKey = id ? cur : (sg?.key || '');
+  const opts = (DB.meta.cases || []).map(c => `<optgroup label="${esc(c.name)}">${cubeIds(c).map(q => { const k = locKey(c.id, q); return `<option value="${k}" ${k === selKey ? 'selected' : ''}>${c.id} · ${q}${cubeLabel(k) ? ' — ' + esc(cubeLabel(k)) : ''}${sg?.key === k ? '  ★ suggested' : ''}</option>`; }).join('')}</optgroup>`).join('');
+  return `<label class="fld" style="margin-top:14px"><span>${id ? 'Shelf' : 'Put it on'}${sg ? ` <i style="font-style:normal;color:var(--goldink)">· suggested ${esc(suggestText(sg))}</i>` : ''}</span>
+    <select id="rsCube" ${id ? `data-chg="move" data-id="${id}"` : ''}><option value="">Not shelved yet</option>${opts}</select></label>`;
+}
+let resultFrom = { kind: 'scan' };
+function resultSheet(id, found, from) {
+  if (from) resultFrom = from;
   openSheet(() => {
     const b = id ? DB.books.get(id) : found; if (!b) return closeSheet();
     const wishFor = (b.wants || []).map(reader).filter(Boolean);
@@ -804,20 +816,21 @@ function resultSheet(id, found) {
     else { const sg = suggestCube(b); banner = `<div class="banner new"><span class="bi" style="background:#7fb6d9;color:#22170f">${I.plus}</span><div><b>Not in our library yet</b><small>${sg ? 'Would go in ' + esc(suggestText(sg)) : esc(b.isbn13 || '')}</small></div></div>`; }
     const who = readers().map(r => { const x = rd(b, r.id); return `<div class="wrow" style="padding:8px 10px"><div class="wtop">${av(r, 28)}<div class="nm"><b style="font-size:14px">${esc(r.name)}</b><small>${esc(x.verdict ? VERDICT[x.verdict] : READ[x.status || ''])}</small></div></div></div>`; }).join('');
     const prev = !id && b.series ? '' : '';
-    return `<div class="shbar"><button class="btn sm" data-act="scan">${I.back}Scanner</button><button class="btn sm ghost" data-act="close">Close</button></div>
+    return `<div class="shbar">${resultFrom.kind === 'search' ? `<button class="btn sm" data-act="back-search">${I.back}Search results</button>` : `<button class="btn sm" data-act="scan">${I.back}Scanner</button>`}<button class="btn sm ghost" data-act="close">Close</button></div>
     ${banner}
     <div class="dhead">${coverHTML(b)}<div style="min-width:0;display:flex;flex-direction:column;gap:3px">
       ${seriesLine(b) ? `<span class="dser">${esc(seriesLine(b))}</span>` : ''}<h2 class="dtitle">${esc(b.title)}</h2><span class="dauth">${esc(authorLine(b))}</span>
       <span class="note">${esc([year(b), (b.genres || [])[0], ageLabel(b) && 'Ages ' + ageLabel(b)].filter(Boolean).join(' · '))}</span></div></div>
+    ${!id || b.status === 'owned' ? shelfPicker(b, id) : ''}
     ${id ? `<div class="cap" style="margin:16px 0 8px">Who’s read it</div><div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">${who}</div>${seriesStrip(b)}` : ''}
     ${!id && b.summary ? `<p class="summary" style="margin-top:14px">${esc(b.summary.slice(0, 300))}${b.summary.length > 300 ? '…' : ''}</p>` : ''}
     ${prev}
     <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px">
-      ${!id ? `<button class="btn gold" data-act="add-found" data-s="owned" data-k="${suggestCube(b)?.key || ''}">${I.check}We own it — add${suggestCube(b) ? ' to ' + esc(suggestCube(b).key) : ' to library'}</button>
+      ${!id ? `<button class="btn gold" data-act="add-found" data-s="owned">${I.check}We own it — add to library</button>
         <div class="pills" style="align-items:center"><span class="note">Wishlist for:</span>${readers().map(r => `<label class="check"><input type="checkbox" class="wf" value="${r.id}">${esc(r.name)}</label>`).join('')}</div>
         <button class="btn outline" data-act="add-found" data-s="wishlist">${I.star}Add to wishlist</button>` : ''}
       ${id && b.status === 'wishlist' ? `<button class="btn gold" data-act="got-it" data-id="${b.id}">${I.check}We bought it</button>` : ''}
-      <button class="btn" data-act="scan">${I.scan}Scan the next book</button>
+      ${resultFrom.kind === 'search' ? `<button class="btn" data-act="back-search">${I.search}Back to search results</button>` : `<button class="btn" data-act="scan">${I.scan}Scan the next book</button>`}
       ${id ? `<button class="btn ghost" data-act="open" data-id="${b.id}">Open full details</button>` : ''}
     </div>`;
   });
@@ -1204,6 +1217,7 @@ const ACT = {
   'check-imports': () => checkImports(true),
   'review-import': d => importSheet(+d.i),
   'scan-into': d => openScanner({ shelveIn: d.k }),
+  'back-search': () => { const ls = lastSearch; resultFrom = { kind: 'scan' }; if (ls) searchSheet({ ...ls.opts, q: ls.q, results: ls.results }); else searchSheet(); },
   shelve: async d => { const b = clone(DB.books.get(d.id)); const [c, cube] = d.k.split('-'); b.loc = { c, cube, pos: nextPos(c, cube) }; await DB.save(b); toast(`Shelved in ${d.k}`); },
   'show-cube': d => { closeSheet(); UI.cube = d.k; UI.shelf = 'all'; UI.reader = 'all'; UI.filter = 'all'; UI.age = null; UI.genre = ''; UI.q = ''; UI.view = 'library'; UI.sort = 'shelf'; render(); $('#main').scrollTop = 0; },
   'undo-add': async d => { const b = DB.books.get(d.id); await DB.remove(d.id); const box = $('#lastScan'); if (box) box.innerHTML = `<div class="last dup"><span>Removed ${esc(b?.title || '')}</span></div>`; if (scanState) scanState.last = null; },
@@ -1211,7 +1225,7 @@ const ACT = {
   'add-found': async d => {
     const f = sheetFound; if (!f) return;
     const wants = d.s === 'wishlist' ? $$('.wf:checked').map(x => x.value) : [];
-    const pick = d.s === 'owned' ? (d.k || '') : '';
+    const pick = d.s === 'owned' ? ($('#rsCube')?.value || '') : '';
     const [c, cube] = pick.split('-');
     const b = newBook(f, { status: d.s, addedBy: 'barcode', wants, ...(c ? { loc: { c, cube, pos: nextPos(c, cube) } } : {}) });
     await DB.save(b); sheetFound = null;
@@ -1230,6 +1244,11 @@ document.addEventListener('change', async e => {
   if (k === 'sort') { UI.sort = t.value; dev.set('sort', t.value); renderGrid(); }
   else if (k === 'read') setRead(t.dataset.id, t.dataset.r, t.value);
   else if (k === 'got') { if (t.checked) ACT['got-it']({ id: t.dataset.id }); }
+  else if (k === 'move') {
+    const b = clone(DB.books.get(t.dataset.id)); if (!b) return;
+    if (!t.value) delete b.loc; else { const [c, cube] = t.value.split('-'); b.loc = { c, cube, pos: nextPos(c, cube) }; }
+    await DB.save(b); toast(t.value ? `Shelved in ${t.value}${cubeLabel(t.value) ? ' (' + cubeLabel(t.value) + ')' : ''}` : 'Taken off the shelf');
+  }
 });
 const onSearch = v => { UI.q = v; if (UI.view !== 'library') { UI.view = 'library'; render(); } else renderGrid(); };
 $('#q').addEventListener('input', e => onSearch(e.target.value));
