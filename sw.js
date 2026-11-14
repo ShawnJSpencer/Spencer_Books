@@ -1,5 +1,5 @@
 // Spencer Library service worker: opens offline, picks up updates automatically.
-const CACHE = 'sbooks-v16';
+const CACHE = 'sbooks-v17';
 const SHELL = ['./', 'index.html', 'app.js', 'scanner.js', 'config.js', 'manifest.webmanifest', 'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-32.png'];
 
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });

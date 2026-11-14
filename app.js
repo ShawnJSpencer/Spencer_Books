@@ -1217,8 +1217,8 @@ function titleFits(t, m) {
   const want = words(t).filter(w => !NOISE.has(w)), main = words(m.title).filter(w => !NOISE.has(w)), have = new Set(words(m.title + ' ' + (m.subtitle || '')));
   if (!want.length || !main.length) return false;
   const ws = new Set(want);
-  if (want.filter(w => have.has(w)).length / want.length >= .75 && main.filter(w => ws.has(w)).length / main.length >= .6) return true;
-  return main.length >= 2 && main.every(w => ws.has(w));   // e.g. "Dog Days" for "Diary of a Wimpy Kid: Dog Days"
+  // every word we want must be there, and most of theirs must be ours ("Wild Robot" ≠ "Wild Robot Escapes")
+  return want.filter(w => have.has(w)).length / want.length >= .85 && main.filter(w => ws.has(w)).length / main.length >= .75;
 }
 function goodMatch(x, m) {
   if (!m?.title) return false;
