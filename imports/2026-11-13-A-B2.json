@@ -51,17 +51,6 @@
    ]
   },
   {
-   "pos": 5,
-   "title": "Dream",
-   "author": "O'Connor",
-   "ageMin": 8,
-   "ageMax": 12,
-   "genres": [
-    "Realistic fiction"
-   ],
-   "check": "spine says O'Connor / FSG — tell me the author's first name if this isn't right"
-  },
-  {
    "pos": 6,
    "title": "The Dodo: Sally's Story",
    "author": "Bonnie Bader",
@@ -194,5 +183,8 @@
    ]
   }
  ],
- "rev": 3
+ "rev": 4,
+ "remove": [
+  "Dream"
+ ]
 }

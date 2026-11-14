@@ -36,6 +36,16 @@
    ]
   },
   {
+   "pos": 3.5,
+   "title": "Dream",
+   "author": "Barbara O'Connor",
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Realistic fiction"
+   ]
+  },
+  {
    "pos": 4,
    "title": "Wonderland",
    "author": "Barbara O'Connor",
@@ -552,5 +562,5 @@
    ]
   }
  ],
- "rev": 2
+ "rev": 3
 }
