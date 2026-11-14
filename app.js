@@ -256,7 +256,7 @@ function fromGoogle(v) {
     title: i.title || '', subtitle: i.subtitle || '', authors: i.authors || [], publisher: i.publisher || '',
     released: i.publishedDate || '', pages: i.pageCount || null, genres: (i.categories || []).flatMap(c => c.split(/\s*\/\s*/)).filter(g => !/^(juvenile|young adult) (fiction|nonfiction)$/i.test(g)).slice(0, 4),
     summary: (i.description || '').replace(/<[^>]+>/g, '').slice(0, 1200), cover, isbn13, isbn10: ids.ISBN_10 || '',
-    ageHint: (i.categories || []).join(' ')
+    ageHint: (i.categories || []).join(' '), cats: (i.categories || []).join(' ')
   };
 }
 function fromOL(d, isbn) {
@@ -293,8 +293,8 @@ async function searchBooks(q, author) {
     } catch (e) { console.warn(e); }
   }
   // drop exact duplicates
-  const seen = new Set();
-  return out.filter(b => b.title && !seen.has(norm(b.title) + '|' + norm(authorShort(b))) && seen.add(norm(b.title) + '|' + norm(authorShort(b))));
+  const seen = new Set(), key = b => b.isbn13 || [b.title, b.subtitle, authorShort(b)].map(norm).join('|');
+  return out.filter(b => b.title && !seen.has(key(b)) && seen.add(key(b)));
 }
 
 /* ───────── UI state ───────── */
@@ -895,25 +895,28 @@ async function checkImports(loud) {
 // title/author from the list, and redo the online details with the stricter match. Runs once.
 let repairing = false;
 async function repairClaudeImports() {
-  if (repairing || DB.meta.fix1 || !(DB.meta.imported || []).length) return;
+  if (repairing || DB.meta.fix2 || !(DB.meta.imported || []).length) return;
   repairing = true;
   try {
-    const fixed = [];
+    const fixed = [], gone = [];
     for (const f of DB.meta.imported) {
       let j; try { j = await (await fetch('imports/' + encodeURIComponent(f) + '?t=' + Date.now(), { cache: 'no-store' })).json(); } catch { continue; }
       const [c, ...rest] = (j.cube || '').split('-'), cube = rest.join('-');
+      const inCube = () => [...DB.books.values()].filter(z => z.addedBy === 'claude' && z.loc?.c === c && z.loc?.cube === cube);
+      for (const t of j.remove || []) inCube().filter(z => norm(z.title) === norm(t)).forEach(z => gone.push(z.id));
       for (const x of j.books || []) {
-        const b = [...DB.books.values()].find(z => z.addedBy === 'claude' && z.loc?.c === c && z.loc?.cube === cube && z.loc?.pos === x.pos);
-        if (!b || norm(b.title) === norm(x.title)) continue;
+        const b = inCube().find(z => z.loc?.pos === x.pos && !gone.includes(z.id)); if (!b) continue;
         const n = clone(b);
-        ['subtitle', 'publisher', 'released', 'pages', 'summary', 'cover', 'isbn13', 'isbn10'].forEach(k => delete n[k]);
-        n.title = x.title; n.authors = x.author ? [x.author] : [];
+        ['subtitle', 'publisher', 'released', 'pages', 'summary', 'cover', 'isbn13', 'isbn10', 'cats', 'ageHint'].forEach(k => delete n[k]);
+        Object.assign(n, { title: x.title, authors: x.author ? [x.author] : [], series: x.series || n.series || '', seriesNo: x.seriesNo ?? n.seriesNo ?? null, format: x.format || n.format || '', notes: x.notes || n.notes || '' });
         try { const i = await findOnline(x); if (i) Object.assign(n, onlineDetails(i)); } catch {}
         fixed.push(n);
       }
     }
-    if (fixed.length) { await DB.saveMany(fixed); toast(`Fixed ${fixed.length} book title${fixed.length === 1 ? '' : 's'}`); }
-    await DB.saveMeta({ fix1: true });
+    for (const id of gone) await DB.remove(id);
+    if (fixed.length) await DB.saveMany(fixed);
+    if (fixed.length || gone.length) toast(`Refreshed ${fixed.length} book${fixed.length === 1 ? '' : 's'} with the right editions`);
+    await DB.saveMeta({ fix1: true, fix2: true });
   } finally { repairing = false; }
 }
 function importBanner() {
@@ -973,10 +976,20 @@ function goodMatch(x, m) {
   if (cover >= .75 && share >= .6) return true;
   return main.length >= 2 && main.every(w => ws.has(w));   // e.g. "Dog Days" for "Diary of a Wimpy Kid: Dog Days"
 }
+const isGraphic = x => /graphic/i.test(x.format || '') || (x.genres || []).some(g => /graphic/i.test(g));
+const looksGraphic = m => /graphic|comic|manga/i.test([m.title, m.subtitle, m.cats].join(' '));
 async function findOnline(x) {
   if (x.isbn13) { const one = await lookupISBN(x.isbn13); if (one) return one; }
-  const res = await searchBooks(x.title, x.author);
-  return res.find(m => goodMatch(x, m)) || null;
+  const gn = isGraphic(x), main = x.title.includes(':') ? x.title.split(':').slice(1).join(':').trim() : '';
+  // graphic novels share titles with the original novels, so look for the graphic edition first
+  const tries = gn ? [[`${x.title} ${x.author || ''} graphic novel`], [x.title, x.author], ...(main ? [[`${main} ${x.author || ''} graphic novel`]] : [])]
+                   : [[x.title, x.author], ...(main ? [[main, x.author]] : [])];
+  for (const [q, a] of tries) {
+    let res = []; try { res = await searchBooks(q, a); } catch {}
+    const hit = res.find(m => goodMatch(x, m) && (!gn || looksGraphic(m)));
+    if (hit) return hit;
+  }
+  return null;   // better a plain cover than the wrong edition
 }
 // details looked up online, without ever replacing the title/author Claude read off the spine
 function onlineDetails(i) {
