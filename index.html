@@ -24,7 +24,8 @@
   --sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;height:100%;overscroll-behavior:none}
+html,body{margin:0;height:100%;overflow:hidden;overscroll-behavior:none;background:#2a1c13}
+html,body{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{font-family:var(--fb);color:var(--ink);background-color:var(--bg);
   background-image:repeating-linear-gradient(92deg,rgba(255,255,255,.018) 0 2px,rgba(0,0,0,.05) 2px 7px,rgba(255,255,255,.012) 7px 11px);
   -webkit-font-smoothing:antialiased;touch-action:manipulation}
@@ -34,7 +35,7 @@ input,select,textarea{font:16px var(--fb);color:var(--ink)}
 svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
 /* ── frame ── */
-#app{height:100%;display:flex;flex-direction:column}
+#app{height:100%;display:flex;flex-direction:column;overflow:hidden}
 .top{flex-shrink:0;display:flex;align-items:center;gap:16px;padding:calc(10px + var(--sat)) 24px 10px;background:var(--bar);border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:11px;min-width:0}
 .brand b{display:block;font:700 20px var(--fd);white-space:nowrap}
@@ -54,9 +55,9 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .sync .dot.on{background:var(--green)}
 .sync.needs{color:var(--amber)}
 .body{flex:1;min-height:0;display:grid;grid-template-columns:264px minmax(0,1fr) 392px}
-#side{overflow-y:auto;padding:20px 16px 40px;border-right:1px solid var(--line);background:rgba(34,23,15,.55);display:flex;flex-direction:column;gap:24px}
-#main{overflow-y:auto;padding:20px 24px 60px;min-width:0}
-#detail{overflow-y:auto;border-left:1px solid var(--line);background:var(--panel2);padding:20px}
+#side{overflow-y:auto;overflow-x:hidden;padding:20px 16px 40px;border-right:1px solid var(--line);background:rgba(34,23,15,.55);display:flex;flex-direction:column;gap:24px}
+#main{overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;padding:20px 24px 60px;min-width:0}
+#detail{overflow-y:auto;overflow-x:hidden;border-left:1px solid var(--line);background:var(--panel2);padding:20px}
 #tabs{display:none}
 
 .cap{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--mute)}
@@ -262,8 +263,10 @@ body[data-view=shelves] .body{grid-template-columns:264px minmax(0,1fr)}
   .brand b{font-size:19px}
   .body{grid-template-columns:minmax(0,1fr)}
   #side{display:none}
-  #main{padding:14px 14px calc(110px + var(--sab))}
-  #tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;padding:8px 6px calc(8px + var(--sab));background:var(--bar);border-top:1px solid var(--line);z-index:20}
+  #main{padding:14px 14px 28px}
+  #tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));flex:none;width:100%;padding:8px 6px calc(6px + var(--sab));background:var(--bar);border-top:1px solid var(--line);z-index:20}
+  .empty .row2{flex-wrap:wrap}
+  .empty .row2 .btn{flex:1 1 140px}
   #tabs button{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:0;color:var(--mute);font-size:11px;font-weight:500;padding:4px 0}
   #tabs button.on{color:var(--brass);font-weight:600}
   #tabs svg{width:23px;height:23px}
