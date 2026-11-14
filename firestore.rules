@@ -1,0 +1,28 @@
+rules_version = '2';
+// Paste this WHOLE file into Firebase → Firestore → Rules → Publish.
+// It keeps the food storage rules exactly as they were and adds the book library.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Only the two of you can read or change anything.
+    function family() {
+      return request.auth != null && request.auth.token.email.lower() in [
+        'shawn@spencerfam.com',
+        'kinzspencer@gmail.com'
+      ];
+    }
+    // Food storage (SF-FS)
+    match /households/{h} {
+      allow read, write: if family();
+      match /{sub=**} {
+        allow read, write: if family();
+      }
+    }
+    // Book library (Spencer_Books)
+    match /libraries/{l} {
+      allow read, write: if family();
+      match /{sub=**} {
+        allow read, write: if family();
+      }
+    }
+  }
+}
