@@ -1,0 +1,294 @@
+{
+ "cube": "A-A2",
+ "note": "Left to right: Baby-Sitters Club graphic novels 1–18 (missing 5, 9 and 16 on this shelf), then the Little Sister 1–3 box set as three books. One hidden spine still to confirm in chat.",
+ "books": [
+  {
+   "pos": 1,
+   "title": "The Baby-Sitters Club: Kristy's Great Idea",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 1,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Raina Telgemeier"
+  },
+  {
+   "pos": 2,
+   "title": "The Baby-Sitters Club: The Truth About Stacey",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 2,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Raina Telgemeier"
+  },
+  {
+   "pos": 3,
+   "title": "The Baby-Sitters Club: Mary Anne Saves the Day",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 3,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Raina Telgemeier"
+  },
+  {
+   "pos": 4,
+   "title": "The Baby-Sitters Club: Claudia and Mean Janine",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 4,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Raina Telgemeier"
+  },
+  {
+   "pos": 5,
+   "title": "The Baby-Sitters Club: Kristy's Big Day",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 6,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Gale Galligan"
+  },
+  {
+   "pos": 6,
+   "title": "The Baby-Sitters Club: Boy-Crazy Stacey",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 7,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Gale Galligan"
+  },
+  {
+   "pos": 7,
+   "title": "The Baby-Sitters Club: Logan Likes Mary Anne!",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 8,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Gale Galligan"
+  },
+  {
+   "pos": 8,
+   "title": "The Baby-Sitters Club: Kristy and the Snobs",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 10,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Chan Chau"
+  },
+  {
+   "pos": 9,
+   "title": "The Baby-Sitters Club: Good-bye Stacey, Good-bye",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 11,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Gabriela Epstein"
+  },
+  {
+   "pos": 10,
+   "title": "The Baby-Sitters Club: Jessi's Secret Language",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 12,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Chan Chau"
+  },
+  {
+   "pos": 11,
+   "title": "The Baby-Sitters Club: Mary Anne's Bad Luck Mystery",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 13,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Cindy Cheng"
+  },
+  {
+   "pos": 12,
+   "title": "The Baby-Sitters Club: Stacey's Mistake",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 14,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Ellen T. Crenshaw"
+  },
+  {
+   "pos": 13,
+   "title": "The Baby-Sitters Club: Claudia and the Bad Joke",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 15,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Arley Nopra"
+  },
+  {
+   "pos": 14,
+   "title": "The Baby-Sitters Club: Mallory and the Trouble with Twins",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 17,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Arley Nopra"
+  },
+  {
+   "pos": 15,
+   "title": "The Baby-Sitters Club: Jessi Ramsey, Pet-Sitter",
+   "author": "Ann M. Martin",
+   "series": "The Baby-Sitters Club Graphic Novels",
+   "seriesNo": 18,
+   "ageMin": 8,
+   "ageMax": 12,
+   "genres": [
+    "Graphic novel",
+    "Friendship",
+    "Realistic fiction"
+   ],
+   "format": "Graphic novel",
+   "notes": "Adapted by Ellen T. Crenshaw"
+  },
+  {
+   "pos": 17,
+   "title": "Baby-sitters Little Sister: Karen's Witch",
+   "author": "Ann M. Martin",
+   "series": "Baby-sitters Little Sister Graphic Novels",
+   "seriesNo": 1,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Graphic novel",
+    "Family"
+   ],
+   "format": "Box set",
+   "notes": "Adapted by Katy Farina. In the Little Sister Graphic Novels 1–3 box set.",
+   "check": "from the 1–3 box set — untick any that aren't in the box"
+  },
+  {
+   "pos": 18,
+   "title": "Baby-sitters Little Sister: Karen's Roller Skates",
+   "author": "Ann M. Martin",
+   "series": "Baby-sitters Little Sister Graphic Novels",
+   "seriesNo": 2,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Graphic novel",
+    "Family"
+   ],
+   "format": "Box set",
+   "notes": "Adapted by Katy Farina. In the Little Sister Graphic Novels 1–3 box set.",
+   "check": "from the 1–3 box set — untick any that aren't in the box"
+  },
+  {
+   "pos": 19,
+   "title": "Baby-sitters Little Sister: Karen's Worst Day",
+   "author": "Ann M. Martin",
+   "series": "Baby-sitters Little Sister Graphic Novels",
+   "seriesNo": 3,
+   "ageMin": 6,
+   "ageMax": 9,
+   "genres": [
+    "Graphic novel",
+    "Family"
+   ],
+   "format": "Box set",
+   "notes": "Adapted by Katy Farina. In the Little Sister Graphic Novels 1–3 box set.",
+   "check": "from the 1–3 box set — untick any that aren't in the box"
+  }
+ ]
+}
